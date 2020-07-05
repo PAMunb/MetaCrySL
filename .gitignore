@@ -1,0 +1,6 @@
+/generated/
+/src-gen/
+/xtend-gen/
+
+*.xml_gen
+/target/

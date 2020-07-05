@@ -1,0 +1,57 @@
+grammar br.unb.cic.mcsl.MetaCrySL with org.eclipse.xtext.xbase.Xtype
+
+
+generate metaCrySL "http://www.unb.br/cic/mcsl/MetaCrySL"
+
+
+Model:
+	metaCrySL = Spec;
+	
+Spec: 
+    'ABSTRACT'? 'SPEC' className = JvmTypeReference
+    (objectSpec = ObjectSpec)?
+    (eventSpec = EventSpec)?    
+;
+    
+ObjectSpec:  {ObjectSpec} 'OBJECTS' ':' objects += Object+ ;    
+
+Object: {Object} type = JvmTypeReference varName = ID ';' ;
+
+/* EventSpec rule 
+ * 
+ * This rule defines the EVENTS session. It should accept 
+ * the following: 
+ *  
+ *   EVENTS: 
+ *     c1 : method1();           //event method
+ *     c2 : method2(int x);      //event method
+ *     
+ *     cs := c1 | c2 ;           //event aggregate
+ */
+EventSpec : {EventSpec} 'EVENTS' ':' events += Event+ ;
+
+Event
+ : {EventMethod}    (label = ID ':') (var = ID '=')? method = MethodDef ';'
+ | {EventAggregate} (label = ID ':=') aggregate = AggregateList ';'	
+ ;
+
+AggregateList : labels += ID ('|' labels+=ID)*;
+
+/* MethodDef rule. 
+ * 
+ * It should accept 'method()' or method(int x, int y)
+ * 
+ * (note) 
+ * this way to express lists, with a list 
+ * separator in XText, is really weird. 
+ */
+MethodDef: methodName = ID '(' (',' args += [FormalArg])* ')' ;
+
+/* FormalArg rule
+ * 
+ * It should accept a wild card ('_') or 'int x'  
+ */
+FormalArg 
+ : {Wildcard} '_'
+ | {FormalArg} (argType = JvmArgumentTypeReference) (argName = ID) 	 
+ ;

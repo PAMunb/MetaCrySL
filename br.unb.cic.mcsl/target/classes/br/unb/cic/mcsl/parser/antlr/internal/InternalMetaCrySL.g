@@ -611,28 +611,79 @@ ruleMethodDef returns [EObject current=null]
 			newLeafNode(otherlv_1, grammarAccess.getMethodDefAccess().getLeftParenthesisKeyword_1());
 		}
 		(
-			otherlv_2=','
+			(
+				{
+					newCompositeNode(grammarAccess.getMethodDefAccess().getArgsFormalArgsParserRuleCall_2_0());
+				}
+				lv_args_2_0=ruleFormalArgs
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMethodDefRule());
+					}
+					set(
+						$current,
+						"args",
+						lv_args_2_0 != null,
+						"br.unb.cic.mcsl.MetaCrySL.FormalArgs");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		otherlv_3=')'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getMethodDefAccess().getRightParenthesisKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleFormalArgs
+entryRuleFormalArgs returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFormalArgsRule()); }
+	iv_ruleFormalArgs=ruleFormalArgs
+	{ $current=$iv_ruleFormalArgs.current; }
+	EOF;
+
+// Rule FormalArgs
+ruleFormalArgs returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFormalArgsRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getFormalArgsAccess().getArgsFormalArgCrossReference_0_0());
+				}
+			)
+		)
+		(
+			otherlv_1=','
 			{
-				newLeafNode(otherlv_2, grammarAccess.getMethodDefAccess().getCommaKeyword_2_0());
+				newLeafNode(otherlv_1, grammarAccess.getFormalArgsAccess().getCommaKeyword_1_0());
 			}
 			(
 				(
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getMethodDefRule());
+							$current = createModelElement(grammarAccess.getFormalArgsRule());
 						}
 					}
-					otherlv_3=RULE_ID
+					otherlv_2=RULE_ID
 					{
-						newLeafNode(otherlv_3, grammarAccess.getMethodDefAccess().getArgsFormalArgCrossReference_2_1_0());
+						newLeafNode(otherlv_2, grammarAccess.getFormalArgsAccess().getArgsFormalArgCrossReference_1_1_0());
 					}
 				)
 			)
 		)*
-		otherlv_4=')'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getMethodDefAccess().getRightParenthesisKeyword_3());
-		}
 	)
 ;
 

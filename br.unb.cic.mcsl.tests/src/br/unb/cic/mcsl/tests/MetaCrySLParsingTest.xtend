@@ -27,7 +27,8 @@ class MetaCrySLParsingTest {
 			
 			EVENTS:
 			   c1 : method1();
-			   c2 : method2();
+			   c2 : method2(int, int);
+			   c3 : method2(_);
 			   cs := c1 | c2 ; 
 		''')
 		Assert.assertNotNull(result)

@@ -35,6 +35,11 @@ Event
  | {EventAggregate} (label = ID ':=') aggregate = AggregateList ';'	
  ;
 
+/*
+ * AggregateList rule. 
+ * 
+ * Represents a list of labels: 'l1 | l2 | l3'
+ */
 AggregateList : labels += ID ('|' labels+=ID)*;
 
 /* MethodDef rule. 
@@ -45,7 +50,14 @@ AggregateList : labels += ID ('|' labels+=ID)*;
  * this way to express lists, with a list 
  * separator in XText, is really weird. 
  */
-MethodDef: methodName = ID '(' (',' args += [FormalArg])* ')' ;
+MethodDef: methodName = ID '(' (args ?= FormalArgs?) ')' ;
+
+/*
+ * FormalArgs rule
+ * 
+ * Represents a list of formal arguments. 
+ */
+FormalArgs: args += [FormalArg] (',' args += [FormalArg])* ;
 
 /* FormalArg rule
  * 
@@ -53,5 +65,5 @@ MethodDef: methodName = ID '(' (',' args += [FormalArg])* ')' ;
  */
 FormalArg 
  : {Wildcard} '_'
- | {FormalArg} (argType = JvmArgumentTypeReference) (argName = ID) 	 
+ | {FormalArg} (argument = JvmArgumentTypeReference)	 
  ;

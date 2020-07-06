@@ -9,7 +9,7 @@ Model:
 
 /* Spec rule 
  * 
- * This is the start symbol of our grammar. 
+ * This is the start symbol of our MetaCrySL grammar. 
  * In MetaCrySL, we can annotate a specification
  * as being abstract and a spec can also refer to an 
  * abstract type. Each specification comprises 
@@ -17,19 +17,20 @@ Model:
  * declarations, events and order, constraints, 
  * and so on. 
  */	
-Spec: 
-    'ABSTRACT'? 'SPEC' className = JvmTypeReference
-    (objectSpec = ObjectSpec)?
-    (eventSpec  = EventSpec)?  
-    (orderSpec  = OrderSpec)?  
-;
+Spec
+ : 'ABSTRACT'? 'SPEC' className = JvmTypeReference
+     (objectSpec = ObjectSpec)?
+     (eventSpec  = EventSpec)?  
+     (orderSpec  = OrderSpec)?  
+ ;
     
 /* ObjectSpec rule
  * 
  * It corresponds to the declaration of the 
- * variables used throughout the specification. 
+ * variables (names) used throughout the 
+ * specification. 
  */    
-ObjectSpec:  {ObjectSpec} 'OBJECTS' ':' objects += Object+ ;    
+ObjectSpec: {ObjectSpec} 'OBJECTS' ':' objects += Object+ ;    
 
 /* Object rule
  * 
@@ -55,7 +56,7 @@ EventSpec : {EventSpec} 'EVENTS' events += Event+ ;
 /* Event rule
  * 
  * An event is either a labeled method or an 
- * aggregation of methods. Note that we can assign 
+ * aggregation of labels. Note that we can assign 
  * a 'method call' to a variable. 
  */
 Event
@@ -87,7 +88,7 @@ FormalArgs: args += [FormalArg] (',' args += [FormalArg])* ;
 
 /* FormalArg rule
  * 
- * It should accept a wild card ('_') or 'int x'  
+ * It should accept a wild card ('_') or something like 'int x'  
  */
 FormalArg 
  : {Wildcard} '_'
@@ -105,11 +106,19 @@ OrderSpec: {OrderSpec} 'ORDER' order = EventExp ;
 
 /* EventExp 
  * 
- * An expression to express the order of events. 
- * We use the typical idiom to avoid left-recursion in 
- * grammars. 
+ * An expression language to declare the order of events 
+ * (or method calls). This order resembles a regular 
+ * expression. 
+ *  
+ * Here we use a well-known idiom to avoid left-recursion in 
+ * grammars, named left-factoring.  
  * 
- * Note: It was necessary to allow backtrack feature 
+ * Specifically to the context of XText, this video 
+ * might be useful to understand this design: 
+ * 
+ * https://www.youtube.com/watch?v=d3JymwcB_TM&feature=youtu.be
+ * 
+ * Note: It was necessary to allow the backtrack feature 
  * here. Take a look at the mwe2 file.  
  */
 EventExp

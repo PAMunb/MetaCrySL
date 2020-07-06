@@ -1,16 +1,3 @@
-br.unb.cic.mcsl.ide/src-gen/
-br.unb.cic.mcsl.tests/src-gen/
-br.unb.cic.mcsl.tests/xtend-gen/
-br.unb.cic.mcsl.ui.tests/src-gen/
-br.unb.cic.mcsl.ui/src-gen/
-br.unb.cic.mcsl/model/
-br.unb.cic.mcsl/src-gen/
-br.unb.cic.mcsl/xtend-gen/
-
-/generated/
-/src-gen/
-/xtend-gen/
-
 *.xml_gen
 /target/
 *.class

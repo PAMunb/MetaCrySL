@@ -6,15 +6,37 @@ generate metaCrySL "http://www.unb.br/cic/mcsl/MetaCrySL"
 
 Model:
 	metaCrySL = Spec;
-	
+
+/* Spec rule 
+ * 
+ * This is the start symbol of our grammar. 
+ * In MetaCrySL, we can annotate a specification
+ * as being abstract and a spec can also refer to an 
+ * abstract type. Each specification comprises 
+ * (or might comprise) definitions for object 
+ * declarations, events and order, constraints, 
+ * and so on. 
+ */	
 Spec: 
     'ABSTRACT'? 'SPEC' className = JvmTypeReference
     (objectSpec = ObjectSpec)?
-    (eventSpec = EventSpec)?    
+    (eventSpec  = EventSpec)?  
+    (orderSpec  = OrderSpec)?  
 ;
     
+/* ObjectSpec rule
+ * 
+ * It corresponds to the declaration of the 
+ * variables used throughout the specification. 
+ */    
 ObjectSpec:  {ObjectSpec} 'OBJECTS' ':' objects += Object+ ;    
 
+/* Object rule
+ * 
+ * Allows the specification of a typed 
+ * variable that can be used in the remaining 
+ * sections of the specification. 
+ */
 Object: {Object} type = JvmTypeReference varName = ID ';' ;
 
 /* EventSpec rule 
@@ -28,15 +50,20 @@ Object: {Object} type = JvmTypeReference varName = ID ';' ;
  *     
  *     cs := c1 | c2 ;           //event aggregate
  */
-EventSpec : {EventSpec} 'EVENTS' ':' events += Event+ ;
+EventSpec : {EventSpec} 'EVENTS' events += Event+ ;
 
+/* Event rule
+ * 
+ * An event is either a labeled method or an 
+ * aggregation of methods. Note that we can assign 
+ * a 'method call' to a variable. 
+ */
 Event
  : {EventMethod}    (label = ID ':') (var = ID '=')? method = MethodDef ';'
  | {EventAggregate} (label = ID ':=') aggregate = AggregateList ';'	
  ;
 
-/*
- * AggregateList rule. 
+/* AggregateList rule. 
  * 
  * Represents a list of labels: 'l1 | l2 | l3'
  */
@@ -52,8 +79,7 @@ AggregateList : labels += ID ('|' labels+=ID)*;
  */
 MethodDef: methodName = ID '(' (args ?= FormalArgs?) ')' ;
 
-/*
- * FormalArgs rule
+/* FormalArgs rule
  * 
  * Represents a list of formal arguments. 
  */
@@ -65,5 +91,42 @@ FormalArgs: args += [FormalArg] (',' args += [FormalArg])* ;
  */
 FormalArg 
  : {Wildcard} '_'
- | {FormalArg} (argument = JvmArgumentTypeReference)	 
+ | {Formal} (argument = JvmArgumentTypeReference)	 
  ;
+ 
+
+/* OrderSpec rule
+ * 
+ * Uses a regular expression on the labeled 
+ * events. 
+ */
+ 
+OrderSpec: {OrderSpec} 'ORDER' order = EventExp ; 
+
+/* EventExp 
+ * 
+ * An expression to express the order of events. 
+ * We use the typical idiom to avoid left-recursion in 
+ * grammars. 
+ * 
+ * Note: It was necessary to allow backtrack feature 
+ * here. Take a look at the mwe2 file.  
+ */
+EventExp
+ : {Optional}   exp = ChoiceExp '?'
+ | {ZeroOrMore} exp = ChoiceExp '*' 
+ | {OneOrMore}  exp = ChoiceExp '+'	
+ | {ChoiceExp}  exp = ChoiceExp 
+ ;
+
+ChoiceExp returns EventExp
+ : SequenceExp => ({ChoiceExp.left = current}'|' right = SequenceExp)* 	
+ ;
+ 
+SequenceExp returns EventExp
+ : PrimaryExp => ({SequenceExp.left = current} ',' right = PrimaryExp)*;
+  
+PrimaryExp returns EventExp
+ : label = ID
+ | '(' ChoiceExp ')' 	
+ ;  

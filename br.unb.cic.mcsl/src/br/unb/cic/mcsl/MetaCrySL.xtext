@@ -119,7 +119,9 @@ OrderSpec: {OrderSpec} 'ORDER' order = EventExp ;
  * https://www.youtube.com/watch?v=d3JymwcB_TM&feature=youtu.be
  * 
  * Note: It was necessary to allow the backtrack feature 
- * here. Take a look at the mwe2 file.  
+ * here. Take a look at the mwe2 file. Backtracking might 
+ * be quite expensive, so perhaps we should investigate an 
+ * alternative to this design.  
  */
 EventExp
  : {Optional}   exp = ChoiceExp '?'

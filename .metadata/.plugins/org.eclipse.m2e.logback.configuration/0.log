@@ -1,0 +1,353 @@
+2020-07-06 10:06:46,036 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-07-06 10:08:50,467 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-maven-plugin/1.7.0/tycho-maven-plugin-1.7.0.pom
+2020-07-06 10:08:51,085 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-maven-plugin/1.7.0/tycho-maven-plugin-1.7.0.pom
+2020-07-06 10:08:51,482 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho/1.7.0/tycho-1.7.0.pom
+2020-07-06 10:08:52,503 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho/1.7.0/tycho-1.7.0.pom
+2020-07-06 10:08:52,714 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-core/1.7.0/tycho-core-1.7.0.pom
+2020-07-06 10:08:53,022 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-core/1.7.0/tycho-core-1.7.0.pom
+2020-07-06 10:08:54,499 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.p2.tools.shared/1.7.0/org.eclipse.tycho.p2.tools.shared-1.7.0.pom
+2020-07-06 10:08:54,792 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.p2.tools.shared/1.7.0/org.eclipse.tycho.p2.tools.shared-1.7.0.pom
+2020-07-06 10:08:55,064 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-bundles/1.7.0/tycho-bundles-1.7.0.pom
+2020-07-06 10:08:55,284 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-bundles/1.7.0/tycho-bundles-1.7.0.pom
+2020-07-06 10:08:55,463 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.2.2/plexus-archiver-4.2.2.pom
+2020-07-06 10:08:55,644 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.2.2/plexus-archiver-4.2.2.pom
+2020-07-06 10:08:55,826 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/6.1/plexus-6.1.pom
+2020-07-06 10:08:56,395 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/6.1/plexus-6.1.pom
+2020-07-06 10:08:56,702 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2020-07-06 10:08:57,112 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2020-07-06 10:08:57,521 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.osgi.compatibility.state/1.1.700/org.eclipse.osgi.compatibility.state-1.1.700.pom
+2020-07-06 10:08:57,727 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.osgi.compatibility.state/1.1.700/org.eclipse.osgi.compatibility.state-1.1.700.pom
+2020-07-06 10:08:57,945 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.osgi/3.15.200/org.eclipse.osgi-3.15.200.pom
+2020-07-06 10:08:58,154 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.osgi/3.15.200/org.eclipse.osgi-3.15.200.pom
+2020-07-06 10:08:58,464 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox-embedder/1.7.0/sisu-equinox-embedder-1.7.0.pom
+2020-07-06 10:08:58,683 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox-embedder/1.7.0/sisu-equinox-embedder-1.7.0.pom
+2020-07-06 10:08:58,852 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox/1.7.0/sisu-equinox-1.7.0.pom
+2020-07-06 10:08:59,058 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox/1.7.0/sisu-equinox-1.7.0.pom
+2020-07-06 10:08:59,266 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox-api/1.7.0/sisu-equinox-api-1.7.0.pom
+2020-07-06 10:08:59,478 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox-api/1.7.0/sisu-equinox-api-1.7.0.pom
+2020-07-06 10:08:59,676 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-metadata-model/1.7.0/tycho-metadata-model-1.7.0.pom
+2020-07-06 10:08:59,879 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-metadata-model/1.7.0/tycho-metadata-model-1.7.0.pom
+2020-07-06 10:09:00,184 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/de/pdark/decentxml/1.4/decentxml-1.4.pom
+2020-07-06 10:09:00,391 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/de/pdark/decentxml/1.4/decentxml-1.4.pom
+2020-07-06 10:09:00,601 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-embedder-api/1.7.0/tycho-embedder-api-1.7.0.pom
+2020-07-06 10:09:00,802 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-embedder-api/1.7.0/tycho-embedder-api-1.7.0.pom
+2020-07-06 10:09:01,008 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.embedder.shared/1.7.0/org.eclipse.tycho.embedder.shared-1.7.0.pom
+2020-07-06 10:09:01,213 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.embedder.shared/1.7.0/org.eclipse.tycho.embedder.shared-1.7.0.pom
+2020-07-06 10:09:01,419 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.core.shared/1.7.0/org.eclipse.tycho.core.shared-1.7.0.pom
+2020-07-06 10:09:01,619 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.core.shared/1.7.0/org.eclipse.tycho.core.shared-1.7.0.pom
+2020-07-06 10:09:02,049 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-p2-facade/1.7.0/tycho-p2-facade-1.7.0.pom
+2020-07-06 10:09:02,218 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-p2-facade/1.7.0/tycho-p2-facade-1.7.0.pom
+2020-07-06 10:09:02,381 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-p2/1.7.0/tycho-p2-1.7.0.pom
+2020-07-06 10:09:02,546 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-p2/1.7.0/tycho-p2-1.7.0.pom
+2020-07-06 10:09:02,750 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.p2.resolver.shared/1.7.0/org.eclipse.tycho.p2.resolver.shared-1.7.0.pom
+2020-07-06 10:09:02,959 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.p2.resolver.shared/1.7.0/org.eclipse.tycho.p2.resolver.shared-1.7.0.pom
+2020-07-06 10:09:03,157 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-maven-plugin/1.7.0/tycho-maven-plugin-1.7.0.jar
+2020-07-06 10:09:03,367 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.2.2/plexus-archiver-4.2.2.jar
+2020-07-06 10:09:03,367 [AetherRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.p2.tools.shared/1.7.0/org.eclipse.tycho.p2.tools.shared-1.7.0.jar
+2020-07-06 10:09:03,585 [AetherRepositoryConnector-repo.maven.apache.org-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2020-07-06 10:09:03,585 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-core/1.7.0/tycho-core-1.7.0.jar
+2020-07-06 10:09:04,022 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-maven-plugin/1.7.0/tycho-maven-plugin-1.7.0.jar
+2020-07-06 10:09:04,244 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.osgi.compatibility.state/1.1.700/org.eclipse.osgi.compatibility.state-1.1.700.jar
+2020-07-06 10:09:04,697 [AetherRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.p2.tools.shared/1.7.0/org.eclipse.tycho.p2.tools.shared-1.7.0.jar
+2020-07-06 10:09:04,925 [AetherRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.osgi/3.15.200/org.eclipse.osgi-3.15.200.jar
+2020-07-06 10:09:12,274 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.2.2/plexus-archiver-4.2.2.jar
+2020-07-06 10:09:12,952 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox-embedder/1.7.0/sisu-equinox-embedder-1.7.0.jar
+2020-07-06 10:09:14,630 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-core/1.7.0/tycho-core-1.7.0.jar
+2020-07-06 10:09:14,921 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.osgi.compatibility.state/1.1.700/org.eclipse.osgi.compatibility.state-1.1.700.jar
+2020-07-06 10:09:14,921 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox-embedder/1.7.0/sisu-equinox-embedder-1.7.0.jar
+2020-07-06 10:09:15,172 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox-api/1.7.0/sisu-equinox-api-1.7.0.jar
+2020-07-06 10:09:15,172 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-metadata-model/1.7.0/tycho-metadata-model-1.7.0.jar
+2020-07-06 10:09:15,328 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/de/pdark/decentxml/1.4/decentxml-1.4.jar
+2020-07-06 10:09:16,154 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/sisu-equinox-api/1.7.0/sisu-equinox-api-1.7.0.jar
+2020-07-06 10:09:16,469 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-metadata-model/1.7.0/tycho-metadata-model-1.7.0.jar
+2020-07-06 10:09:16,632 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-embedder-api/1.7.0/tycho-embedder-api-1.7.0.jar
+2020-07-06 10:09:17,313 [AetherRepositoryConnector-repo.maven.apache.org-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2020-07-06 10:09:17,314 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.embedder.shared/1.7.0/org.eclipse.tycho.embedder.shared-1.7.0.jar
+2020-07-06 10:09:17,315 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/de/pdark/decentxml/1.4/decentxml-1.4.jar
+2020-07-06 10:09:17,683 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-embedder-api/1.7.0/tycho-embedder-api-1.7.0.jar
+2020-07-06 10:09:17,923 [AetherRepositoryConnector-repo.maven.apache.org-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.core.shared/1.7.0/org.eclipse.tycho.core.shared-1.7.0.jar
+2020-07-06 10:09:17,923 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-p2-facade/1.7.0/tycho-p2-facade-1.7.0.jar
+2020-07-06 10:09:17,923 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.p2.resolver.shared/1.7.0/org.eclipse.tycho.p2.resolver.shared-1.7.0.jar
+2020-07-06 10:09:17,978 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.embedder.shared/1.7.0/org.eclipse.tycho.embedder.shared-1.7.0.jar
+2020-07-06 10:09:18,525 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.p2.resolver.shared/1.7.0/org.eclipse.tycho.p2.resolver.shared-1.7.0.jar
+2020-07-06 10:09:18,695 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-p2-facade/1.7.0/tycho-p2-facade-1.7.0.jar
+2020-07-06 10:09:18,695 [AetherRepositoryConnector-repo.maven.apache.org-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/org.eclipse.tycho.core.shared/1.7.0/org.eclipse.tycho.core.shared-1.7.0.jar
+2020-07-06 10:09:19,680 [AetherRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.osgi/3.15.200/org.eclipse.osgi-3.15.200.jar
+2020-07-06 10:09:25,580 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/xtext/xtext-dev-bom/2.22.0/xtext-dev-bom-2.22.0.pom
+2020-07-06 10:09:25,588 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/xtext/xtext-dev-bom/2.22.0/xtext-dev-bom-2.22.0.pom
+2020-07-06 10:09:26,127 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/xtext/xtext-dev-bom/2.22.0/xtext-dev-bom-2.22.0.pom
+2020-07-06 10:09:26,132 [Worker-23: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/xtext/xtext-dev-bom/2.22.0/xtext-dev-bom-2.22.0.pom
+2020-07-06 10:09:27,866 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/xtend/xtend-maven-plugin/2.22.0/xtend-maven-plugin-2.22.0.pom
+2020-07-06 10:09:28,445 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/xtend/xtend-maven-plugin/2.22.0/xtend-maven-plugin-2.22.0.pom
+2020-07-06 10:09:28,644 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/xtend/org.eclipse.xtend.maven.parent/2.22.0/org.eclipse.xtend.maven.parent-2.22.0.pom
+2020-07-06 10:09:28,855 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/xtend/org.eclipse.xtend.maven.parent/2.22.0/org.eclipse.xtend.maven.parent-2.22.0.pom
+2020-07-06 10:09:29,050 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/xtend/xtend-maven-plugin/2.22.0/xtend-maven-plugin-2.22.0.jar
+2020-07-06 10:09:29,374 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/xtend/xtend-maven-plugin/2.22.0/xtend-maven-plugin-2.22.0.jar
+2020-07-06 10:09:30,080 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-packaging-plugin/1.7.0/tycho-packaging-plugin-1.7.0.jar
+2020-07-06 10:09:31,036 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-packaging-plugin/1.7.0/tycho-packaging-plugin-1.7.0.jar
+2020-07-06 10:09:31,409 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.jar
+2020-07-06 10:09:31,835 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.jar
+2020-07-06 10:09:32,017 [Worker-17: Building] WARN  o.e.a.i.i.DefaultRepositoryEventDispatcher - Failed to dispatch repository event to org.eclipse.m2e.core.internal.embedder.EclipseRepositoryListener: null
+2020-07-06 10:09:32,363 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-compiler-plugin/1.7.0/tycho-compiler-plugin-1.7.0.jar
+2020-07-06 10:09:32,650 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-compiler-plugin/1.7.0/tycho-compiler-plugin-1.7.0.jar
+2020-07-06 10:09:33,071 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/target-platform-configuration/1.7.0/target-platform-configuration-1.7.0.jar
+2020-07-06 10:09:33,223 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/target-platform-configuration/1.7.0/target-platform-configuration-1.7.0.jar
+2020-07-06 10:09:33,696 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-p2-plugin/1.7.0/tycho-p2-plugin-1.7.0.jar
+2020-07-06 10:09:33,992 [Worker-17: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-p2-plugin/1.7.0/tycho-p2-plugin-1.7.0.jar
+2020-07-06 10:09:34,248 [Worker-17: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/pom.xml.
+2020-07-06 10:09:35,281 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:35,281 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 10:09:35,283 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:35,284 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 10:09:35,298 [Worker-13: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/pom.xml.
+2020-07-06 10:09:40,417 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:40,417 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 10:09:40,420 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:40,420 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 10:09:42,135 [Worker-13: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ide:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/pom.xml.
+2020-07-06 10:09:42,254 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:42,254 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 10:09:42,256 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:42,256 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 10:09:42,325 [Worker-13: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.target:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.target/pom.xml.
+2020-07-06 10:09:43,426 [Worker-13: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-surefire-plugin/1.7.0/tycho-surefire-plugin-1.7.0.jar
+2020-07-06 10:09:44,081 [Worker-13: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/tycho/tycho-surefire-plugin/1.7.0/tycho-surefire-plugin-1.7.0.jar
+2020-07-06 10:09:44,242 [Worker-13: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.tests:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/pom.xml.
+2020-07-06 10:09:44,360 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:44,361 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:09:44,362 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:44,363 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:09:45,079 [Worker-13: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ui:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/pom.xml.
+2020-07-06 10:09:45,316 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:45,316 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 10:09:45,318 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:45,318 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 10:09:46,146 [Worker-13: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ui.tests:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/pom.xml.
+2020-07-06 10:09:46,290 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,290 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/main/resources
+2020-07-06 10:09:46,291 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,292 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/test/resources
+2020-07-06 10:09:46,314 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,314 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 10:09:46,315 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,315 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 10:09:46,333 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,333 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:09:46,336 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,336 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:09:46,698 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,698 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 10:09:46,699 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,700 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 10:09:46,705 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,705 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:09:46,706 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:09:46,706 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:19:46,656 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-07-06 10:22:30,109 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:22:30,111 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:22:30,114 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:22:30,114 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:22:30,928 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:22:30,928 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:22:30,930 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:22:30,931 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:26:22,194 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:26:22,195 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:26:22,197 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:26:22,198 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:26:22,651 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:26:22,652 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:26:22,654 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:26:22,654 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:51:53,278 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-07-06 10:51:56,401 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:51:56,402 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 10:51:56,405 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:51:56,405 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 10:52:00,890 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:00,890 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 10:52:00,891 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:00,891 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 10:52:00,947 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:00,947 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:52:00,949 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:00,949 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:52:01,580 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:01,581 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 10:52:01,583 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:01,583 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 10:52:01,633 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:01,633 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:52:01,635 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:01,635 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:52:01,778 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:01,779 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 10:52:01,781 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:01,781 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 10:52:03,994 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:03,995 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/main/resources
+2020-07-06 10:52:03,997 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:03,997 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/test/resources
+2020-07-06 10:52:04,044 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:04,044 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 10:52:04,048 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:04,048 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 10:52:04,055 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:04,055 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/main/resources
+2020-07-06 10:52:04,057 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 10:52:04,057 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/test/resources
+2020-07-06 11:27:43,968 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-07-06 11:27:51,374 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:51,375 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:27:51,377 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:51,377 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:27:51,438 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:51,438 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:27:51,439 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:51,439 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:27:52,164 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:52,164 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 11:27:52,166 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:52,166 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 11:27:54,526 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:54,526 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 11:27:54,527 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:54,528 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 11:27:54,586 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:54,587 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/main/resources
+2020-07-06 11:27:54,588 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:27:54,588 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/test/resources
+2020-07-06 11:32:34,371 [Worker-24: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/pom.xml.
+2020-07-06 11:32:34,637 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:34,638 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:32:34,639 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:34,639 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:32:35,260 [Worker-24: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ide:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/pom.xml.
+2020-07-06 11:32:35,452 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:35,452 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:32:35,454 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:35,454 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:32:35,664 [Worker-24: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.target:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.target/pom.xml.
+2020-07-06 11:32:36,736 [Worker-24: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.tests:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/pom.xml.
+2020-07-06 11:32:37,009 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:37,009 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 11:32:37,013 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:37,013 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 11:32:38,705 [Worker-27: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ui:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/pom.xml.
+2020-07-06 11:32:38,883 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:38,883 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 11:32:38,884 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:38,884 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 11:32:39,001 [Worker-27: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ui.tests:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/pom.xml.
+2020-07-06 11:32:39,175 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:39,175 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/main/resources
+2020-07-06 11:32:39,177 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:32:39,177 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/test/resources
+2020-07-06 11:41:48,355 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-07-06 11:41:55,238 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.target:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.target/pom.xml.
+2020-07-06 11:41:55,850 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ide:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/pom.xml.
+2020-07-06 11:41:55,939 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.tests:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/pom.xml.
+2020-07-06 11:41:56,000 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ui.tests:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/pom.xml.
+2020-07-06 11:41:56,057 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl.ui:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/pom.xml.
+2020-07-06 11:41:56,238 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using DEFAULT lifecycle mapping for MavenProject: br.unb.cic.mcsl:br.unb.cic.mcsl:1.0.0-SNAPSHOT @ /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/pom.xml.
+2020-07-06 11:41:57,703 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:57,704 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:41:57,707 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:57,707 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:41:57,976 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:57,976 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:41:57,978 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:57,978 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:41:58,042 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:58,042 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:41:58,044 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:58,044 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:41:58,778 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:58,779 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:41:58,780 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:58,780 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:41:58,811 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:58,811 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 11:41:58,813 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:41:58,813 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 11:42:00,095 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:00,095 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:42:00,096 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:00,097 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:42:01,048 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:01,049 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:42:01,050 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:01,050 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:42:01,442 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:01,443 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:42:01,446 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:01,446 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:42:01,478 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:01,479 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 11:42:01,480 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:01,481 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 11:42:01,549 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:01,549 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/main/resources
+2020-07-06 11:42:01,551 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:01,551 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/test/resources
+2020-07-06 11:42:02,641 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:02,641 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:42:02,643 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:02,643 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:42:03,800 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:03,801 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/main/resources
+2020-07-06 11:42:03,802 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:03,802 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl/src/test/resources
+2020-07-06 11:42:03,858 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:03,859 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:42:03,860 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:03,860 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:42:03,929 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:03,929 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/main/resources
+2020-07-06 11:42:03,930 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:03,931 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.tests/src/test/resources
+2020-07-06 11:42:05,079 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:05,079 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:42:05,081 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:05,081 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:42:06,217 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:06,217 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:42:06,220 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:06,220 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:42:07,306 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:07,306 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:42:07,307 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:07,307 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:42:08,372 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:08,372 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:42:08,373 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:08,373 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:42:09,451 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:09,452 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/main/resources
+2020-07-06 11:42:09,453 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:09,456 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ide/src/test/resources
+2020-07-06 11:42:09,646 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:09,647 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 11:42:09,648 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:09,648 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 11:42:10,879 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:10,880 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 11:42:10,881 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:10,881 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 11:42:12,053 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:12,053 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 11:42:12,055 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:12,055 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 11:42:13,301 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:13,302 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/main/resources
+2020-07-06 11:42:13,303 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:13,303 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui/src/test/resources
+2020-07-06 11:42:13,356 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:13,356 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/main/resources
+2020-07-06 11:42:13,357 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:13,358 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/test/resources
+2020-07-06 11:42:14,453 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:14,453 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/main/resources
+2020-07-06 11:42:14,454 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-07-06 11:42:14,454 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/crysl/MetaCrySL/br.unb.cic.mcsl.ui.tests/src/test/resources

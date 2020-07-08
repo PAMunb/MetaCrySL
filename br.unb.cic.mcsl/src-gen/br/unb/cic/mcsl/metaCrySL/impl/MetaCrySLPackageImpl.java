@@ -10,6 +10,9 @@ import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
 import br.unb.cic.mcsl.metaCrySL.EventMethod;
 import br.unb.cic.mcsl.metaCrySL.EventSpec;
+import br.unb.cic.mcsl.metaCrySL.Forbidden;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenMethod;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenSpec;
 import br.unb.cic.mcsl.metaCrySL.Formal;
 import br.unb.cic.mcsl.metaCrySL.FormalArg;
 import br.unb.cic.mcsl.metaCrySL.FormalArgs;
@@ -76,6 +79,20 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass forbiddenSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forbiddenMethodEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass eventSpecEClass = null;
 
   /**
@@ -126,6 +143,13 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
    * @generated
    */
   private EClass eventExpEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forbiddenEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -317,7 +341,7 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
    * @generated
    */
   @Override
-  public EReference getSpec_EventSpec()
+  public EReference getSpec_ForbiddenSpec()
   {
     return (EReference)specEClass.getEStructuralFeatures().get(2);
   }
@@ -328,9 +352,20 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
    * @generated
    */
   @Override
-  public EReference getSpec_OrderSpec()
+  public EReference getSpec_EventSpec()
   {
     return (EReference)specEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpec_OrderSpec()
+  {
+    return (EReference)specEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -386,6 +421,39 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
   public EAttribute getObject_VarName()
   {
     return (EAttribute)objectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getForbiddenSpec()
+  {
+    return forbiddenSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForbiddenSpec_ForbidenMethods()
+  {
+    return (EReference)forbiddenSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getForbiddenMethod()
+  {
+    return forbiddenMethodEClass;
   }
 
   /**
@@ -562,6 +630,50 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
   public EAttribute getEventExp_Label()
   {
     return (EAttribute)eventExpEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getForbidden()
+  {
+    return forbiddenEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getForbidden_Method()
+  {
+    return (EAttribute)forbiddenEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getForbidden_Args()
+  {
+    return (EAttribute)forbiddenEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getForbidden_Alternative()
+  {
+    return (EAttribute)forbiddenEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -832,6 +944,7 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
     specEClass = createEClass(SPEC);
     createEReference(specEClass, SPEC__CLASS_NAME);
     createEReference(specEClass, SPEC__OBJECT_SPEC);
+    createEReference(specEClass, SPEC__FORBIDDEN_SPEC);
     createEReference(specEClass, SPEC__EVENT_SPEC);
     createEReference(specEClass, SPEC__ORDER_SPEC);
 
@@ -841,6 +954,11 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
     objectEClass = createEClass(OBJECT);
     createEReference(objectEClass, OBJECT__TYPE);
     createEAttribute(objectEClass, OBJECT__VAR_NAME);
+
+    forbiddenSpecEClass = createEClass(FORBIDDEN_SPEC);
+    createEReference(forbiddenSpecEClass, FORBIDDEN_SPEC__FORBIDEN_METHODS);
+
+    forbiddenMethodEClass = createEClass(FORBIDDEN_METHOD);
 
     eventSpecEClass = createEClass(EVENT_SPEC);
     createEReference(eventSpecEClass, EVENT_SPEC__EVENTS);
@@ -865,6 +983,11 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
 
     eventExpEClass = createEClass(EVENT_EXP);
     createEAttribute(eventExpEClass, EVENT_EXP__LABEL);
+
+    forbiddenEClass = createEClass(FORBIDDEN);
+    createEAttribute(forbiddenEClass, FORBIDDEN__METHOD);
+    createEAttribute(forbiddenEClass, FORBIDDEN__ARGS);
+    createEAttribute(forbiddenEClass, FORBIDDEN__ALTERNATIVE);
 
     eventMethodEClass = createEClass(EVENT_METHOD);
     createEAttribute(eventMethodEClass, EVENT_METHOD__VAR);
@@ -929,6 +1052,7 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    forbiddenEClass.getESuperTypes().add(this.getForbiddenMethod());
     eventMethodEClass.getESuperTypes().add(this.getEvent());
     eventAggregateEClass.getESuperTypes().add(this.getEvent());
     wildcardEClass.getESuperTypes().add(this.getFormalArg());
@@ -946,6 +1070,7 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
     initEClass(specEClass, Spec.class, "Spec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSpec_ClassName(), theTypesPackage.getJvmTypeReference(), null, "className", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSpec_ObjectSpec(), this.getObjectSpec(), null, "objectSpec", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSpec_ForbiddenSpec(), this.getForbiddenSpec(), null, "forbiddenSpec", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSpec_EventSpec(), this.getEventSpec(), null, "eventSpec", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSpec_OrderSpec(), this.getOrderSpec(), null, "orderSpec", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -955,6 +1080,11 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
     initEClass(objectEClass, br.unb.cic.mcsl.metaCrySL.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getObject_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, br.unb.cic.mcsl.metaCrySL.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getObject_VarName(), ecorePackage.getEString(), "varName", null, 0, 1, br.unb.cic.mcsl.metaCrySL.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forbiddenSpecEClass, ForbiddenSpec.class, "ForbiddenSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getForbiddenSpec_ForbidenMethods(), this.getForbiddenMethod(), null, "forbidenMethods", null, 0, -1, ForbiddenSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forbiddenMethodEClass, ForbiddenMethod.class, "ForbiddenMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(eventSpecEClass, EventSpec.class, "EventSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEventSpec_Events(), this.getEvent(), null, "events", null, 0, -1, EventSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -979,6 +1109,11 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
 
     initEClass(eventExpEClass, EventExp.class, "EventExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEventExp_Label(), ecorePackage.getEString(), "label", null, 0, 1, EventExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forbiddenEClass, Forbidden.class, "Forbidden", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getForbidden_Method(), ecorePackage.getEString(), "method", null, 0, 1, Forbidden.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getForbidden_Args(), ecorePackage.getEBoolean(), "args", null, 0, 1, Forbidden.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getForbidden_Alternative(), ecorePackage.getEBoolean(), "alternative", null, 0, 1, Forbidden.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(eventMethodEClass, EventMethod.class, "EventMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEventMethod_Var(), ecorePackage.getEString(), "var", null, 0, 1, EventMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

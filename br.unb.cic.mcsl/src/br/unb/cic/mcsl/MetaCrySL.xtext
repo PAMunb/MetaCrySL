@@ -19,9 +19,11 @@ Model:
  */	
 Spec
  : 'ABSTRACT'? 'SPEC' className = JvmTypeReference
-     (objectSpec = ObjectSpec)?
-     (eventSpec  = EventSpec)?  
-     (orderSpec  = OrderSpec)?  
+     (objectSpec    = ObjectSpec)?
+     (forbiddenSpec = ForbiddenSpec)? 
+     (eventSpec     = EventSpec)?  
+     (orderSpec     = OrderSpec)?  
+     
  ;
     
 /* ObjectSpec rule
@@ -39,6 +41,11 @@ ObjectSpec: {ObjectSpec} 'OBJECTS' ':' objects += Object+ ;
  * sections of the specification. 
  */
 Object: {Object} type = JvmTypeReference varName = ID ';' ;
+
+/* ForbiddenSpec */
+ForbiddenSpec: {ForbiddenSpec} 'FORBIDDEN' forbidenMethods += ForbiddenMethod+;
+
+ForbiddenMethod: {Forbidden} method = ID '(' (args ?= FormalArgs)? ')' ('=>' alternative ?= ID)? ';';
 
 /* EventSpec rule 
  * 

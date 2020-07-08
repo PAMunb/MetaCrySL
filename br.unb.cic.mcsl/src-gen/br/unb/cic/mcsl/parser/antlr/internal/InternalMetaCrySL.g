@@ -169,9 +169,28 @@ ruleSpec returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSpecAccess().getEventSpecEventSpecParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getSpecAccess().getForbiddenSpecForbiddenSpecParserRuleCall_4_0());
 				}
-				lv_eventSpec_4_0=ruleEventSpec
+				lv_forbiddenSpec_4_0=ruleForbiddenSpec
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSpecRule());
+					}
+					set(
+						$current,
+						"forbiddenSpec",
+						lv_forbiddenSpec_4_0,
+						"br.unb.cic.mcsl.MetaCrySL.ForbiddenSpec");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSpecAccess().getEventSpecEventSpecParserRuleCall_5_0());
+				}
+				lv_eventSpec_5_0=ruleEventSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSpecRule());
@@ -179,7 +198,7 @@ ruleSpec returns [EObject current=null]
 					set(
 						$current,
 						"eventSpec",
-						lv_eventSpec_4_0,
+						lv_eventSpec_5_0,
 						"br.unb.cic.mcsl.MetaCrySL.EventSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -188,9 +207,9 @@ ruleSpec returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSpecAccess().getOrderSpecOrderSpecParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getSpecAccess().getOrderSpecOrderSpecParserRuleCall_6_0());
 				}
-				lv_orderSpec_5_0=ruleOrderSpec
+				lv_orderSpec_6_0=ruleOrderSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSpecRule());
@@ -198,7 +217,7 @@ ruleSpec returns [EObject current=null]
 					set(
 						$current,
 						"orderSpec",
-						lv_orderSpec_5_0,
+						lv_orderSpec_6_0,
 						"br.unb.cic.mcsl.MetaCrySL.OrderSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -329,6 +348,160 @@ ruleObject returns [EObject current=null]
 		otherlv_3=';'
 		{
 			newLeafNode(otherlv_3, grammarAccess.getObjectAccess().getSemicolonKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleForbiddenSpec
+entryRuleForbiddenSpec returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getForbiddenSpecRule()); }
+	iv_ruleForbiddenSpec=ruleForbiddenSpec
+	{ $current=$iv_ruleForbiddenSpec.current; }
+	EOF;
+
+// Rule ForbiddenSpec
+ruleForbiddenSpec returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				/* */
+			}
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getForbiddenSpecAccess().getForbiddenSpecAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='FORBIDDEN'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getForbiddenSpecAccess().getFORBIDDENKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getForbiddenSpecAccess().getForbidenMethodsForbiddenMethodParserRuleCall_2_0());
+				}
+				lv_forbidenMethods_2_0=ruleForbiddenMethod
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getForbiddenSpecRule());
+					}
+					add(
+						$current,
+						"forbidenMethods",
+						lv_forbidenMethods_2_0,
+						"br.unb.cic.mcsl.MetaCrySL.ForbiddenMethod");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+	)
+;
+
+// Entry rule entryRuleForbiddenMethod
+entryRuleForbiddenMethod returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getForbiddenMethodRule()); }
+	iv_ruleForbiddenMethod=ruleForbiddenMethod
+	{ $current=$iv_ruleForbiddenMethod.current; }
+	EOF;
+
+// Rule ForbiddenMethod
+ruleForbiddenMethod returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				/* */
+			}
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getForbiddenMethodAccess().getForbiddenAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				lv_method_1_0=RULE_ID
+				{
+					newLeafNode(lv_method_1_0, grammarAccess.getForbiddenMethodAccess().getMethodIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getForbiddenMethodRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"method",
+						lv_method_1_0,
+						"org.eclipse.xtext.xbase.Xtype.ID");
+				}
+			)
+		)
+		otherlv_2='('
+		{
+			newLeafNode(otherlv_2, grammarAccess.getForbiddenMethodAccess().getLeftParenthesisKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getForbiddenMethodAccess().getArgsFormalArgsParserRuleCall_3_0());
+				}
+				lv_args_3_0=ruleFormalArgs
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getForbiddenMethodRule());
+					}
+					set(
+						$current,
+						"args",
+						lv_args_3_0 != null,
+						"br.unb.cic.mcsl.MetaCrySL.FormalArgs");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		otherlv_4=')'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getForbiddenMethodAccess().getRightParenthesisKeyword_4());
+		}
+		(
+			otherlv_5='=>'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getForbiddenMethodAccess().getEqualsSignGreaterThanSignKeyword_5_0());
+			}
+			(
+				(
+					lv_alternative_6_0=RULE_ID
+					{
+						newLeafNode(lv_alternative_6_0, grammarAccess.getForbiddenMethodAccess().getAlternativeIDTerminalRuleCall_5_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getForbiddenMethodRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"alternative",
+							lv_alternative_6_0 != null,
+							"org.eclipse.xtext.xbase.Xtype.ID");
+					}
+				)
+			)
+		)?
+		otherlv_7=';'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getForbiddenMethodAccess().getSemicolonKeyword_6());
 		}
 	)
 ;

@@ -10,6 +10,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectSpec" eType="#//ObjectSpec"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forbiddenSpec" eType="#//ForbiddenSpec"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eventSpec" eType="#//EventSpec"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderSpec" eType="#//OrderSpec"
@@ -24,6 +26,11 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="varName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForbiddenSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forbidenMethods" upperBound="-1"
+        eType="#//ForbiddenMethod" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForbiddenMethod"/>
   <eClassifiers xsi:type="ecore:EClass" name="EventSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
         eType="#//Event" containment="true"/>
@@ -50,6 +57,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventExp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Forbidden" eSuperTypes="#//ForbiddenMethod">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="method" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="args" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alternative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventMethod" eSuperTypes="#//Event">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="var" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

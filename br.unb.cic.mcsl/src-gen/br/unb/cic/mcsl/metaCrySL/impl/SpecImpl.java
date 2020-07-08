@@ -4,6 +4,7 @@
 package br.unb.cic.mcsl.metaCrySL.impl;
 
 import br.unb.cic.mcsl.metaCrySL.EventSpec;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenSpec;
 import br.unb.cic.mcsl.metaCrySL.MetaCrySLPackage;
 import br.unb.cic.mcsl.metaCrySL.ObjectSpec;
 import br.unb.cic.mcsl.metaCrySL.OrderSpec;
@@ -30,6 +31,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <ul>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getClassName <em>Class Name</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getObjectSpec <em>Object Spec</em>}</li>
+ *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getForbiddenSpec <em>Forbidden Spec</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getEventSpec <em>Event Spec</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getOrderSpec <em>Order Spec</em>}</li>
  * </ul>
@@ -57,6 +59,16 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
    * @ordered
    */
   protected ObjectSpec objectSpec;
+
+  /**
+   * The cached value of the '{@link #getForbiddenSpec() <em>Forbidden Spec</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getForbiddenSpec()
+   * @generated
+   * @ordered
+   */
+  protected ForbiddenSpec forbiddenSpec;
 
   /**
    * The cached value of the '{@link #getEventSpec() <em>Event Spec</em>}' containment reference.
@@ -205,6 +217,56 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
    * @generated
    */
   @Override
+  public ForbiddenSpec getForbiddenSpec()
+  {
+    return forbiddenSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetForbiddenSpec(ForbiddenSpec newForbiddenSpec, NotificationChain msgs)
+  {
+    ForbiddenSpec oldForbiddenSpec = forbiddenSpec;
+    forbiddenSpec = newForbiddenSpec;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaCrySLPackage.SPEC__FORBIDDEN_SPEC, oldForbiddenSpec, newForbiddenSpec);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setForbiddenSpec(ForbiddenSpec newForbiddenSpec)
+  {
+    if (newForbiddenSpec != forbiddenSpec)
+    {
+      NotificationChain msgs = null;
+      if (forbiddenSpec != null)
+        msgs = ((InternalEObject)forbiddenSpec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaCrySLPackage.SPEC__FORBIDDEN_SPEC, null, msgs);
+      if (newForbiddenSpec != null)
+        msgs = ((InternalEObject)newForbiddenSpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaCrySLPackage.SPEC__FORBIDDEN_SPEC, null, msgs);
+      msgs = basicSetForbiddenSpec(newForbiddenSpec, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaCrySLPackage.SPEC__FORBIDDEN_SPEC, newForbiddenSpec, newForbiddenSpec));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EventSpec getEventSpec()
   {
     return eventSpec;
@@ -313,6 +375,8 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
         return basicSetClassName(null, msgs);
       case MetaCrySLPackage.SPEC__OBJECT_SPEC:
         return basicSetObjectSpec(null, msgs);
+      case MetaCrySLPackage.SPEC__FORBIDDEN_SPEC:
+        return basicSetForbiddenSpec(null, msgs);
       case MetaCrySLPackage.SPEC__EVENT_SPEC:
         return basicSetEventSpec(null, msgs);
       case MetaCrySLPackage.SPEC__ORDER_SPEC:
@@ -335,6 +399,8 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
         return getClassName();
       case MetaCrySLPackage.SPEC__OBJECT_SPEC:
         return getObjectSpec();
+      case MetaCrySLPackage.SPEC__FORBIDDEN_SPEC:
+        return getForbiddenSpec();
       case MetaCrySLPackage.SPEC__EVENT_SPEC:
         return getEventSpec();
       case MetaCrySLPackage.SPEC__ORDER_SPEC:
@@ -358,6 +424,9 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
         return;
       case MetaCrySLPackage.SPEC__OBJECT_SPEC:
         setObjectSpec((ObjectSpec)newValue);
+        return;
+      case MetaCrySLPackage.SPEC__FORBIDDEN_SPEC:
+        setForbiddenSpec((ForbiddenSpec)newValue);
         return;
       case MetaCrySLPackage.SPEC__EVENT_SPEC:
         setEventSpec((EventSpec)newValue);
@@ -385,6 +454,9 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
       case MetaCrySLPackage.SPEC__OBJECT_SPEC:
         setObjectSpec((ObjectSpec)null);
         return;
+      case MetaCrySLPackage.SPEC__FORBIDDEN_SPEC:
+        setForbiddenSpec((ForbiddenSpec)null);
+        return;
       case MetaCrySLPackage.SPEC__EVENT_SPEC:
         setEventSpec((EventSpec)null);
         return;
@@ -409,6 +481,8 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
         return className != null;
       case MetaCrySLPackage.SPEC__OBJECT_SPEC:
         return objectSpec != null;
+      case MetaCrySLPackage.SPEC__FORBIDDEN_SPEC:
+        return forbiddenSpec != null;
       case MetaCrySLPackage.SPEC__EVENT_SPEC:
         return eventSpec != null;
       case MetaCrySLPackage.SPEC__ORDER_SPEC:

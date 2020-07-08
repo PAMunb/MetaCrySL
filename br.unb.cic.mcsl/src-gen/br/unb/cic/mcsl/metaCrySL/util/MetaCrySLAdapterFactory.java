@@ -10,6 +10,9 @@ import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
 import br.unb.cic.mcsl.metaCrySL.EventMethod;
 import br.unb.cic.mcsl.metaCrySL.EventSpec;
+import br.unb.cic.mcsl.metaCrySL.Forbidden;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenMethod;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenSpec;
 import br.unb.cic.mcsl.metaCrySL.Formal;
 import br.unb.cic.mcsl.metaCrySL.FormalArg;
 import br.unb.cic.mcsl.metaCrySL.FormalArgs;
@@ -116,6 +119,16 @@ public class MetaCrySLAdapterFactory extends AdapterFactoryImpl
         return createObjectAdapter();
       }
       @Override
+      public Adapter caseForbiddenSpec(ForbiddenSpec object)
+      {
+        return createForbiddenSpecAdapter();
+      }
+      @Override
+      public Adapter caseForbiddenMethod(ForbiddenMethod object)
+      {
+        return createForbiddenMethodAdapter();
+      }
+      @Override
       public Adapter caseEventSpec(EventSpec object)
       {
         return createEventSpecAdapter();
@@ -154,6 +167,11 @@ public class MetaCrySLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseEventExp(EventExp object)
       {
         return createEventExpAdapter();
+      }
+      @Override
+      public Adapter caseForbidden(Forbidden object)
+      {
+        return createForbiddenAdapter();
       }
       @Override
       public Adapter caseEventMethod(EventMethod object)
@@ -283,6 +301,36 @@ public class MetaCrySLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link br.unb.cic.mcsl.metaCrySL.ForbiddenSpec <em>Forbidden Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see br.unb.cic.mcsl.metaCrySL.ForbiddenSpec
+   * @generated
+   */
+  public Adapter createForbiddenSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link br.unb.cic.mcsl.metaCrySL.ForbiddenMethod <em>Forbidden Method</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see br.unb.cic.mcsl.metaCrySL.ForbiddenMethod
+   * @generated
+   */
+  public Adapter createForbiddenMethodAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link br.unb.cic.mcsl.metaCrySL.EventSpec <em>Event Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -398,6 +446,21 @@ public class MetaCrySLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEventExpAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link br.unb.cic.mcsl.metaCrySL.Forbidden <em>Forbidden</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see br.unb.cic.mcsl.metaCrySL.Forbidden
+   * @generated
+   */
+  public Adapter createForbiddenAdapter()
   {
     return null;
   }

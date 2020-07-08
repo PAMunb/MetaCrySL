@@ -18,6 +18,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <ul>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getClassName <em>Class Name</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getObjectSpec <em>Object Spec</em>}</li>
+ *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getForbiddenSpec <em>Forbidden Spec</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getEventSpec <em>Event Spec</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getOrderSpec <em>Order Spec</em>}</li>
  * </ul>
@@ -71,6 +72,28 @@ public interface Spec extends EObject
    * @generated
    */
   void setObjectSpec(ObjectSpec value);
+
+  /**
+   * Returns the value of the '<em><b>Forbidden Spec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Forbidden Spec</em>' containment reference.
+   * @see #setForbiddenSpec(ForbiddenSpec)
+   * @see br.unb.cic.mcsl.metaCrySL.MetaCrySLPackage#getSpec_ForbiddenSpec()
+   * @model containment="true"
+   * @generated
+   */
+  ForbiddenSpec getForbiddenSpec();
+
+  /**
+   * Sets the value of the '{@link br.unb.cic.mcsl.metaCrySL.Spec#getForbiddenSpec <em>Forbidden Spec</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Forbidden Spec</em>' containment reference.
+   * @see #getForbiddenSpec()
+   * @generated
+   */
+  void setForbiddenSpec(ForbiddenSpec value);
 
   /**
    * Returns the value of the '<em><b>Event Spec</b></em>' containment reference.

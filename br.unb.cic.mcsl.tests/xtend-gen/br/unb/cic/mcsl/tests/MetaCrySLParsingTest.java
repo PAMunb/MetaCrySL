@@ -34,8 +34,7 @@ public class MetaCrySLParsingTest {
       _builder.append("OBJECTS:");
       _builder.newLine();
       _builder.append("   ");
-      _builder.append("java.lang.String foo;");
-      _builder.newLine();
+      _builder.append("java.lang.String foo;\t");
       _builder.newLine();
       _builder.append("EVENTS");
       _builder.newLine();
@@ -73,8 +72,7 @@ public class MetaCrySLParsingTest {
       _builder.append("OBJECTS:");
       _builder.newLine();
       _builder.append("   ");
-      _builder.append("java.lang.String foo;");
-      _builder.newLine();
+      _builder.append("java.lang.String foo;\t");
       _builder.newLine();
       _builder.append("EVENTS");
       _builder.newLine();
@@ -90,11 +88,42 @@ public class MetaCrySLParsingTest {
       _builder.append("   ");
       _builder.append("cs := c1 | c2 ;");
       _builder.newLine();
-      _builder.newLine();
       _builder.append("ORDER");
       _builder.newLine();
       _builder.append("   ");
       _builder.append("cs | (c1, c2)*    ");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("Unexpected errors: ");
+      String _join = IterableExtensions.join(errors, ", ");
+      _builder_1.append(_join);
+      Assert.assertTrue(_builder_1.toString(), errors.isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void loadBasicModelWithForbiddenClause() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("ABSTRACT SPEC java.lang.String");
+      _builder.newLine();
+      _builder.append("OBJECTS:");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("java.lang.String foo;\t");
+      _builder.newLine();
+      _builder.append("FORBIDDEN");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("method1();");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("method2(int, int) => c;");
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);

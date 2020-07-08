@@ -9,6 +9,8 @@ import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
 import br.unb.cic.mcsl.metaCrySL.EventMethod;
 import br.unb.cic.mcsl.metaCrySL.EventSpec;
+import br.unb.cic.mcsl.metaCrySL.Forbidden;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenSpec;
 import br.unb.cic.mcsl.metaCrySL.Formal;
 import br.unb.cic.mcsl.metaCrySL.FormalArgs;
 import br.unb.cic.mcsl.metaCrySL.MetaCrySLPackage;
@@ -89,6 +91,12 @@ public class MetaCrySLSemanticSequencer extends XtypeSemanticSequencer {
 				return; 
 			case MetaCrySLPackage.EVENT_SPEC:
 				sequence_EventSpec(context, (EventSpec) semanticObject); 
+				return; 
+			case MetaCrySLPackage.FORBIDDEN:
+				sequence_ForbiddenMethod(context, (Forbidden) semanticObject); 
+				return; 
+			case MetaCrySLPackage.FORBIDDEN_SPEC:
+				sequence_ForbiddenSpec(context, (ForbiddenSpec) semanticObject); 
 				return; 
 			case MetaCrySLPackage.FORMAL:
 				sequence_FormalArg(context, (Formal) semanticObject); 
@@ -350,6 +358,30 @@ public class MetaCrySLSemanticSequencer extends XtypeSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ForbiddenMethod returns Forbidden
+	 *
+	 * Constraint:
+	 *     (method=ID args?=FormalArgs? alternative?=ID?)
+	 */
+	protected void sequence_ForbiddenMethod(ISerializationContext context, Forbidden semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ForbiddenSpec returns ForbiddenSpec
+	 *
+	 * Constraint:
+	 *     forbidenMethods+=ForbiddenMethod+
+	 */
+	protected void sequence_ForbiddenSpec(ISerializationContext context, ForbiddenSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     FormalArg returns Formal
 	 *
 	 * Constraint:
@@ -523,7 +555,7 @@ public class MetaCrySLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Spec returns Spec
 	 *
 	 * Constraint:
-	 *     (className=JvmTypeReference objectSpec=ObjectSpec? eventSpec=EventSpec? orderSpec=OrderSpec?)
+	 *     (className=JvmTypeReference objectSpec=ObjectSpec? forbiddenSpec=ForbiddenSpec? eventSpec=EventSpec? orderSpec=OrderSpec?)
 	 */
 	protected void sequence_Spec(ISerializationContext context, Spec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

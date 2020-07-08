@@ -10,6 +10,9 @@ import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
 import br.unb.cic.mcsl.metaCrySL.EventMethod;
 import br.unb.cic.mcsl.metaCrySL.EventSpec;
+import br.unb.cic.mcsl.metaCrySL.Forbidden;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenMethod;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenSpec;
 import br.unb.cic.mcsl.metaCrySL.Formal;
 import br.unb.cic.mcsl.metaCrySL.FormalArg;
 import br.unb.cic.mcsl.metaCrySL.FormalArgs;
@@ -90,6 +93,8 @@ public class MetaCrySLFactoryImpl extends EFactoryImpl implements MetaCrySLFacto
       case MetaCrySLPackage.SPEC: return createSpec();
       case MetaCrySLPackage.OBJECT_SPEC: return createObjectSpec();
       case MetaCrySLPackage.OBJECT: return createObject();
+      case MetaCrySLPackage.FORBIDDEN_SPEC: return createForbiddenSpec();
+      case MetaCrySLPackage.FORBIDDEN_METHOD: return createForbiddenMethod();
       case MetaCrySLPackage.EVENT_SPEC: return createEventSpec();
       case MetaCrySLPackage.EVENT: return createEvent();
       case MetaCrySLPackage.AGGREGATE_LIST: return createAggregateList();
@@ -98,6 +103,7 @@ public class MetaCrySLFactoryImpl extends EFactoryImpl implements MetaCrySLFacto
       case MetaCrySLPackage.FORMAL_ARG: return createFormalArg();
       case MetaCrySLPackage.ORDER_SPEC: return createOrderSpec();
       case MetaCrySLPackage.EVENT_EXP: return createEventExp();
+      case MetaCrySLPackage.FORBIDDEN: return createForbidden();
       case MetaCrySLPackage.EVENT_METHOD: return createEventMethod();
       case MetaCrySLPackage.EVENT_AGGREGATE: return createEventAggregate();
       case MetaCrySLPackage.WILDCARD: return createWildcard();
@@ -158,6 +164,30 @@ public class MetaCrySLFactoryImpl extends EFactoryImpl implements MetaCrySLFacto
   {
     ObjectImpl object = new ObjectImpl();
     return object;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForbiddenSpec createForbiddenSpec()
+  {
+    ForbiddenSpecImpl forbiddenSpec = new ForbiddenSpecImpl();
+    return forbiddenSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForbiddenMethod createForbiddenMethod()
+  {
+    ForbiddenMethodImpl forbiddenMethod = new ForbiddenMethodImpl();
+    return forbiddenMethod;
   }
 
   /**
@@ -254,6 +284,18 @@ public class MetaCrySLFactoryImpl extends EFactoryImpl implements MetaCrySLFacto
   {
     EventExpImpl eventExp = new EventExpImpl();
     return eventExp;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Forbidden createForbidden()
+  {
+    ForbiddenImpl forbidden = new ForbiddenImpl();
+    return forbidden;
   }
 
   /**

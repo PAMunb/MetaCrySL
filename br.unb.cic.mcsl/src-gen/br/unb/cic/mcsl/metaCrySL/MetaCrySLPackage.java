@@ -114,13 +114,22 @@ public interface MetaCrySLPackage extends EPackage
   int SPEC__OBJECT_SPEC = 1;
 
   /**
+   * The feature id for the '<em><b>Forbidden Spec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SPEC__FORBIDDEN_SPEC = 2;
+
+  /**
    * The feature id for the '<em><b>Event Spec</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SPEC__EVENT_SPEC = 2;
+  int SPEC__EVENT_SPEC = 3;
 
   /**
    * The feature id for the '<em><b>Order Spec</b></em>' containment reference.
@@ -129,7 +138,7 @@ public interface MetaCrySLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SPEC__ORDER_SPEC = 3;
+  int SPEC__ORDER_SPEC = 4;
 
   /**
    * The number of structural features of the '<em>Spec</em>' class.
@@ -138,7 +147,7 @@ public interface MetaCrySLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SPEC_FEATURE_COUNT = 4;
+  int SPEC_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ObjectSpecImpl <em>Object Spec</em>}' class.
@@ -206,6 +215,53 @@ public interface MetaCrySLPackage extends EPackage
   int OBJECT_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ForbiddenSpecImpl <em>Forbidden Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see br.unb.cic.mcsl.metaCrySL.impl.ForbiddenSpecImpl
+   * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getForbiddenSpec()
+   * @generated
+   */
+  int FORBIDDEN_SPEC = 4;
+
+  /**
+   * The feature id for the '<em><b>Forbiden Methods</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN_SPEC__FORBIDEN_METHODS = 0;
+
+  /**
+   * The number of structural features of the '<em>Forbidden Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN_SPEC_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ForbiddenMethodImpl <em>Forbidden Method</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see br.unb.cic.mcsl.metaCrySL.impl.ForbiddenMethodImpl
+   * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getForbiddenMethod()
+   * @generated
+   */
+  int FORBIDDEN_METHOD = 5;
+
+  /**
+   * The number of structural features of the '<em>Forbidden Method</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN_METHOD_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.EventSpecImpl <em>Event Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -213,7 +269,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getEventSpec()
    * @generated
    */
-  int EVENT_SPEC = 4;
+  int EVENT_SPEC = 6;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -241,7 +297,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getEvent()
    * @generated
    */
-  int EVENT = 5;
+  int EVENT = 7;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -269,7 +325,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getAggregateList()
    * @generated
    */
-  int AGGREGATE_LIST = 6;
+  int AGGREGATE_LIST = 8;
 
   /**
    * The feature id for the '<em><b>Labels</b></em>' attribute list.
@@ -297,7 +353,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getMethodDef()
    * @generated
    */
-  int METHOD_DEF = 7;
+  int METHOD_DEF = 9;
 
   /**
    * The feature id for the '<em><b>Method Name</b></em>' attribute.
@@ -334,7 +390,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getFormalArgs()
    * @generated
    */
-  int FORMAL_ARGS = 8;
+  int FORMAL_ARGS = 10;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' reference list.
@@ -362,7 +418,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getFormalArg()
    * @generated
    */
-  int FORMAL_ARG = 9;
+  int FORMAL_ARG = 11;
 
   /**
    * The number of structural features of the '<em>Formal Arg</em>' class.
@@ -381,7 +437,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getOrderSpec()
    * @generated
    */
-  int ORDER_SPEC = 10;
+  int ORDER_SPEC = 12;
 
   /**
    * The feature id for the '<em><b>Order</b></em>' containment reference.
@@ -409,7 +465,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getEventExp()
    * @generated
    */
-  int EVENT_EXP = 11;
+  int EVENT_EXP = 13;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -430,6 +486,52 @@ public interface MetaCrySLPackage extends EPackage
   int EVENT_EXP_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ForbiddenImpl <em>Forbidden</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see br.unb.cic.mcsl.metaCrySL.impl.ForbiddenImpl
+   * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getForbidden()
+   * @generated
+   */
+  int FORBIDDEN = 14;
+
+  /**
+   * The feature id for the '<em><b>Method</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN__METHOD = FORBIDDEN_METHOD_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN__ARGS = FORBIDDEN_METHOD_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Alternative</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN__ALTERNATIVE = FORBIDDEN_METHOD_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Forbidden</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORBIDDEN_FEATURE_COUNT = FORBIDDEN_METHOD_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.EventMethodImpl <em>Event Method</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -437,7 +539,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getEventMethod()
    * @generated
    */
-  int EVENT_METHOD = 12;
+  int EVENT_METHOD = 15;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -483,7 +585,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getEventAggregate()
    * @generated
    */
-  int EVENT_AGGREGATE = 13;
+  int EVENT_AGGREGATE = 16;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -520,7 +622,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getWildcard()
    * @generated
    */
-  int WILDCARD = 14;
+  int WILDCARD = 17;
 
   /**
    * The number of structural features of the '<em>Wildcard</em>' class.
@@ -539,7 +641,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getFormal()
    * @generated
    */
-  int FORMAL = 15;
+  int FORMAL = 18;
 
   /**
    * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -567,7 +669,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getOptional()
    * @generated
    */
-  int OPTIONAL = 16;
+  int OPTIONAL = 19;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -604,7 +706,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getZeroOrMore()
    * @generated
    */
-  int ZERO_OR_MORE = 17;
+  int ZERO_OR_MORE = 20;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -641,7 +743,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getOneOrMore()
    * @generated
    */
-  int ONE_OR_MORE = 18;
+  int ONE_OR_MORE = 21;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -678,7 +780,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getChoiceExp()
    * @generated
    */
-  int CHOICE_EXP = 19;
+  int CHOICE_EXP = 22;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -733,7 +835,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getSequenceExp()
    * @generated
    */
-  int SEQUENCE_EXP = 20;
+  int SEQUENCE_EXP = 23;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -826,6 +928,17 @@ public interface MetaCrySLPackage extends EPackage
   EReference getSpec_ObjectSpec();
 
   /**
+   * Returns the meta object for the containment reference '{@link br.unb.cic.mcsl.metaCrySL.Spec#getForbiddenSpec <em>Forbidden Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Forbidden Spec</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.Spec#getForbiddenSpec()
+   * @see #getSpec()
+   * @generated
+   */
+  EReference getSpec_ForbiddenSpec();
+
+  /**
    * Returns the meta object for the containment reference '{@link br.unb.cic.mcsl.metaCrySL.Spec#getEventSpec <em>Event Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -899,6 +1012,37 @@ public interface MetaCrySLPackage extends EPackage
    * @generated
    */
   EAttribute getObject_VarName();
+
+  /**
+   * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.ForbiddenSpec <em>Forbidden Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Forbidden Spec</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.ForbiddenSpec
+   * @generated
+   */
+  EClass getForbiddenSpec();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link br.unb.cic.mcsl.metaCrySL.ForbiddenSpec#getForbidenMethods <em>Forbiden Methods</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Forbiden Methods</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.ForbiddenSpec#getForbidenMethods()
+   * @see #getForbiddenSpec()
+   * @generated
+   */
+  EReference getForbiddenSpec_ForbidenMethods();
+
+  /**
+   * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.ForbiddenMethod <em>Forbidden Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Forbidden Method</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.ForbiddenMethod
+   * @generated
+   */
+  EClass getForbiddenMethod();
 
   /**
    * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.EventSpec <em>Event Spec</em>}'.
@@ -1067,6 +1211,49 @@ public interface MetaCrySLPackage extends EPackage
    * @generated
    */
   EAttribute getEventExp_Label();
+
+  /**
+   * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.Forbidden <em>Forbidden</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Forbidden</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.Forbidden
+   * @generated
+   */
+  EClass getForbidden();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.unb.cic.mcsl.metaCrySL.Forbidden#getMethod <em>Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Method</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.Forbidden#getMethod()
+   * @see #getForbidden()
+   * @generated
+   */
+  EAttribute getForbidden_Method();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.unb.cic.mcsl.metaCrySL.Forbidden#isArgs <em>Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Args</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.Forbidden#isArgs()
+   * @see #getForbidden()
+   * @generated
+   */
+  EAttribute getForbidden_Args();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.unb.cic.mcsl.metaCrySL.Forbidden#isAlternative <em>Alternative</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Alternative</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.Forbidden#isAlternative()
+   * @see #getForbidden()
+   * @generated
+   */
+  EAttribute getForbidden_Alternative();
 
   /**
    * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.EventMethod <em>Event Method</em>}'.
@@ -1358,6 +1545,14 @@ public interface MetaCrySLPackage extends EPackage
     EReference SPEC__OBJECT_SPEC = eINSTANCE.getSpec_ObjectSpec();
 
     /**
+     * The meta object literal for the '<em><b>Forbidden Spec</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SPEC__FORBIDDEN_SPEC = eINSTANCE.getSpec_ForbiddenSpec();
+
+    /**
      * The meta object literal for the '<em><b>Event Spec</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1416,6 +1611,34 @@ public interface MetaCrySLPackage extends EPackage
      * @generated
      */
     EAttribute OBJECT__VAR_NAME = eINSTANCE.getObject_VarName();
+
+    /**
+     * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ForbiddenSpecImpl <em>Forbidden Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see br.unb.cic.mcsl.metaCrySL.impl.ForbiddenSpecImpl
+     * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getForbiddenSpec()
+     * @generated
+     */
+    EClass FORBIDDEN_SPEC = eINSTANCE.getForbiddenSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Forbiden Methods</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORBIDDEN_SPEC__FORBIDEN_METHODS = eINSTANCE.getForbiddenSpec_ForbidenMethods();
+
+    /**
+     * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ForbiddenMethodImpl <em>Forbidden Method</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see br.unb.cic.mcsl.metaCrySL.impl.ForbiddenMethodImpl
+     * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getForbiddenMethod()
+     * @generated
+     */
+    EClass FORBIDDEN_METHOD = eINSTANCE.getForbiddenMethod();
 
     /**
      * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.EventSpecImpl <em>Event Spec</em>}' class.
@@ -1560,6 +1783,40 @@ public interface MetaCrySLPackage extends EPackage
      * @generated
      */
     EAttribute EVENT_EXP__LABEL = eINSTANCE.getEventExp_Label();
+
+    /**
+     * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ForbiddenImpl <em>Forbidden</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see br.unb.cic.mcsl.metaCrySL.impl.ForbiddenImpl
+     * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getForbidden()
+     * @generated
+     */
+    EClass FORBIDDEN = eINSTANCE.getForbidden();
+
+    /**
+     * The meta object literal for the '<em><b>Method</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORBIDDEN__METHOD = eINSTANCE.getForbidden_Method();
+
+    /**
+     * The meta object literal for the '<em><b>Args</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORBIDDEN__ARGS = eINSTANCE.getForbidden_Args();
+
+    /**
+     * The meta object literal for the '<em><b>Alternative</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORBIDDEN__ALTERNATIVE = eINSTANCE.getForbidden_Alternative();
 
     /**
      * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.EventMethodImpl <em>Event Method</em>}' class.

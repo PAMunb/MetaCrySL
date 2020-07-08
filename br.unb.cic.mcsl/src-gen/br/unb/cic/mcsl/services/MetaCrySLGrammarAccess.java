@@ -48,10 +48,12 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final RuleCall cClassNameJvmTypeReferenceParserRuleCall_2_0 = (RuleCall)cClassNameAssignment_2.eContents().get(0);
 		private final Assignment cObjectSpecAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cObjectSpecObjectSpecParserRuleCall_3_0 = (RuleCall)cObjectSpecAssignment_3.eContents().get(0);
-		private final Assignment cEventSpecAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cEventSpecEventSpecParserRuleCall_4_0 = (RuleCall)cEventSpecAssignment_4.eContents().get(0);
-		private final Assignment cOrderSpecAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cOrderSpecOrderSpecParserRuleCall_5_0 = (RuleCall)cOrderSpecAssignment_5.eContents().get(0);
+		private final Assignment cForbiddenSpecAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cForbiddenSpecForbiddenSpecParserRuleCall_4_0 = (RuleCall)cForbiddenSpecAssignment_4.eContents().get(0);
+		private final Assignment cEventSpecAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cEventSpecEventSpecParserRuleCall_5_0 = (RuleCall)cEventSpecAssignment_5.eContents().get(0);
+		private final Assignment cOrderSpecAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cOrderSpecOrderSpecParserRuleCall_6_0 = (RuleCall)cOrderSpecAssignment_6.eContents().get(0);
 		
 		///* Spec rule 
 		// * 
@@ -65,11 +67,13 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		// */ Spec:
 		//	'ABSTRACT'? 'SPEC' className=JvmTypeReference
 		//	objectSpec=ObjectSpec?
+		//	forbiddenSpec=ForbiddenSpec?
 		//	eventSpec=EventSpec?
 		//	orderSpec=OrderSpec?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'ABSTRACT'? 'SPEC' className=JvmTypeReference objectSpec=ObjectSpec? eventSpec=EventSpec? orderSpec=OrderSpec?
+		//'ABSTRACT'? 'SPEC' className=JvmTypeReference objectSpec=ObjectSpec? forbiddenSpec=ForbiddenSpec? eventSpec=EventSpec?
+		//orderSpec=OrderSpec?
 		public Group getGroup() { return cGroup; }
 		
 		//'ABSTRACT'?
@@ -90,17 +94,23 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//ObjectSpec
 		public RuleCall getObjectSpecObjectSpecParserRuleCall_3_0() { return cObjectSpecObjectSpecParserRuleCall_3_0; }
 		
+		//forbiddenSpec=ForbiddenSpec?
+		public Assignment getForbiddenSpecAssignment_4() { return cForbiddenSpecAssignment_4; }
+		
+		//ForbiddenSpec
+		public RuleCall getForbiddenSpecForbiddenSpecParserRuleCall_4_0() { return cForbiddenSpecForbiddenSpecParserRuleCall_4_0; }
+		
 		//eventSpec=EventSpec?
-		public Assignment getEventSpecAssignment_4() { return cEventSpecAssignment_4; }
+		public Assignment getEventSpecAssignment_5() { return cEventSpecAssignment_5; }
 		
 		//EventSpec
-		public RuleCall getEventSpecEventSpecParserRuleCall_4_0() { return cEventSpecEventSpecParserRuleCall_4_0; }
+		public RuleCall getEventSpecEventSpecParserRuleCall_5_0() { return cEventSpecEventSpecParserRuleCall_5_0; }
 		
 		//orderSpec=OrderSpec?
-		public Assignment getOrderSpecAssignment_5() { return cOrderSpecAssignment_5; }
+		public Assignment getOrderSpecAssignment_6() { return cOrderSpecAssignment_6; }
 		
 		//OrderSpec
-		public RuleCall getOrderSpecOrderSpecParserRuleCall_5_0() { return cOrderSpecOrderSpecParserRuleCall_5_0; }
+		public RuleCall getOrderSpecOrderSpecParserRuleCall_6_0() { return cOrderSpecOrderSpecParserRuleCall_6_0; }
 	}
 	public class ObjectSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.unb.cic.mcsl.MetaCrySL.ObjectSpec");
@@ -177,6 +187,92 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		
 		//';'
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class ForbiddenSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.unb.cic.mcsl.MetaCrySL.ForbiddenSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cForbiddenSpecAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cFORBIDDENKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cForbidenMethodsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cForbidenMethodsForbiddenMethodParserRuleCall_2_0 = (RuleCall)cForbidenMethodsAssignment_2.eContents().get(0);
+		
+		///* ForbiddenSpec */ ForbiddenSpec:
+		//	{ForbiddenSpec} 'FORBIDDEN' forbidenMethods+=ForbiddenMethod+;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ForbiddenSpec} 'FORBIDDEN' forbidenMethods+=ForbiddenMethod+
+		public Group getGroup() { return cGroup; }
+		
+		//{ForbiddenSpec}
+		public Action getForbiddenSpecAction_0() { return cForbiddenSpecAction_0; }
+		
+		//'FORBIDDEN'
+		public Keyword getFORBIDDENKeyword_1() { return cFORBIDDENKeyword_1; }
+		
+		//forbidenMethods+=ForbiddenMethod+
+		public Assignment getForbidenMethodsAssignment_2() { return cForbidenMethodsAssignment_2; }
+		
+		//ForbiddenMethod
+		public RuleCall getForbidenMethodsForbiddenMethodParserRuleCall_2_0() { return cForbidenMethodsForbiddenMethodParserRuleCall_2_0; }
+	}
+	public class ForbiddenMethodElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.unb.cic.mcsl.MetaCrySL.ForbiddenMethod");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cForbiddenAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cMethodAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMethodIDTerminalRuleCall_1_0 = (RuleCall)cMethodAssignment_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cArgsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cArgsFormalArgsParserRuleCall_3_0 = (RuleCall)cArgsAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cAlternativeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cAlternativeIDTerminalRuleCall_5_1_0 = (RuleCall)cAlternativeAssignment_5_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//ForbiddenMethod:
+		//	{Forbidden} method=ID '(' args?=FormalArgs? ')' ('=>' alternative?=ID)? ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Forbidden} method=ID '(' args?=FormalArgs? ')' ('=>' alternative?=ID)? ';'
+		public Group getGroup() { return cGroup; }
+		
+		//{Forbidden}
+		public Action getForbiddenAction_0() { return cForbiddenAction_0; }
+		
+		//method=ID
+		public Assignment getMethodAssignment_1() { return cMethodAssignment_1; }
+		
+		//ID
+		public RuleCall getMethodIDTerminalRuleCall_1_0() { return cMethodIDTerminalRuleCall_1_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		
+		//args?=FormalArgs?
+		public Assignment getArgsAssignment_3() { return cArgsAssignment_3; }
+		
+		//FormalArgs
+		public RuleCall getArgsFormalArgsParserRuleCall_3_0() { return cArgsFormalArgsParserRuleCall_3_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		
+		//('=>' alternative?=ID)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_5_0() { return cEqualsSignGreaterThanSignKeyword_5_0; }
+		
+		//alternative?=ID
+		public Assignment getAlternativeAssignment_5_1() { return cAlternativeAssignment_5_1; }
+		
+		//ID
+		public RuleCall getAlternativeIDTerminalRuleCall_5_1_0() { return cAlternativeIDTerminalRuleCall_5_1_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 	public class EventSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.unb.cic.mcsl.MetaCrySL.EventSpec");
@@ -559,7 +655,9 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		// * https://www.youtube.com/watch?v=d3JymwcB_TM&feature=youtu.be
 		// * 
 		// * Note: It was necessary to allow the backtrack feature 
-		// * here. Take a look at the mwe2 file.  
+		// * here. Take a look at the mwe2 file. Backtracking might 
+		// * be quite expensive, so perhaps we should investigate an 
+		// * alternative to this design.  
 		// */ EventExp:
 		//	{Optional} exp=ChoiceExp '?'
 		//	| {ZeroOrMore} exp=ChoiceExp '*'
@@ -748,6 +846,8 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final SpecElements pSpec;
 	private final ObjectSpecElements pObjectSpec;
 	private final ObjectElements pObject;
+	private final ForbiddenSpecElements pForbiddenSpec;
+	private final ForbiddenMethodElements pForbiddenMethod;
 	private final EventSpecElements pEventSpec;
 	private final EventElements pEvent;
 	private final AggregateListElements pAggregateList;
@@ -773,6 +873,8 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		this.pSpec = new SpecElements();
 		this.pObjectSpec = new ObjectSpecElements();
 		this.pObject = new ObjectElements();
+		this.pForbiddenSpec = new ForbiddenSpecElements();
+		this.pForbiddenMethod = new ForbiddenMethodElements();
 		this.pEventSpec = new EventSpecElements();
 		this.pEvent = new EventElements();
 		this.pAggregateList = new AggregateListElements();
@@ -835,6 +937,7 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	// */ Spec:
 	//	'ABSTRACT'? 'SPEC' className=JvmTypeReference
 	//	objectSpec=ObjectSpec?
+	//	forbiddenSpec=ForbiddenSpec?
 	//	eventSpec=EventSpec?
 	//	orderSpec=OrderSpec?;
 	public SpecElements getSpecAccess() {
@@ -873,6 +976,26 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	
 	public ParserRule getObjectRule() {
 		return getObjectAccess().getRule();
+	}
+	
+	///* ForbiddenSpec */ ForbiddenSpec:
+	//	{ForbiddenSpec} 'FORBIDDEN' forbidenMethods+=ForbiddenMethod+;
+	public ForbiddenSpecElements getForbiddenSpecAccess() {
+		return pForbiddenSpec;
+	}
+	
+	public ParserRule getForbiddenSpecRule() {
+		return getForbiddenSpecAccess().getRule();
+	}
+	
+	//ForbiddenMethod:
+	//	{Forbidden} method=ID '(' args?=FormalArgs? ')' ('=>' alternative?=ID)? ';';
+	public ForbiddenMethodElements getForbiddenMethodAccess() {
+		return pForbiddenMethod;
+	}
+	
+	public ParserRule getForbiddenMethodRule() {
+		return getForbiddenMethodAccess().getRule();
 	}
 	
 	///* EventSpec rule 
@@ -997,7 +1120,9 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	// * https://www.youtube.com/watch?v=d3JymwcB_TM&feature=youtu.be
 	// * 
 	// * Note: It was necessary to allow the backtrack feature 
-	// * here. Take a look at the mwe2 file.  
+	// * here. Take a look at the mwe2 file. Backtracking might 
+	// * be quite expensive, so perhaps we should investigate an 
+	// * alternative to this design.  
 	// */ EventExp:
 	//	{Optional} exp=ChoiceExp '?'
 	//	| {ZeroOrMore} exp=ChoiceExp '*'

@@ -12,6 +12,7 @@
     <genClasses ecoreClass="MetaCrySL.ecore#//Spec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/className"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/objectSpec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/forbiddenSpec"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/eventSpec"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/orderSpec"/>
     </genClasses>
@@ -22,6 +23,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Object/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//Object/varName"/>
     </genClasses>
+    <genClasses ecoreClass="MetaCrySL.ecore#//ForbiddenSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//ForbiddenSpec/forbidenMethods"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaCrySL.ecore#//ForbiddenMethod"/>
     <genClasses ecoreClass="MetaCrySL.ecore#//EventSpec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//EventSpec/events"/>
     </genClasses>
@@ -44,6 +49,11 @@
     </genClasses>
     <genClasses ecoreClass="MetaCrySL.ecore#//EventExp">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//EventExp/label"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaCrySL.ecore#//Forbidden">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//Forbidden/method"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//Forbidden/args"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//Forbidden/alternative"/>
     </genClasses>
     <genClasses ecoreClass="MetaCrySL.ecore#//EventMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//EventMethod/var"/>

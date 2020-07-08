@@ -60,6 +60,24 @@ public interface MetaCrySLFactory extends EFactory
   Object createObject();
 
   /**
+   * Returns a new object of class '<em>Forbidden Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Forbidden Spec</em>'.
+   * @generated
+   */
+  ForbiddenSpec createForbiddenSpec();
+
+  /**
+   * Returns a new object of class '<em>Forbidden Method</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Forbidden Method</em>'.
+   * @generated
+   */
+  ForbiddenMethod createForbiddenMethod();
+
+  /**
    * Returns a new object of class '<em>Event Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -130,6 +148,15 @@ public interface MetaCrySLFactory extends EFactory
    * @generated
    */
   EventExp createEventExp();
+
+  /**
+   * Returns a new object of class '<em>Forbidden</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Forbidden</em>'.
+   * @generated
+   */
+  Forbidden createForbidden();
 
   /**
    * Returns a new object of class '<em>Event Method</em>'.

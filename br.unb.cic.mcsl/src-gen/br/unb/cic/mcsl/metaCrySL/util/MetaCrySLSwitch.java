@@ -10,6 +10,9 @@ import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
 import br.unb.cic.mcsl.metaCrySL.EventMethod;
 import br.unb.cic.mcsl.metaCrySL.EventSpec;
+import br.unb.cic.mcsl.metaCrySL.Forbidden;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenMethod;
+import br.unb.cic.mcsl.metaCrySL.ForbiddenSpec;
 import br.unb.cic.mcsl.metaCrySL.Formal;
 import br.unb.cic.mcsl.metaCrySL.FormalArg;
 import br.unb.cic.mcsl.metaCrySL.FormalArgs;
@@ -121,6 +124,20 @@ public class MetaCrySLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MetaCrySLPackage.FORBIDDEN_SPEC:
+      {
+        ForbiddenSpec forbiddenSpec = (ForbiddenSpec)theEObject;
+        T result = caseForbiddenSpec(forbiddenSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MetaCrySLPackage.FORBIDDEN_METHOD:
+      {
+        ForbiddenMethod forbiddenMethod = (ForbiddenMethod)theEObject;
+        T result = caseForbiddenMethod(forbiddenMethod);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MetaCrySLPackage.EVENT_SPEC:
       {
         EventSpec eventSpec = (EventSpec)theEObject;
@@ -174,6 +191,14 @@ public class MetaCrySLSwitch<T> extends Switch<T>
       {
         EventExp eventExp = (EventExp)theEObject;
         T result = caseEventExp(eventExp);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MetaCrySLPackage.FORBIDDEN:
+      {
+        Forbidden forbidden = (Forbidden)theEObject;
+        T result = caseForbidden(forbidden);
+        if (result == null) result = caseForbiddenMethod(forbidden);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -318,6 +343,38 @@ public class MetaCrySLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Forbidden Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Forbidden Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForbiddenSpec(ForbiddenSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Forbidden Method</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Forbidden Method</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForbiddenMethod(ForbiddenMethod object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Event Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -441,6 +498,22 @@ public class MetaCrySLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEventExp(EventExp object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Forbidden</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Forbidden</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForbidden(Forbidden object)
   {
     return null;
   }

@@ -23,8 +23,7 @@ class MetaCrySLParsingTest {
 		val result = parseHelper.parse('''
 			ABSTRACT SPEC java.lang.String
 			OBJECTS:
-			   java.lang.String foo;
-			
+			   java.lang.String foo;	
 			EVENTS
 			   c1 : method1();
 			   c2 : method2(int, int);
@@ -41,16 +40,29 @@ class MetaCrySLParsingTest {
 		val result = parseHelper.parse('''
 			ABSTRACT SPEC java.lang.String
 			OBJECTS:
-			   java.lang.String foo;
-			
+			   java.lang.String foo;	
 			EVENTS
 			   c1 : method1();
 			   c2 : method2(int, int);
 			   c3 : method2(_);
 			   cs := c1 | c2 ;
-			
 			ORDER
 			   cs | (c1, c2)*    
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	@Test
+	def void loadBasicModelWithForbiddenClause() {
+		val result = parseHelper.parse('''
+			ABSTRACT SPEC java.lang.String
+			OBJECTS:
+			   java.lang.String foo;	
+			FORBIDDEN
+			   method1();
+			   method2(int, int) => c;
 		''')
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors

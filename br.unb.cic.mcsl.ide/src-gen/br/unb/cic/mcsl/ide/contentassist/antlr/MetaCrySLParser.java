@@ -43,6 +43,9 @@ public class MetaCrySLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSpecAccess().getGroup(), "rule__Spec__Group__0");
 			builder.put(grammarAccess.getObjectSpecAccess().getGroup(), "rule__ObjectSpec__Group__0");
 			builder.put(grammarAccess.getObjectAccess().getGroup(), "rule__Object__Group__0");
+			builder.put(grammarAccess.getForbiddenSpecAccess().getGroup(), "rule__ForbiddenSpec__Group__0");
+			builder.put(grammarAccess.getForbiddenMethodAccess().getGroup(), "rule__ForbiddenMethod__Group__0");
+			builder.put(grammarAccess.getForbiddenMethodAccess().getGroup_5(), "rule__ForbiddenMethod__Group_5__0");
 			builder.put(grammarAccess.getEventSpecAccess().getGroup(), "rule__EventSpec__Group__0");
 			builder.put(grammarAccess.getEventAccess().getGroup_0(), "rule__Event__Group_0__0");
 			builder.put(grammarAccess.getEventAccess().getGroup_0_1(), "rule__Event__Group_0_1__0");
@@ -102,11 +105,16 @@ public class MetaCrySLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getModelAccess().getMetaCrySLAssignment(), "rule__Model__MetaCrySLAssignment");
 			builder.put(grammarAccess.getSpecAccess().getClassNameAssignment_2(), "rule__Spec__ClassNameAssignment_2");
 			builder.put(grammarAccess.getSpecAccess().getObjectSpecAssignment_3(), "rule__Spec__ObjectSpecAssignment_3");
-			builder.put(grammarAccess.getSpecAccess().getEventSpecAssignment_4(), "rule__Spec__EventSpecAssignment_4");
-			builder.put(grammarAccess.getSpecAccess().getOrderSpecAssignment_5(), "rule__Spec__OrderSpecAssignment_5");
+			builder.put(grammarAccess.getSpecAccess().getForbiddenSpecAssignment_4(), "rule__Spec__ForbiddenSpecAssignment_4");
+			builder.put(grammarAccess.getSpecAccess().getEventSpecAssignment_5(), "rule__Spec__EventSpecAssignment_5");
+			builder.put(grammarAccess.getSpecAccess().getOrderSpecAssignment_6(), "rule__Spec__OrderSpecAssignment_6");
 			builder.put(grammarAccess.getObjectSpecAccess().getObjectsAssignment_3(), "rule__ObjectSpec__ObjectsAssignment_3");
 			builder.put(grammarAccess.getObjectAccess().getTypeAssignment_1(), "rule__Object__TypeAssignment_1");
 			builder.put(grammarAccess.getObjectAccess().getVarNameAssignment_2(), "rule__Object__VarNameAssignment_2");
+			builder.put(grammarAccess.getForbiddenSpecAccess().getForbidenMethodsAssignment_2(), "rule__ForbiddenSpec__ForbidenMethodsAssignment_2");
+			builder.put(grammarAccess.getForbiddenMethodAccess().getMethodAssignment_1(), "rule__ForbiddenMethod__MethodAssignment_1");
+			builder.put(grammarAccess.getForbiddenMethodAccess().getArgsAssignment_3(), "rule__ForbiddenMethod__ArgsAssignment_3");
+			builder.put(grammarAccess.getForbiddenMethodAccess().getAlternativeAssignment_5_1(), "rule__ForbiddenMethod__AlternativeAssignment_5_1");
 			builder.put(grammarAccess.getEventSpecAccess().getEventsAssignment_2(), "rule__EventSpec__EventsAssignment_2");
 			builder.put(grammarAccess.getEventAccess().getLabelAssignment_0_1_0(), "rule__Event__LabelAssignment_0_1_0");
 			builder.put(grammarAccess.getEventAccess().getVarAssignment_0_2_0(), "rule__Event__VarAssignment_0_2_0");

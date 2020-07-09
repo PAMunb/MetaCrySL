@@ -14,8 +14,18 @@ import org.junit.runner.RunWith
 class MetaCrySLParsingTest extends MetaCrySLAbstractTests {
 
 	@Test
-	def void loadOnlySpecModel() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "onlySPEC.cryptsl")
+	def void loadOnlySpecModelWithoutObjects() {
+		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithoutObjects.cryptsl")
+		
+		val result = super.parseHelper.parse(file)
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', !errors.isEmpty)
+	}
+
+	@Test
+	def void loadOnlySpecModelWithoutAbstract() {
+		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithoutAbstract.cryptsl")
 		
 		val result = super.parseHelper.parse(file)
 		Assert.assertNotNull(result)

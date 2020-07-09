@@ -14,6 +14,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/objectSpec"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/eventSpec"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/orderSpec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//Spec/constraintSpec"/>
     </genClasses>
     <genClasses ecoreClass="MetaCrySL.ecore#//ObjectSpec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//ObjectSpec/objects"/>
@@ -44,6 +45,13 @@
     </genClasses>
     <genClasses ecoreClass="MetaCrySL.ecore#//EventExp">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//EventExp/label"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaCrySL.ecore#//ConstraintSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaCrySL.ecore#//ConstraintSpec/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaCrySL.ecore#//ConstraintsExp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//ConstraintsExp/varName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//ConstraintsExp/constraints"/>
     </genClasses>
     <genClasses ecoreClass="MetaCrySL.ecore#//EventMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaCrySL.ecore#//EventMethod/var"/>

@@ -21,7 +21,8 @@ Spec
  : 'ABSTRACT'? 'SPEC' className = JvmTypeReference
      (objectSpec = ObjectSpec)?
      (eventSpec  = EventSpec)?  
-     (orderSpec  = OrderSpec)?  
+     (orderSpec  = OrderSpec)?
+     (constraintSpec = ConstraintSpec)?
  ;
     
 /* ObjectSpec rule
@@ -140,4 +141,17 @@ SequenceExp returns EventExp
 PrimaryExp returns EventExp
  : label = ID
  | '(' ChoiceExp ')' 	
- ;  
+ ;
+ 
+ /* ConstraintSpec rule
+  * 
+  * Defines constraints for objects defined under OBJECTS clause
+  * and used as parameters or return values in the EVENTS section
+ */
+
+ ConstraintSpec: {ConstraintSpec} 'CONSTRAINTS' constraints += ConstraintsExp;
+ 
+ ConstraintsExp:
+ 	varName = ID 'in' '{'constraints+=STRING (',' constraints+=STRING)* '}' ';'
+ ;
+ 

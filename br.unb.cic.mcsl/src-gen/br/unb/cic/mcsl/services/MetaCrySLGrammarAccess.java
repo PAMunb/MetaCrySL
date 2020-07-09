@@ -52,6 +52,8 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final RuleCall cEventSpecEventSpecParserRuleCall_4_0 = (RuleCall)cEventSpecAssignment_4.eContents().get(0);
 		private final Assignment cOrderSpecAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cOrderSpecOrderSpecParserRuleCall_5_0 = (RuleCall)cOrderSpecAssignment_5.eContents().get(0);
+		private final Assignment cConstraintSpecAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cConstraintSpecConstraintSpecParserRuleCall_6_0 = (RuleCall)cConstraintSpecAssignment_6.eContents().get(0);
 		
 		///* Spec rule 
 		// * 
@@ -66,10 +68,12 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//	'ABSTRACT'? 'SPEC' className=JvmTypeReference
 		//	objectSpec=ObjectSpec?
 		//	eventSpec=EventSpec?
-		//	orderSpec=OrderSpec?;
+		//	orderSpec=OrderSpec?
+		//	constraintSpec=ConstraintSpec?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'ABSTRACT'? 'SPEC' className=JvmTypeReference objectSpec=ObjectSpec? eventSpec=EventSpec? orderSpec=OrderSpec?
+		//constraintSpec=ConstraintSpec?
 		public Group getGroup() { return cGroup; }
 		
 		//'ABSTRACT'?
@@ -101,6 +105,12 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		
 		//OrderSpec
 		public RuleCall getOrderSpecOrderSpecParserRuleCall_5_0() { return cOrderSpecOrderSpecParserRuleCall_5_0; }
+		
+		//constraintSpec=ConstraintSpec?
+		public Assignment getConstraintSpecAssignment_6() { return cConstraintSpecAssignment_6; }
+		
+		//ConstraintSpec
+		public RuleCall getConstraintSpecConstraintSpecParserRuleCall_6_0() { return cConstraintSpecConstraintSpecParserRuleCall_6_0; }
 	}
 	public class ObjectSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.unb.cic.mcsl.MetaCrySL.ObjectSpec");
@@ -559,7 +569,9 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		// * https://www.youtube.com/watch?v=d3JymwcB_TM&feature=youtu.be
 		// * 
 		// * Note: It was necessary to allow the backtrack feature 
-		// * here. Take a look at the mwe2 file.  
+		// * here. Take a look at the mwe2 file. Backtracking might 
+		// * be quite expensive, so perhaps we should investigate an 
+		// * alternative to this design.  
 		// */ EventExp:
 		//	{Optional} exp=ChoiceExp '?'
 		//	| {ZeroOrMore} exp=ChoiceExp '*'
@@ -742,6 +754,96 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//')'
 		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
 	}
+	public class ConstraintSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.unb.cic.mcsl.MetaCrySL.ConstraintSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cConstraintSpecAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCONSTRAINTSKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cConstraintsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cConstraintsConstraintsExpParserRuleCall_2_0 = (RuleCall)cConstraintsAssignment_2.eContents().get(0);
+		
+		///* ConstraintSpec rule
+		//  * 
+		//  * Defines constraints for objects defined under OBJECTS clause
+		//  * and used as parameters or return values in the EVENTS section
+		// */ ConstraintSpec:
+		//	{ConstraintSpec} 'CONSTRAINTS' constraints+=ConstraintsExp;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ConstraintSpec} 'CONSTRAINTS' constraints+=ConstraintsExp
+		public Group getGroup() { return cGroup; }
+		
+		//{ConstraintSpec}
+		public Action getConstraintSpecAction_0() { return cConstraintSpecAction_0; }
+		
+		//'CONSTRAINTS'
+		public Keyword getCONSTRAINTSKeyword_1() { return cCONSTRAINTSKeyword_1; }
+		
+		//constraints+=ConstraintsExp
+		public Assignment getConstraintsAssignment_2() { return cConstraintsAssignment_2; }
+		
+		//ConstraintsExp
+		public RuleCall getConstraintsConstraintsExpParserRuleCall_2_0() { return cConstraintsConstraintsExpParserRuleCall_2_0; }
+	}
+	public class ConstraintsExpElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.unb.cic.mcsl.MetaCrySL.ConstraintsExp");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cVarNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cVarNameIDTerminalRuleCall_0_0 = (RuleCall)cVarNameAssignment_0.eContents().get(0);
+		private final Keyword cInKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cConstraintsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cConstraintsSTRINGTerminalRuleCall_3_0 = (RuleCall)cConstraintsAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cConstraintsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cConstraintsSTRINGTerminalRuleCall_4_1_0 = (RuleCall)cConstraintsAssignment_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//ConstraintsExp:
+		//	varName=ID 'in' '{' constraints+=STRING (',' constraints+=STRING)* '}' ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//varName=ID 'in' '{' constraints+=STRING (',' constraints+=STRING)* '}' ';'
+		public Group getGroup() { return cGroup; }
+		
+		//varName=ID
+		public Assignment getVarNameAssignment_0() { return cVarNameAssignment_0; }
+		
+		//ID
+		public RuleCall getVarNameIDTerminalRuleCall_0_0() { return cVarNameIDTerminalRuleCall_0_0; }
+		
+		//'in'
+		public Keyword getInKeyword_1() { return cInKeyword_1; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//constraints+=STRING
+		public Assignment getConstraintsAssignment_3() { return cConstraintsAssignment_3; }
+		
+		//STRING
+		public RuleCall getConstraintsSTRINGTerminalRuleCall_3_0() { return cConstraintsSTRINGTerminalRuleCall_3_0; }
+		
+		//(',' constraints+=STRING)*
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//','
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
+		
+		//constraints+=STRING
+		public Assignment getConstraintsAssignment_4_1() { return cConstraintsAssignment_4_1; }
+		
+		//STRING
+		public RuleCall getConstraintsSTRINGTerminalRuleCall_4_1_0() { return cConstraintsSTRINGTerminalRuleCall_4_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+	}
 	
 	
 	private final ModelElements pModel;
@@ -759,6 +861,8 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final ChoiceExpElements pChoiceExp;
 	private final SequenceExpElements pSequenceExp;
 	private final PrimaryExpElements pPrimaryExp;
+	private final ConstraintSpecElements pConstraintSpec;
+	private final ConstraintsExpElements pConstraintsExp;
 	
 	private final Grammar grammar;
 	
@@ -784,6 +888,8 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		this.pChoiceExp = new ChoiceExpElements();
 		this.pSequenceExp = new SequenceExpElements();
 		this.pPrimaryExp = new PrimaryExpElements();
+		this.pConstraintSpec = new ConstraintSpecElements();
+		this.pConstraintsExp = new ConstraintsExpElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -836,7 +942,8 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//	'ABSTRACT'? 'SPEC' className=JvmTypeReference
 	//	objectSpec=ObjectSpec?
 	//	eventSpec=EventSpec?
-	//	orderSpec=OrderSpec?;
+	//	orderSpec=OrderSpec?
+	//	constraintSpec=ConstraintSpec?;
 	public SpecElements getSpecAccess() {
 		return pSpec;
 	}
@@ -997,7 +1104,9 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	// * https://www.youtube.com/watch?v=d3JymwcB_TM&feature=youtu.be
 	// * 
 	// * Note: It was necessary to allow the backtrack feature 
-	// * here. Take a look at the mwe2 file.  
+	// * here. Take a look at the mwe2 file. Backtracking might 
+	// * be quite expensive, so perhaps we should investigate an 
+	// * alternative to this design.  
 	// */ EventExp:
 	//	{Optional} exp=ChoiceExp '?'
 	//	| {ZeroOrMore} exp=ChoiceExp '*'
@@ -1040,6 +1149,30 @@ public class MetaCrySLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	
 	public ParserRule getPrimaryExpRule() {
 		return getPrimaryExpAccess().getRule();
+	}
+	
+	///* ConstraintSpec rule
+	//  * 
+	//  * Defines constraints for objects defined under OBJECTS clause
+	//  * and used as parameters or return values in the EVENTS section
+	// */ ConstraintSpec:
+	//	{ConstraintSpec} 'CONSTRAINTS' constraints+=ConstraintsExp;
+	public ConstraintSpecElements getConstraintSpecAccess() {
+		return pConstraintSpec;
+	}
+	
+	public ParserRule getConstraintSpecRule() {
+		return getConstraintSpecAccess().getRule();
+	}
+	
+	//ConstraintsExp:
+	//	varName=ID 'in' '{' constraints+=STRING (',' constraints+=STRING)* '}' ';';
+	public ConstraintsExpElements getConstraintsExpAccess() {
+		return pConstraintsExp;
+	}
+	
+	public ParserRule getConstraintsExpRule() {
+		return getConstraintsExpAccess().getRule();
 	}
 	
 	//JvmTypeReference:

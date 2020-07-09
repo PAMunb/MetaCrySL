@@ -20,6 +20,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getObjectSpec <em>Object Spec</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getEventSpec <em>Event Spec</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getOrderSpec <em>Order Spec</em>}</li>
+ *   <li>{@link br.unb.cic.mcsl.metaCrySL.Spec#getConstraintSpec <em>Constraint Spec</em>}</li>
  * </ul>
  *
  * @see br.unb.cic.mcsl.metaCrySL.MetaCrySLPackage#getSpec()
@@ -115,5 +116,27 @@ public interface Spec extends EObject
    * @generated
    */
   void setOrderSpec(OrderSpec value);
+
+  /**
+   * Returns the value of the '<em><b>Constraint Spec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Constraint Spec</em>' containment reference.
+   * @see #setConstraintSpec(ConstraintSpec)
+   * @see br.unb.cic.mcsl.metaCrySL.MetaCrySLPackage#getSpec_ConstraintSpec()
+   * @model containment="true"
+   * @generated
+   */
+  ConstraintSpec getConstraintSpec();
+
+  /**
+   * Sets the value of the '{@link br.unb.cic.mcsl.metaCrySL.Spec#getConstraintSpec <em>Constraint Spec</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Constraint Spec</em>' containment reference.
+   * @see #getConstraintSpec()
+   * @generated
+   */
+  void setConstraintSpec(ConstraintSpec value);
 
 } // Spec

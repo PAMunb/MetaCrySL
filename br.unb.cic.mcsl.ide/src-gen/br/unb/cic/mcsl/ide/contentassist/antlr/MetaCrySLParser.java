@@ -68,6 +68,9 @@ public class MetaCrySLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSequenceExpAccess().getGroup_1(), "rule__SequenceExp__Group_1__0");
 			builder.put(grammarAccess.getSequenceExpAccess().getGroup_1_0(), "rule__SequenceExp__Group_1_0__0");
 			builder.put(grammarAccess.getPrimaryExpAccess().getGroup_1(), "rule__PrimaryExp__Group_1__0");
+			builder.put(grammarAccess.getConstraintSpecAccess().getGroup(), "rule__ConstraintSpec__Group__0");
+			builder.put(grammarAccess.getConstraintsExpAccess().getGroup(), "rule__ConstraintsExp__Group__0");
+			builder.put(grammarAccess.getConstraintsExpAccess().getGroup_4(), "rule__ConstraintsExp__Group_4__0");
 			builder.put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0(), "rule__JvmTypeReference__Group_0__0");
 			builder.put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0_1(), "rule__JvmTypeReference__Group_0_1__0");
 			builder.put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0_1_0(), "rule__JvmTypeReference__Group_0_1_0__0");
@@ -104,6 +107,7 @@ public class MetaCrySLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSpecAccess().getObjectSpecAssignment_3(), "rule__Spec__ObjectSpecAssignment_3");
 			builder.put(grammarAccess.getSpecAccess().getEventSpecAssignment_4(), "rule__Spec__EventSpecAssignment_4");
 			builder.put(grammarAccess.getSpecAccess().getOrderSpecAssignment_5(), "rule__Spec__OrderSpecAssignment_5");
+			builder.put(grammarAccess.getSpecAccess().getConstraintSpecAssignment_6(), "rule__Spec__ConstraintSpecAssignment_6");
 			builder.put(grammarAccess.getObjectSpecAccess().getObjectsAssignment_3(), "rule__ObjectSpec__ObjectsAssignment_3");
 			builder.put(grammarAccess.getObjectAccess().getTypeAssignment_1(), "rule__Object__TypeAssignment_1");
 			builder.put(grammarAccess.getObjectAccess().getVarNameAssignment_2(), "rule__Object__VarNameAssignment_2");
@@ -128,6 +132,10 @@ public class MetaCrySLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getChoiceExpAccess().getRightAssignment_1_0_2(), "rule__ChoiceExp__RightAssignment_1_0_2");
 			builder.put(grammarAccess.getSequenceExpAccess().getRightAssignment_1_0_2(), "rule__SequenceExp__RightAssignment_1_0_2");
 			builder.put(grammarAccess.getPrimaryExpAccess().getLabelAssignment_0(), "rule__PrimaryExp__LabelAssignment_0");
+			builder.put(grammarAccess.getConstraintSpecAccess().getConstraintsAssignment_2(), "rule__ConstraintSpec__ConstraintsAssignment_2");
+			builder.put(grammarAccess.getConstraintsExpAccess().getVarNameAssignment_0(), "rule__ConstraintsExp__VarNameAssignment_0");
+			builder.put(grammarAccess.getConstraintsExpAccess().getConstraintsAssignment_3(), "rule__ConstraintsExp__ConstraintsAssignment_3");
+			builder.put(grammarAccess.getConstraintsExpAccess().getConstraintsAssignment_4_1(), "rule__ConstraintsExp__ConstraintsAssignment_4_1");
 			builder.put(grammarAccess.getXFunctionTypeRefAccess().getParamTypesAssignment_0_1_0(), "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0");
 			builder.put(grammarAccess.getXFunctionTypeRefAccess().getParamTypesAssignment_0_1_1_1(), "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1");
 			builder.put(grammarAccess.getXFunctionTypeRefAccess().getReturnTypeAssignment_2(), "rule__XFunctionTypeRef__ReturnTypeAssignment_2");

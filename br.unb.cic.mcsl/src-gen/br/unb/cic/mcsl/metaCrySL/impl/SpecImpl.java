@@ -3,6 +3,7 @@
  */
 package br.unb.cic.mcsl.metaCrySL.impl;
 
+import br.unb.cic.mcsl.metaCrySL.ConstraintSpec;
 import br.unb.cic.mcsl.metaCrySL.EventSpec;
 import br.unb.cic.mcsl.metaCrySL.MetaCrySLPackage;
 import br.unb.cic.mcsl.metaCrySL.ObjectSpec;
@@ -32,6 +33,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getObjectSpec <em>Object Spec</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getEventSpec <em>Event Spec</em>}</li>
  *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getOrderSpec <em>Order Spec</em>}</li>
+ *   <li>{@link br.unb.cic.mcsl.metaCrySL.impl.SpecImpl#getConstraintSpec <em>Constraint Spec</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,6 +79,16 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
    * @ordered
    */
   protected OrderSpec orderSpec;
+
+  /**
+   * The cached value of the '{@link #getConstraintSpec() <em>Constraint Spec</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstraintSpec()
+   * @generated
+   * @ordered
+   */
+  protected ConstraintSpec constraintSpec;
 
   /**
    * <!-- begin-user-doc -->
@@ -305,6 +317,56 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
    * @generated
    */
   @Override
+  public ConstraintSpec getConstraintSpec()
+  {
+    return constraintSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConstraintSpec(ConstraintSpec newConstraintSpec, NotificationChain msgs)
+  {
+    ConstraintSpec oldConstraintSpec = constraintSpec;
+    constraintSpec = newConstraintSpec;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaCrySLPackage.SPEC__CONSTRAINT_SPEC, oldConstraintSpec, newConstraintSpec);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConstraintSpec(ConstraintSpec newConstraintSpec)
+  {
+    if (newConstraintSpec != constraintSpec)
+    {
+      NotificationChain msgs = null;
+      if (constraintSpec != null)
+        msgs = ((InternalEObject)constraintSpec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaCrySLPackage.SPEC__CONSTRAINT_SPEC, null, msgs);
+      if (newConstraintSpec != null)
+        msgs = ((InternalEObject)newConstraintSpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaCrySLPackage.SPEC__CONSTRAINT_SPEC, null, msgs);
+      msgs = basicSetConstraintSpec(newConstraintSpec, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaCrySLPackage.SPEC__CONSTRAINT_SPEC, newConstraintSpec, newConstraintSpec));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -317,6 +379,8 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
         return basicSetEventSpec(null, msgs);
       case MetaCrySLPackage.SPEC__ORDER_SPEC:
         return basicSetOrderSpec(null, msgs);
+      case MetaCrySLPackage.SPEC__CONSTRAINT_SPEC:
+        return basicSetConstraintSpec(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -339,6 +403,8 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
         return getEventSpec();
       case MetaCrySLPackage.SPEC__ORDER_SPEC:
         return getOrderSpec();
+      case MetaCrySLPackage.SPEC__CONSTRAINT_SPEC:
+        return getConstraintSpec();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -364,6 +430,9 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
         return;
       case MetaCrySLPackage.SPEC__ORDER_SPEC:
         setOrderSpec((OrderSpec)newValue);
+        return;
+      case MetaCrySLPackage.SPEC__CONSTRAINT_SPEC:
+        setConstraintSpec((ConstraintSpec)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -391,6 +460,9 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
       case MetaCrySLPackage.SPEC__ORDER_SPEC:
         setOrderSpec((OrderSpec)null);
         return;
+      case MetaCrySLPackage.SPEC__CONSTRAINT_SPEC:
+        setConstraintSpec((ConstraintSpec)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -413,6 +485,8 @@ public class SpecImpl extends MinimalEObjectImpl.Container implements Spec
         return eventSpec != null;
       case MetaCrySLPackage.SPEC__ORDER_SPEC:
         return orderSpec != null;
+      case MetaCrySLPackage.SPEC__CONSTRAINT_SPEC:
+        return constraintSpec != null;
     }
     return super.eIsSet(featureID);
   }

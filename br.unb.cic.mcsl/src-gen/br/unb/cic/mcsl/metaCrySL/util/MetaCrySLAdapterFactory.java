@@ -5,6 +5,8 @@ package br.unb.cic.mcsl.metaCrySL.util;
 
 import br.unb.cic.mcsl.metaCrySL.AggregateList;
 import br.unb.cic.mcsl.metaCrySL.ChoiceExp;
+import br.unb.cic.mcsl.metaCrySL.ConstraintSpec;
+import br.unb.cic.mcsl.metaCrySL.ConstraintsExp;
 import br.unb.cic.mcsl.metaCrySL.Event;
 import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
@@ -154,6 +156,16 @@ public class MetaCrySLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseEventExp(EventExp object)
       {
         return createEventExpAdapter();
+      }
+      @Override
+      public Adapter caseConstraintSpec(ConstraintSpec object)
+      {
+        return createConstraintSpecAdapter();
+      }
+      @Override
+      public Adapter caseConstraintsExp(ConstraintsExp object)
+      {
+        return createConstraintsExpAdapter();
       }
       @Override
       public Adapter caseEventMethod(EventMethod object)
@@ -398,6 +410,36 @@ public class MetaCrySLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEventExpAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link br.unb.cic.mcsl.metaCrySL.ConstraintSpec <em>Constraint Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see br.unb.cic.mcsl.metaCrySL.ConstraintSpec
+   * @generated
+   */
+  public Adapter createConstraintSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link br.unb.cic.mcsl.metaCrySL.ConstraintsExp <em>Constraints Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see br.unb.cic.mcsl.metaCrySL.ConstraintsExp
+   * @generated
+   */
+  public Adapter createConstraintsExpAdapter()
   {
     return null;
   }

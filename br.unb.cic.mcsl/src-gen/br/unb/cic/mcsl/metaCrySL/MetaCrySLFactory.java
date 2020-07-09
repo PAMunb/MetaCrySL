@@ -132,6 +132,24 @@ public interface MetaCrySLFactory extends EFactory
   EventExp createEventExp();
 
   /**
+   * Returns a new object of class '<em>Constraint Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constraint Spec</em>'.
+   * @generated
+   */
+  ConstraintSpec createConstraintSpec();
+
+  /**
+   * Returns a new object of class '<em>Constraints Exp</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constraints Exp</em>'.
+   * @generated
+   */
+  ConstraintsExp createConstraintsExp();
+
+  /**
    * Returns a new object of class '<em>Event Method</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

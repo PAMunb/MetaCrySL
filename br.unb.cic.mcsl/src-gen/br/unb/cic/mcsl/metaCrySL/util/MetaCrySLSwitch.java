@@ -5,6 +5,8 @@ package br.unb.cic.mcsl.metaCrySL.util;
 
 import br.unb.cic.mcsl.metaCrySL.AggregateList;
 import br.unb.cic.mcsl.metaCrySL.ChoiceExp;
+import br.unb.cic.mcsl.metaCrySL.ConstraintSpec;
+import br.unb.cic.mcsl.metaCrySL.ConstraintsExp;
 import br.unb.cic.mcsl.metaCrySL.Event;
 import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
@@ -174,6 +176,20 @@ public class MetaCrySLSwitch<T> extends Switch<T>
       {
         EventExp eventExp = (EventExp)theEObject;
         T result = caseEventExp(eventExp);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MetaCrySLPackage.CONSTRAINT_SPEC:
+      {
+        ConstraintSpec constraintSpec = (ConstraintSpec)theEObject;
+        T result = caseConstraintSpec(constraintSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MetaCrySLPackage.CONSTRAINTS_EXP:
+      {
+        ConstraintsExp constraintsExp = (ConstraintsExp)theEObject;
+        T result = caseConstraintsExp(constraintsExp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -441,6 +457,38 @@ public class MetaCrySLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEventExp(EventExp object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constraint Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constraint Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstraintSpec(ConstraintSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constraints Exp</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constraints Exp</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstraintsExp(ConstraintsExp object)
   {
     return null;
   }

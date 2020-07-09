@@ -5,6 +5,8 @@ package br.unb.cic.mcsl.metaCrySL.impl;
 
 import br.unb.cic.mcsl.metaCrySL.AggregateList;
 import br.unb.cic.mcsl.metaCrySL.ChoiceExp;
+import br.unb.cic.mcsl.metaCrySL.ConstraintSpec;
+import br.unb.cic.mcsl.metaCrySL.ConstraintsExp;
 import br.unb.cic.mcsl.metaCrySL.Event;
 import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
@@ -98,6 +100,8 @@ public class MetaCrySLFactoryImpl extends EFactoryImpl implements MetaCrySLFacto
       case MetaCrySLPackage.FORMAL_ARG: return createFormalArg();
       case MetaCrySLPackage.ORDER_SPEC: return createOrderSpec();
       case MetaCrySLPackage.EVENT_EXP: return createEventExp();
+      case MetaCrySLPackage.CONSTRAINT_SPEC: return createConstraintSpec();
+      case MetaCrySLPackage.CONSTRAINTS_EXP: return createConstraintsExp();
       case MetaCrySLPackage.EVENT_METHOD: return createEventMethod();
       case MetaCrySLPackage.EVENT_AGGREGATE: return createEventAggregate();
       case MetaCrySLPackage.WILDCARD: return createWildcard();
@@ -254,6 +258,30 @@ public class MetaCrySLFactoryImpl extends EFactoryImpl implements MetaCrySLFacto
   {
     EventExpImpl eventExp = new EventExpImpl();
     return eventExp;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ConstraintSpec createConstraintSpec()
+  {
+    ConstraintSpecImpl constraintSpec = new ConstraintSpecImpl();
+    return constraintSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ConstraintsExp createConstraintsExp()
+  {
+    ConstraintsExpImpl constraintsExp = new ConstraintsExpImpl();
+    return constraintsExp;
   }
 
   /**

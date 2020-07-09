@@ -132,13 +132,22 @@ public interface MetaCrySLPackage extends EPackage
   int SPEC__ORDER_SPEC = 3;
 
   /**
+   * The feature id for the '<em><b>Constraint Spec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SPEC__CONSTRAINT_SPEC = 4;
+
+  /**
    * The number of structural features of the '<em>Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SPEC_FEATURE_COUNT = 4;
+  int SPEC_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ObjectSpecImpl <em>Object Spec</em>}' class.
@@ -430,6 +439,71 @@ public interface MetaCrySLPackage extends EPackage
   int EVENT_EXP_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ConstraintSpecImpl <em>Constraint Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see br.unb.cic.mcsl.metaCrySL.impl.ConstraintSpecImpl
+   * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getConstraintSpec()
+   * @generated
+   */
+  int CONSTRAINT_SPEC = 12;
+
+  /**
+   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_SPEC__CONSTRAINTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Constraint Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_SPEC_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ConstraintsExpImpl <em>Constraints Exp</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see br.unb.cic.mcsl.metaCrySL.impl.ConstraintsExpImpl
+   * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getConstraintsExp()
+   * @generated
+   */
+  int CONSTRAINTS_EXP = 13;
+
+  /**
+   * The feature id for the '<em><b>Var Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINTS_EXP__VAR_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Constraints</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINTS_EXP__CONSTRAINTS = 1;
+
+  /**
+   * The number of structural features of the '<em>Constraints Exp</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINTS_EXP_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link br.unb.cic.mcsl.metaCrySL.impl.EventMethodImpl <em>Event Method</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -437,7 +511,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getEventMethod()
    * @generated
    */
-  int EVENT_METHOD = 12;
+  int EVENT_METHOD = 14;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -483,7 +557,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getEventAggregate()
    * @generated
    */
-  int EVENT_AGGREGATE = 13;
+  int EVENT_AGGREGATE = 15;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -520,7 +594,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getWildcard()
    * @generated
    */
-  int WILDCARD = 14;
+  int WILDCARD = 16;
 
   /**
    * The number of structural features of the '<em>Wildcard</em>' class.
@@ -539,7 +613,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getFormal()
    * @generated
    */
-  int FORMAL = 15;
+  int FORMAL = 17;
 
   /**
    * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -567,7 +641,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getOptional()
    * @generated
    */
-  int OPTIONAL = 16;
+  int OPTIONAL = 18;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -604,7 +678,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getZeroOrMore()
    * @generated
    */
-  int ZERO_OR_MORE = 17;
+  int ZERO_OR_MORE = 19;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -641,7 +715,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getOneOrMore()
    * @generated
    */
-  int ONE_OR_MORE = 18;
+  int ONE_OR_MORE = 20;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -678,7 +752,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getChoiceExp()
    * @generated
    */
-  int CHOICE_EXP = 19;
+  int CHOICE_EXP = 21;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -733,7 +807,7 @@ public interface MetaCrySLPackage extends EPackage
    * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getSequenceExp()
    * @generated
    */
-  int SEQUENCE_EXP = 20;
+  int SEQUENCE_EXP = 22;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -846,6 +920,17 @@ public interface MetaCrySLPackage extends EPackage
    * @generated
    */
   EReference getSpec_OrderSpec();
+
+  /**
+   * Returns the meta object for the containment reference '{@link br.unb.cic.mcsl.metaCrySL.Spec#getConstraintSpec <em>Constraint Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Constraint Spec</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.Spec#getConstraintSpec()
+   * @see #getSpec()
+   * @generated
+   */
+  EReference getSpec_ConstraintSpec();
 
   /**
    * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.ObjectSpec <em>Object Spec</em>}'.
@@ -1067,6 +1152,59 @@ public interface MetaCrySLPackage extends EPackage
    * @generated
    */
   EAttribute getEventExp_Label();
+
+  /**
+   * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.ConstraintSpec <em>Constraint Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constraint Spec</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.ConstraintSpec
+   * @generated
+   */
+  EClass getConstraintSpec();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link br.unb.cic.mcsl.metaCrySL.ConstraintSpec#getConstraints <em>Constraints</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Constraints</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.ConstraintSpec#getConstraints()
+   * @see #getConstraintSpec()
+   * @generated
+   */
+  EReference getConstraintSpec_Constraints();
+
+  /**
+   * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.ConstraintsExp <em>Constraints Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constraints Exp</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.ConstraintsExp
+   * @generated
+   */
+  EClass getConstraintsExp();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.unb.cic.mcsl.metaCrySL.ConstraintsExp#getVarName <em>Var Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Var Name</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.ConstraintsExp#getVarName()
+   * @see #getConstraintsExp()
+   * @generated
+   */
+  EAttribute getConstraintsExp_VarName();
+
+  /**
+   * Returns the meta object for the attribute list '{@link br.unb.cic.mcsl.metaCrySL.ConstraintsExp#getConstraints <em>Constraints</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Constraints</em>'.
+   * @see br.unb.cic.mcsl.metaCrySL.ConstraintsExp#getConstraints()
+   * @see #getConstraintsExp()
+   * @generated
+   */
+  EAttribute getConstraintsExp_Constraints();
 
   /**
    * Returns the meta object for class '{@link br.unb.cic.mcsl.metaCrySL.EventMethod <em>Event Method</em>}'.
@@ -1374,6 +1512,14 @@ public interface MetaCrySLPackage extends EPackage
     EReference SPEC__ORDER_SPEC = eINSTANCE.getSpec_OrderSpec();
 
     /**
+     * The meta object literal for the '<em><b>Constraint Spec</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SPEC__CONSTRAINT_SPEC = eINSTANCE.getSpec_ConstraintSpec();
+
+    /**
      * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ObjectSpecImpl <em>Object Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1560,6 +1706,50 @@ public interface MetaCrySLPackage extends EPackage
      * @generated
      */
     EAttribute EVENT_EXP__LABEL = eINSTANCE.getEventExp_Label();
+
+    /**
+     * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ConstraintSpecImpl <em>Constraint Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see br.unb.cic.mcsl.metaCrySL.impl.ConstraintSpecImpl
+     * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getConstraintSpec()
+     * @generated
+     */
+    EClass CONSTRAINT_SPEC = eINSTANCE.getConstraintSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT_SPEC__CONSTRAINTS = eINSTANCE.getConstraintSpec_Constraints();
+
+    /**
+     * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.ConstraintsExpImpl <em>Constraints Exp</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see br.unb.cic.mcsl.metaCrySL.impl.ConstraintsExpImpl
+     * @see br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLPackageImpl#getConstraintsExp()
+     * @generated
+     */
+    EClass CONSTRAINTS_EXP = eINSTANCE.getConstraintsExp();
+
+    /**
+     * The meta object literal for the '<em><b>Var Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTRAINTS_EXP__VAR_NAME = eINSTANCE.getConstraintsExp_VarName();
+
+    /**
+     * The meta object literal for the '<em><b>Constraints</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTRAINTS_EXP__CONSTRAINTS = eINSTANCE.getConstraintsExp_Constraints();
 
     /**
      * The meta object literal for the '{@link br.unb.cic.mcsl.metaCrySL.impl.EventMethodImpl <em>Event Method</em>}' class.

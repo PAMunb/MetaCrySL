@@ -5,6 +5,8 @@ package br.unb.cic.mcsl.serializer;
 
 import br.unb.cic.mcsl.metaCrySL.AggregateList;
 import br.unb.cic.mcsl.metaCrySL.ChoiceExp;
+import br.unb.cic.mcsl.metaCrySL.ConstraintSpec;
+import br.unb.cic.mcsl.metaCrySL.ConstraintsExp;
 import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
 import br.unb.cic.mcsl.metaCrySL.EventMethod;
@@ -78,6 +80,12 @@ public class MetaCrySLSemanticSequencer extends XtypeSemanticSequencer {
 					return; 
 				}
 				else break;
+			case MetaCrySLPackage.CONSTRAINT_SPEC:
+				sequence_ConstraintSpec(context, (ConstraintSpec) semanticObject); 
+				return; 
+			case MetaCrySLPackage.CONSTRAINTS_EXP:
+				sequence_ConstraintsExp(context, (ConstraintsExp) semanticObject); 
+				return; 
 			case MetaCrySLPackage.EVENT_AGGREGATE:
 				sequence_Event(context, (EventAggregate) semanticObject); 
 				return; 
@@ -228,6 +236,30 @@ public class MetaCrySLSemanticSequencer extends XtypeSemanticSequencer {
 		feeder.accept(grammarAccess.getChoiceExpAccess().getChoiceExpLeftAction_1_0_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getChoiceExpAccess().getRightSequenceExpParserRuleCall_1_0_2_0(), semanticObject.getRight());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ConstraintSpec returns ConstraintSpec
+	 *
+	 * Constraint:
+	 *     constraints+=ConstraintsExp
+	 */
+	protected void sequence_ConstraintSpec(ISerializationContext context, ConstraintSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ConstraintsExp returns ConstraintsExp
+	 *
+	 * Constraint:
+	 *     (varName=ID constraints+=STRING constraints+=STRING*)
+	 */
+	protected void sequence_ConstraintsExp(ISerializationContext context, ConstraintsExp semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -523,7 +555,7 @@ public class MetaCrySLSemanticSequencer extends XtypeSemanticSequencer {
 	 *     Spec returns Spec
 	 *
 	 * Constraint:
-	 *     (className=JvmTypeReference objectSpec=ObjectSpec? eventSpec=EventSpec? orderSpec=OrderSpec?)
+	 *     (className=JvmTypeReference objectSpec=ObjectSpec? eventSpec=EventSpec? orderSpec=OrderSpec? constraintSpec=ConstraintSpec?)
 	 */
 	protected void sequence_Spec(ISerializationContext context, Spec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

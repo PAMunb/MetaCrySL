@@ -204,6 +204,25 @@ ruleSpec returns [EObject current=null]
 				}
 			)
 		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSpecAccess().getConstraintSpecConstraintSpecParserRuleCall_6_0());
+				}
+				lv_constraintSpec_6_0=ruleConstraintSpec
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSpecRule());
+					}
+					set(
+						$current,
+						"constraintSpec",
+						lv_constraintSpec_6_0,
+						"br.unb.cic.mcsl.MetaCrySL.ConstraintSpec");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
 	)
 ;
 
@@ -1151,6 +1170,153 @@ rulePrimaryExp returns [EObject current=null]
 				newLeafNode(otherlv_3, grammarAccess.getPrimaryExpAccess().getRightParenthesisKeyword_1_2());
 			}
 		)
+	)
+;
+
+// Entry rule entryRuleConstraintSpec
+entryRuleConstraintSpec returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getConstraintSpecRule()); }
+	iv_ruleConstraintSpec=ruleConstraintSpec
+	{ $current=$iv_ruleConstraintSpec.current; }
+	EOF;
+
+// Rule ConstraintSpec
+ruleConstraintSpec returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				/* */
+			}
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getConstraintSpecAccess().getConstraintSpecAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='CONSTRAINTS'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getConstraintSpecAccess().getCONSTRAINTSKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getConstraintSpecAccess().getConstraintsConstraintsExpParserRuleCall_2_0());
+				}
+				lv_constraints_2_0=ruleConstraintsExp
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getConstraintSpecRule());
+					}
+					add(
+						$current,
+						"constraints",
+						lv_constraints_2_0,
+						"br.unb.cic.mcsl.MetaCrySL.ConstraintsExp");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleConstraintsExp
+entryRuleConstraintsExp returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getConstraintsExpRule()); }
+	iv_ruleConstraintsExp=ruleConstraintsExp
+	{ $current=$iv_ruleConstraintsExp.current; }
+	EOF;
+
+// Rule ConstraintsExp
+ruleConstraintsExp returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_varName_0_0=RULE_ID
+				{
+					newLeafNode(lv_varName_0_0, grammarAccess.getConstraintsExpAccess().getVarNameIDTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getConstraintsExpRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"varName",
+						lv_varName_0_0,
+						"org.eclipse.xtext.xbase.Xtype.ID");
+				}
+			)
+		)
+		otherlv_1='in'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getConstraintsExpAccess().getInKeyword_1());
+		}
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getConstraintsExpAccess().getLeftCurlyBracketKeyword_2());
+		}
+		(
+			(
+				lv_constraints_3_0=RULE_STRING
+				{
+					newLeafNode(lv_constraints_3_0, grammarAccess.getConstraintsExpAccess().getConstraintsSTRINGTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getConstraintsExpRule());
+					}
+					addWithLastConsumed(
+						$current,
+						"constraints",
+						lv_constraints_3_0,
+						"org.eclipse.xtext.xbase.Xtype.STRING");
+				}
+			)
+		)
+		(
+			otherlv_4=','
+			{
+				newLeafNode(otherlv_4, grammarAccess.getConstraintsExpAccess().getCommaKeyword_4_0());
+			}
+			(
+				(
+					lv_constraints_5_0=RULE_STRING
+					{
+						newLeafNode(lv_constraints_5_0, grammarAccess.getConstraintsExpAccess().getConstraintsSTRINGTerminalRuleCall_4_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getConstraintsExpRule());
+						}
+						addWithLastConsumed(
+							$current,
+							"constraints",
+							lv_constraints_5_0,
+							"org.eclipse.xtext.xbase.Xtype.STRING");
+					}
+				)
+			)
+		)*
+		otherlv_6='}'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getConstraintsExpAccess().getRightCurlyBracketKeyword_5());
+		}
+		otherlv_7=';'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getConstraintsExpAccess().getSemicolonKeyword_6());
+		}
 	)
 ;
 

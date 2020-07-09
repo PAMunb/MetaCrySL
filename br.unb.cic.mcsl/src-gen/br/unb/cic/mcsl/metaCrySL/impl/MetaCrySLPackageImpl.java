@@ -5,6 +5,8 @@ package br.unb.cic.mcsl.metaCrySL.impl;
 
 import br.unb.cic.mcsl.metaCrySL.AggregateList;
 import br.unb.cic.mcsl.metaCrySL.ChoiceExp;
+import br.unb.cic.mcsl.metaCrySL.ConstraintSpec;
+import br.unb.cic.mcsl.metaCrySL.ConstraintsExp;
 import br.unb.cic.mcsl.metaCrySL.Event;
 import br.unb.cic.mcsl.metaCrySL.EventAggregate;
 import br.unb.cic.mcsl.metaCrySL.EventExp;
@@ -126,6 +128,20 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
    * @generated
    */
   private EClass eventExpEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constraintSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constraintsExpEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -331,6 +347,17 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
   public EReference getSpec_OrderSpec()
   {
     return (EReference)specEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpec_ConstraintSpec()
+  {
+    return (EReference)specEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -562,6 +589,61 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
   public EAttribute getEventExp_Label()
   {
     return (EAttribute)eventExpEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConstraintSpec()
+  {
+    return constraintSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConstraintSpec_Constraints()
+  {
+    return (EReference)constraintSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConstraintsExp()
+  {
+    return constraintsExpEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getConstraintsExp_VarName()
+  {
+    return (EAttribute)constraintsExpEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getConstraintsExp_Constraints()
+  {
+    return (EAttribute)constraintsExpEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -834,6 +916,7 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
     createEReference(specEClass, SPEC__OBJECT_SPEC);
     createEReference(specEClass, SPEC__EVENT_SPEC);
     createEReference(specEClass, SPEC__ORDER_SPEC);
+    createEReference(specEClass, SPEC__CONSTRAINT_SPEC);
 
     objectSpecEClass = createEClass(OBJECT_SPEC);
     createEReference(objectSpecEClass, OBJECT_SPEC__OBJECTS);
@@ -865,6 +948,13 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
 
     eventExpEClass = createEClass(EVENT_EXP);
     createEAttribute(eventExpEClass, EVENT_EXP__LABEL);
+
+    constraintSpecEClass = createEClass(CONSTRAINT_SPEC);
+    createEReference(constraintSpecEClass, CONSTRAINT_SPEC__CONSTRAINTS);
+
+    constraintsExpEClass = createEClass(CONSTRAINTS_EXP);
+    createEAttribute(constraintsExpEClass, CONSTRAINTS_EXP__VAR_NAME);
+    createEAttribute(constraintsExpEClass, CONSTRAINTS_EXP__CONSTRAINTS);
 
     eventMethodEClass = createEClass(EVENT_METHOD);
     createEAttribute(eventMethodEClass, EVENT_METHOD__VAR);
@@ -948,6 +1038,7 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
     initEReference(getSpec_ObjectSpec(), this.getObjectSpec(), null, "objectSpec", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSpec_EventSpec(), this.getEventSpec(), null, "eventSpec", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSpec_OrderSpec(), this.getOrderSpec(), null, "orderSpec", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSpec_ConstraintSpec(), this.getConstraintSpec(), null, "constraintSpec", null, 0, 1, Spec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectSpecEClass, ObjectSpec.class, "ObjectSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getObjectSpec_Objects(), this.getObject(), null, "objects", null, 0, -1, ObjectSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -979,6 +1070,13 @@ public class MetaCrySLPackageImpl extends EPackageImpl implements MetaCrySLPacka
 
     initEClass(eventExpEClass, EventExp.class, "EventExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEventExp_Label(), ecorePackage.getEString(), "label", null, 0, 1, EventExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constraintSpecEClass, ConstraintSpec.class, "ConstraintSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConstraintSpec_Constraints(), this.getConstraintsExp(), null, "constraints", null, 0, -1, ConstraintSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constraintsExpEClass, ConstraintsExp.class, "ConstraintsExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConstraintsExp_VarName(), ecorePackage.getEString(), "varName", null, 0, 1, ConstraintsExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstraintsExp_Constraints(), ecorePackage.getEString(), "constraints", null, 0, -1, ConstraintsExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(eventMethodEClass, EventMethod.class, "EventMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEventMethod_Var(), ecorePackage.getEString(), "var", null, 0, 1, EventMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -108,4 +108,55 @@ public class MetaCrySLParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void loadBasicModelWithConstraintClause() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("ABSTRACT SPEC java.lang.String");
+      _builder.newLine();
+      _builder.append("OBJECTS:");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("java.lang.String foo;");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("EVENTS");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("c1 : method1();");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("c2 : method2(int, int);");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("c3 : method2(_);");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("cs := c1 | c2 ;");
+      _builder.newLine();
+      _builder.append("ORDER");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("cs | (c1, c2)*    ");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.newLine();
+      _builder.append("CONSTRAINTS");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("foo in {\"bar\", \"woo\"};");
+      _builder.newLine();
+      Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("Unexpected errors: ");
+      String _join = IterableExtensions.join(errors, ", ");
+      _builder_1.append(_join);
+      Assert.assertTrue(_builder_1.toString(), errors.isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

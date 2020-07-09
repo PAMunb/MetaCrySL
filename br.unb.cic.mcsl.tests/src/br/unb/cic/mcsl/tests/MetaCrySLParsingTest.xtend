@@ -5,6 +5,7 @@ package br.unb.cic.mcsl.tests
 
 import br.unb.cic.mcsl.metaCrySL.Model
 import com.google.inject.Inject
+import org.eclipse.xtext.junit4.AbstractXtextTests
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
@@ -14,22 +15,15 @@ import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
 @InjectWith(MetaCrySLInjectorProvider)
-class MetaCrySLParsingTest {
+class MetaCrySLParsingTest extends AbstractXtextTests {
 	@Inject
 	ParseHelper<Model> parseHelper
 	
 	@Test
 	def void loadBasicModel() {
-		val result = parseHelper.parse('''
-			ABSTRACT SPEC java.lang.String
-			OBJECTS:
-			   java.lang.String foo;	
-			EVENTS
-			   c1 : method1();
-			   c2 : method2(int, int);
-			   c3 : method2(_);
-			   cs := c1 | c2 ; 
-		''')
+		val file = super.readFileIntoString("br/unb/cic/mcsl/tests/files/onlySPEC.cryptsl")
+		
+		val result = parseHelper.parse(file)
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)

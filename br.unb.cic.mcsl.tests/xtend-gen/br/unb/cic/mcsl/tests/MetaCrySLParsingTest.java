@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.junit4.AbstractXtextTests;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
@@ -21,43 +22,22 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(MetaCrySLInjectorProvider.class)
 @SuppressWarnings("all")
-public class MetaCrySLParsingTest {
+public class MetaCrySLParsingTest extends AbstractXtextTests {
   @Inject
   private ParseHelper<Model> parseHelper;
   
   @Test
   public void loadBasicModel() {
     try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("ABSTRACT SPEC java.lang.String");
-      _builder.newLine();
-      _builder.append("OBJECTS:");
-      _builder.newLine();
-      _builder.append("   ");
-      _builder.append("java.lang.String foo;\t");
-      _builder.newLine();
-      _builder.append("EVENTS");
-      _builder.newLine();
-      _builder.append("   ");
-      _builder.append("c1 : method1();");
-      _builder.newLine();
-      _builder.append("   ");
-      _builder.append("c2 : method2(int, int);");
-      _builder.newLine();
-      _builder.append("   ");
-      _builder.append("c3 : method2(_);");
-      _builder.newLine();
-      _builder.append("   ");
-      _builder.append("cs := c1 | c2 ; ");
-      _builder.newLine();
-      final Model result = this.parseHelper.parse(_builder);
+      final String file = super.readFileIntoString("br/unb/cic/mcsl/tests/files/onlySPEC.cryptsl");
+      final Model result = this.parseHelper.parse(file);
       Assert.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("Unexpected errors: ");
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Unexpected errors: ");
       String _join = IterableExtensions.join(errors, ", ");
-      _builder_1.append(_join);
-      Assert.assertTrue(_builder_1.toString(), errors.isEmpty());
+      _builder.append(_join);
+      Assert.assertTrue(_builder.toString(), errors.isEmpty());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

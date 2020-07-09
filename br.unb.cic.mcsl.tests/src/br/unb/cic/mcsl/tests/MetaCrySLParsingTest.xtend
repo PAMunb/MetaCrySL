@@ -3,27 +3,30 @@
  */
 package br.unb.cic.mcsl.tests
 
-import br.unb.cic.mcsl.metaCrySL.Model
-import com.google.inject.Inject
-import org.eclipse.xtext.junit4.AbstractXtextTests
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
 @InjectWith(MetaCrySLInjectorProvider)
-class MetaCrySLParsingTest extends AbstractXtextTests {
-	@Inject
-	ParseHelper<Model> parseHelper
+class MetaCrySLParsingTest extends MetaCrySLAbstractTests {
+
+	@Test
+	def void loadOnlySpecModel() {
+		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "onlySPEC.cryptsl")
+		
+		val result = super.parseHelper.parse(file)
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
 	
 	@Test
 	def void loadBasicModel() {
-		val file = super.readFileIntoString("br/unb/cic/mcsl/tests/files/onlySPEC.cryptsl")
-		
-		val result = parseHelper.parse(file)
+		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModel.cryptsl")
+		val result = super.parseHelper.parse(file)
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
@@ -31,18 +34,8 @@ class MetaCrySLParsingTest extends AbstractXtextTests {
 	
 	@Test
 	def void loadBasicModelWithOrderClause() {
-		val result = parseHelper.parse('''
-			ABSTRACT SPEC java.lang.String
-			OBJECTS:
-			   java.lang.String foo;	
-			EVENTS
-			   c1 : method1();
-			   c2 : method2(int, int);
-			   c3 : method2(_);
-			   cs := c1 | c2 ;
-			ORDER
-			   cs | (c1, c2)*    
-		''')
+		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithOrderClause.cryptsl")
+		val result = super.parseHelper.parse(file)		
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
@@ -50,14 +43,8 @@ class MetaCrySLParsingTest extends AbstractXtextTests {
 	
 	@Test
 	def void loadBasicModelWithForbiddenClause() {
-		val result = parseHelper.parse('''
-			ABSTRACT SPEC java.lang.String
-			OBJECTS:
-			   java.lang.String foo;	
-			FORBIDDEN
-			   method1();
-			   method2(int, int) => c;
-		''')
+		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithForbiddenClause.cryptsl")
+		val result = super.parseHelper.parse(file)		
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)

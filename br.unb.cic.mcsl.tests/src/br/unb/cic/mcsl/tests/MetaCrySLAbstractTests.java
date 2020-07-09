@@ -16,24 +16,16 @@ import br.unb.cic.mcsl.metaCrySL.Model;
 
 @RunWith(XtextRunner.class)
 @InjectWith(MetaCrySLInjectorProvider.class)
-public class BaseTests extends AbstractXtextTests {
-	@Inject
-	private ParseHelper<Model> parser;
+public class MetaCrySLAbstractTests extends AbstractXtextTests {
 	
+	@Inject
+	ParseHelper<Model> parseHelper;
+	 
+	protected static final String BR_UNB_CIC_METACRYSL_TESTS_FILES = "br/unb/cic/mcsl/tests/files/";	
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
 		with(MetaCrySLStandaloneSetup.class);
 	}	
-	@Test
-	public void test() throws Exception {
-		Model parsedModel = parser.parse("ABSTRACT SPEC com.google.crypto.tink.Mac");		
-		assertNotNull(parsedModel);
-		parsedModel.eResource().getErrors();
-		//EObject model = getModel("ABSTRACT SPEC com.google.crypto.tink.Mac");
-		//getModelAndExpect("ABSTRACT SPEC com.google.crypto.tink.Mac", 0);
-		//getParseResult("ABSTRACT SPEC com.google.crypto.tink.Mac");
-		//Assert.assertNotNull(model);
-	}
 
 }

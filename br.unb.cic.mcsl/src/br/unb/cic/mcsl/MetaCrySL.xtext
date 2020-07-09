@@ -19,7 +19,7 @@ Model:
  */	
 Spec
  : 'ABSTRACT'? 'SPEC' className = JvmTypeReference
-     (objectSpec    = ObjectSpec)?
+     objectSpec    = ObjectSpec
      (forbiddenSpec = ForbiddenSpec)? 
      (eventSpec     = EventSpec)?  
      (orderSpec     = OrderSpec)?  

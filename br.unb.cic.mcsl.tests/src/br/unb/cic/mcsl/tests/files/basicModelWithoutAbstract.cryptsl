@@ -1,0 +1,4 @@
+SPEC java.lang.String
+OBJECTS:
+	java.lang.String foo;
+			

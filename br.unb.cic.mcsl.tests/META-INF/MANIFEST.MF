@@ -14,3 +14,4 @@ Require-Bundle: br.unb.cic.mcsl,
  org.objectweb.asm;bundle-version="[8.0.1,8.1.0)";resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: br.unb.cic.mcsl.tests;x-internal=true
+Import-Package: org.eclipse.xtext.junit4

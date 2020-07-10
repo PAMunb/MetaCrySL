@@ -1,3 +1,7 @@
 **/target/
 .settings/
 **/*.class
+**/src-gen/
+**/xtend-gen/
+**/generated/
+**/.metadata/

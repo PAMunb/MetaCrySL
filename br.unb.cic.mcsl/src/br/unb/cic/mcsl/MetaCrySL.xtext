@@ -40,7 +40,7 @@ ObjectSpec: {ObjectSpec} 'OBJECTS' ':' objects += Object+ ;
  * variable that can be used in the remaining 
  * sections of the specification. 
  */
-Object: {Object} type = JvmTypeReference varName = ID ';' ;
+Object: {Object} ((ObjectType = JvmTypeReference) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
 
 /* ForbiddenSpec */
 ForbiddenSpec: {ForbiddenSpec} 'FORBIDDEN' forbidenMethods += ForbiddenMethod+;

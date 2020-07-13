@@ -32,6 +32,19 @@ class MetaCrySLParsingTest extends MetaCrySLAbstractTests {
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
 	}
+
+	@Test
+	def void loadBasicModelWithTypeObject() {
+		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithTypeObject.cryptsl")
+		val result = super.parseHelper.parse(file)
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+		
+		val object = result.metaCrySL.objectSpec.getObjects().get(0)
+		Assert.assertEquals(object.objectName, "foo")
+		Assert.assertEquals(object.objectTypeParam, "T")
+	}
 	
 	@Test
 	def void loadBasicModel() {

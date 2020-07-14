@@ -158,6 +158,29 @@ PrimaryExp returns EventExp
 ConstraintSpec: {ConstraintSpec} 'CONSTRAINTS' constraints += ConstraintsExp;
  
 ConstraintsExp:
- 	varName = ID 'in' '{'constraints+=STRING (',' constraints+=STRING)* '}' ';'
+ 	exp = ConstraintDisjunction
  ;
+ 
+ ConstraintDisjunction:
+	ConstraintConjunction => ({ConstraintDisjunction.left = current} '||' right=ConstraintsExp)? 	
+ ;
+ 
+ ConstraintConjunction:
+ 	ConstraintImpliance => ({ConstraintConjunction.left = current} '&&' right=ConstraintsExp)?
+ ;
+ 
+ ConstraintImpliance:
+ 	PrimaryConstraintExp => ({ConstraintImpliance.left = current} '=>' right=ConstraintsExp)
+ ;
+ 
+ PrimaryConstraintExp:
+ 	var = ID
+ 	| varName = ID 'in' '{'constraints+=STRING (',' constraints+=STRING)* '}' ';'
+ ;
+
+ 
+ 
+ 
+ 
+ 
 

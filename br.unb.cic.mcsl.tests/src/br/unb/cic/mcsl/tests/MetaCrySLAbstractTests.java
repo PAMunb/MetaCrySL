@@ -7,7 +7,6 @@ import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.unb.cic.mcsl.MetaCrySLStandaloneSetup;

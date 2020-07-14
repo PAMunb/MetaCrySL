@@ -11,7 +11,7 @@ ORDER
    cs | (c1, c2)*    
    
 CONSTRAINTS
-	foo in {"bar", "woo"} => foo in {"bar", "woo"}
-	foo in {"bar", "woo"} && foo in {"bar", "woo"}
-	foo in {"bar", "woo"} || foo in {"bar", "woo"}
-	foo in {"bar", "woo"}
+	callTo(m);
+	noCallTo(n);
+	neverTypeOf(f, java.lang.String);
+	foo in { "abc", "def" }; 

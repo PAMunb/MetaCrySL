@@ -75,24 +75,10 @@ class MetaCrySLParsingTest extends MetaCrySLAbstractTests {
 	
 	@Test
 	def void loadBasicModelWithConstraintClause() {
-	var result = parseHelper.parse('''
-		ABSTRACT SPEC java.lang.String
-		OBJECTS:
-		   java.lang.String foo;
-		
-		EVENTS
-		   c1 : method1();
-		   c2 : method2(int, int);
-		   c3 : method2(_);
-		   cs := c1 | c2 ;
-		ORDER
-		   cs | (c1, c2)*    
-		   
-		CONSTRAINTS
-			foo in {"bar", "woo"};
-	''')
-	Assert.assertNotNull(result)
-	val errors = result.eResource.errors
-	Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithConstraintsClause.cryptsl")
+		var result = super.parseHelper.parse(file)
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
 	}
 }

@@ -1,5 +1,5 @@
 ABSTRACT SPEC java.lang.String
-OBJECTS:
+OBJECTS
    java.lang.String foo;
    java.lang.String transformation; 
 

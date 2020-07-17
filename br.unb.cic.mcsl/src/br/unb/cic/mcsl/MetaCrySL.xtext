@@ -22,8 +22,8 @@ Spec
  : 'ABSTRACT'? 'SPEC' className = JvmTypeReference
      objectSpec    = ObjectSpec
      (forbiddenSpec = ForbiddenSpec)? 
-     (eventSpec     = EventSpec)?  
-     (orderSpec     = OrderSpec)?
+     eventSpec     = EventSpec  
+     orderSpec     = OrderSpec
      (constraintSpec = ConstraintSpec)?
  ;
     
@@ -33,7 +33,7 @@ Spec
  * variables (names) used throughout the 
  * specification. 
  */    
-ObjectSpec: {ObjectSpec} 'OBJECTS' ':' objects += Object+ ;    
+ObjectSpec: {ObjectSpec} 'OBJECTS' objects += Object+ ;    
 
 /* Object rule
  * 

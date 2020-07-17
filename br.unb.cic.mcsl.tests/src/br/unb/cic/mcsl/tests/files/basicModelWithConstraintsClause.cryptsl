@@ -11,7 +11,10 @@ ORDER
    cs | (c1, c2)*    
    
 CONSTRAINTS
-	callTo[m];
-	noCallTo[n];
-	neverTypeOf[f, java.lang.String];
-	foo in { "abc", "def" }; 
+	callTo[m]
+	noCallTo[n]
+	neverTypeOf[f, java.lang.String]
+	foo in { "abc", "def" }
+	function(text) <= doo + foo
+	part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode == 1
+	part(1, "/", transformation) in {algorithm}

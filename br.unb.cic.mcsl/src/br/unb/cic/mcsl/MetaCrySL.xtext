@@ -158,36 +158,77 @@ PrimaryExp returns EventExp
 
 ConstraintSpec: {ConstraintSpec} 'CONSTRAINTS' constraints += ConstraintsExp+;
  
-ConstraintsExp: exp = ConstraintDisjunction ";" ;
+ConstraintsExp: exp = ConstraintDisjunction;
+
+ConstraintDisjunction
+: ConstraintConjunction => ({ConstraintDisjunction.left = current} '||' right=ConstraintsExp)?	
+;
  
- ConstraintDisjunction
-  : ConstraintConjunction => ({ConstraintDisjunction.left = current} '||' right=ConstraintsExp)?	
-  ;
- 
- ConstraintConjunction:
- 	ConstraintImpliance => ({ConstraintConjunction.left = current} '&&' right=ConstraintsExp)?
- ;
+ConstraintConjunction:
+ ConstraintLessOrEqualThan => ({ConstraintConjunction.left = current} '&&' right=ConstraintsExp)?
+;
+
+ConstraintLessOrEqualThan
+: ConstraintGreaterOrEqualThan => ({ConstraintLessOrEqualThan.left = current} '<=' right=ConstraintsExp)?
+;
+
+ConstraintGreaterOrEqualThan
+: ConstraintLessThan => ({ConstraintGreaterOrEqualThan.left = current} '>=' right=ConstraintsExp)?
+;
+
+ConstraintLessThan
+: ConstraintGreaterThan => ({ConstraintLessThan.left = current} '<' right=ConstraintsExp)?
+;
+
+ConstraintGreaterThan
+: ConstraintEqual => ({ConstraintGreaterThan.left = current} '>' right=ConstraintsExp)?
+;
+
+ConstraintEqual
+: ConstraintNotEqual => ({ConstraintEqual.left = current} '==' right=ConstraintsExp)?
+;
+
+ConstraintNotEqual
+: ConstraintSum => ({ConstraintNotEqual.left = current} '!=' right=ConstraintsExp)?
+;
+
+ConstraintSum
+: ConstraintSubtraction => ({ConstraintSum.left = current} '+' right=ConstraintsExp)?
+;
+
+ConstraintSubtraction
+: ConstraintImpliance => ({ConstraintSubtraction.left = current} '-' right=ConstraintsExp)?
+;
  
  ConstraintImpliance:
  	PrimaryConstraintExp => ({ConstraintImpliance.left = current} '=>' right=ConstraintsExp)?
  ;
  
  PrimaryConstraintExp
-  : {SimpleId} id = ID 
+  : {SimpleId} id = ID
+  | {FunctionCall} methodName=ID '(' params += Foo (',' params += Foo)* ')' 
   | {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = JvmTypeReference ']'
   | {NoCallTo} 'noCallTo' '[' method = ID ']'
   | {CallTo} 'callTo' '[' method = ID ']'
   | {NotHardCoded} 'notHardCoded' '[' var = ID "]"
   | {Length} 'length' '[' var = ID ']'
   | {InstanceOf} 'instanceOf' '[' var = ID ',' varType = JvmTypeReference ']'
-  |	{InSet} var = ID 'in' literalSet = LiteralSet
+  |	{InSet} var = LeftSide 'in' literalSet = LiteralSet
   ;
+  
+  
+ LeftSide
+   : {SimpleId} id = ID
+   | {FunctionCall} methodName=ID '(' params += Foo (',' params += Foo)* ')' 	
+ ;
 
  LiteralSet : '{' values += Foo (',' values += Foo)* '}';
+ 
  
  Foo 
   : {IntValue} value = NUMBER 
   | {StringValue} value = STRING	
+  | {id} value = ID
   ;
  
  terminal NUMBER : ('1' .. '9')('0'..'9')*;

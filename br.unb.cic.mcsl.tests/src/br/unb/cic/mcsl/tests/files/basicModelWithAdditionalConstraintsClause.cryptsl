@@ -13,11 +13,11 @@ ORDER
    
 CONSTRAINTS
     part(0, "/", transformation) in ${algorithm}; 	
-    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode != 1 => noCallTo(IWOIV) ;
-    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode == 1 => callTo(iv) ;     
+    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode != 1 => noCallTo[IWOIV] ;
+    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode == 1 => callTo[iv] ;     
     
     encmode in {1,2,3,4};
-    length(pre_plaintext) >= pre_plain_off + len;
-    length(pre_ciphertext) <= pre_ciphertext_off;
-    length(plainText) <= plain_off + len;
-    length(cipherText) <= ciphertext_off;
+    length[pre_plaintext] >= pre_plain_off + len;
+    length[pre_ciphertext] <= pre_ciphertext_off;
+    length[plainText] <= plain_off + len;
+    length[cipherText] <= ciphertext_off;

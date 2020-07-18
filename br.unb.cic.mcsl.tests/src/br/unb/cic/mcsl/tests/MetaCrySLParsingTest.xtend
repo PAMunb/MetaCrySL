@@ -75,7 +75,6 @@ class MetaCrySLParsingTest extends MetaCrySLAbstractTests {
 	}
 	
 	@Test
-	@Ignore
 	def void loadBasicModelWithAdditionalConstraintClause() {
 		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithAdditionalConstraintsClause.cryptsl")
 		var result = super.parseHelper.parse(file)

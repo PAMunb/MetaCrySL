@@ -156,80 +156,81 @@ PrimaryExp returns EventExp
  * and used as parameters or return values in the EVENTS section
 */
 
-ConstraintSpec: {ConstraintSpec} 'CONSTRAINTS' constraints += ConstraintsExp+;
+ConstraintSpec : {ConstraintSpec} 'CONSTRAINTS' constraints += Constraint+;
+
+Constraint : exp = ConstraintExp ';';
+
+ConstraintExp : BooleanExp
+; 
+
+/*
+ * The set of boolean expressions. I think that the precedence should
+ * be as follows. 
+ * 
+ * a || b && c => d  ==   (a || (b && c)) => d
+ * 
+ * That is, the precedence must be: (&&) has higher 
+ * precedence than (||) that has greater precedence than 
+ * (=>) 
+ */
  
-ConstraintsExp: exp = ConstraintDisjunction;
-
-ConstraintDisjunction
-: ConstraintConjunction => ({ConstraintDisjunction.left = current} '||' right=ConstraintsExp)?	
-;
- 
-ConstraintConjunction:
- ConstraintLessOrEqualThan => ({ConstraintConjunction.left = current} '&&' right=ConstraintsExp)?
-;
-
-ConstraintLessOrEqualThan
-: ConstraintGreaterOrEqualThan => ({ConstraintLessOrEqualThan.left = current} '<=' right=ConstraintsExp)?
-;
-
-ConstraintGreaterOrEqualThan
-: ConstraintLessThan => ({ConstraintGreaterOrEqualThan.left = current} '>=' right=ConstraintsExp)?
-;
-
-ConstraintLessThan
-: ConstraintGreaterThan => ({ConstraintLessThan.left = current} '<' right=ConstraintsExp)?
-;
-
-ConstraintGreaterThan
-: ConstraintEqual => ({ConstraintGreaterThan.left = current} '>' right=ConstraintsExp)?
-;
-
-ConstraintEqual
-: ConstraintNotEqual => ({ConstraintEqual.left = current} '==' right=ConstraintsExp)?
-;
-
-ConstraintNotEqual
-: ConstraintSum => ({ConstraintNotEqual.left = current} '!=' right=ConstraintsExp)?
-;
-
-ConstraintSum
-: ConstraintSubtraction => ({ConstraintSum.left = current} '+' right=ConstraintsExp)?
-;
-
-ConstraintSubtraction
-: ConstraintImpliance => ({ConstraintSubtraction.left = current} '-' right=ConstraintsExp)?
-;
- 
- ConstraintImpliance:
- 	PrimaryConstraintExp => ({ConstraintImpliance.left = current} '=>' right=ConstraintsExp)?
+BooleanExp : exp = ImpliesExp;
+  
+ImpliesExp returns ConstraintExp
+ : DisjunctionExp ({ImpliesExp.left = current} '=>' right = ConstraintExp)* 
  ;
- 
- PrimaryConstraintExp
-  : {SimpleId} id = ID
-  | {FunctionCall} methodName=ID '(' params += Foo (',' params += Foo)* ')' 
-  | {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = JvmTypeReference ']'
+
+DisjunctionExp returns ConstraintExp
+ : ConjunctionExp ({DisjunctionExp.left = current} '||' right = ConstraintExp)*
+ ; 
+
+ConjunctionExp returns ConstraintExp
+ : RelationalExp ({ConjunctionExp.left = current} '&&' right = ConstraintExp)*
+ ;
+
+
+/*  
+ * The relational expressions. They all have the same priority.  
+ */
+RelationalExp returns ConstraintExp
+ : ArithmeticExp ({RelationalExp.left = current} opr = ('<' | '>' | '<=' | '>=' | '==' | '!=') right = ConstraintExp)*
+ ;
+
+/* The arithmetic expressions. They all have the same priority */
+ArithmeticExp 
+ : BasicExp ({ArithmeticExp.left = current} oper = ('+' | '-') right = ConstraintExp)*
+ ;
+
+ BasicExp
+  : {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = JvmTypeReference ']'
   | {NoCallTo} 'noCallTo' '[' method = ID ']'
   | {CallTo} 'callTo' '[' method = ID ']'
   | {NotHardCoded} 'notHardCoded' '[' var = ID "]"
   | {Length} 'length' '[' var = ID ']'
   | {InstanceOf} 'instanceOf' '[' var = ID ',' varType = JvmTypeReference ']'
-  |	{InSet} var = LeftSide 'in' literalSet = LiteralSet
+  |	{InSet} left = AtomicConstraintExp 'in' literalSet = LiteralSet
+  | {AtomicConstraint} exp = AtomicConstraintExp
   ;
-  
-  
- LeftSide
-   : {SimpleId} id = ID
-   | {FunctionCall} methodName=ID '(' params += Foo (',' params += Foo)* ')' 	
- ;
-
- LiteralSet : '{' values += Foo (',' values += Foo)* '}';
  
+AtomicConstraintExp 
+ : {Value} val = Value
+ | {Variable} var = ID
+ | '(' ConstraintExp ')'
+ | {FunctionCall} methodName=ID '(' params += Value (',' params += Value)* ')' 
+ ;  
+  
+ LiteralSet 
+  : {LiteralSet} set = '{' values += Value (',' values += Value)* '}'
+  | {MetaVariable} var = MetaVariable	
+  ;
  
- Foo 
+ MetaVariable : '${' ID '}';
+ 
+ Value 
   : {IntValue} value = NUMBER 
   | {StringValue} value = STRING	
   | {id} value = ID
   ;
  
- terminal NUMBER : ('1' .. '9')('0'..'9')*;
+ terminal NUMBER : ('0'..'9')*;
 

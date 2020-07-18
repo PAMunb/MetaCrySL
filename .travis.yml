@@ -2,7 +2,13 @@ language: java
 
 matrix:
   fast_finish: true
-
+  include:
+    - os: linux
+      dist: xenial
+      jdk: openjdk11
+      services:
+      - xvfb
+      
 cache:
   directories:
     - '$HOME/.m2'

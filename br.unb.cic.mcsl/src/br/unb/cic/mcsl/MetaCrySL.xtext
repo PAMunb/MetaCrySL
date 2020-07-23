@@ -215,8 +215,9 @@ ArithmeticExp
 AtomicConstraintExp 
  : {Value} val = Value
  | {Variable} var = ID
+ | {ElementsCall} el ="elements(" var = ID ")" 
  | '(' ConstraintExp ')'
- | {FunctionCall} methodName=ID '(' params += Value (',' params += Value)* ')' 
+ | {FunctionCall} ("alg" | "mode" | "pad" | "part") '(' params += Value (',' params += Value)* ')' 
  ;  
   
  LiteralSet 

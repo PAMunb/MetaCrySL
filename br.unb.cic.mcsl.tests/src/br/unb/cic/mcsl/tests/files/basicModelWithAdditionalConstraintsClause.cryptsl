@@ -2,6 +2,7 @@ ABSTRACT SPEC java.lang.String
 OBJECTS
    java.lang.String foo;
    java.lang.String transformation; 
+	java.lang.String[] protocols;   
 
 EVENTS
    c1 : method1();
@@ -13,8 +14,9 @@ ORDER
    
 CONSTRAINTS
     part(0, "/", transformation) in ${algorithm}; 	
-    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode != 1 => noCallTo[IWOIV] ;
-    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode == 1 => callTo[iv] ;     
+    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode != 1 => noCallTo[IWOIV];
+    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode == 1 => callTo[iv];
+    elements(protocols) in {"TLSv1.2"};         
     
     encmode in {1,2,3,4};
     length[pre_plaintext] >= pre_plain_off + len;

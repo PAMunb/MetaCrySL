@@ -3,7 +3,5 @@
 **/*.class
 /plugin.xml_gen
 /bin
-xtend-gen/*
-src-gen/*
 **/*.xtendbin
 

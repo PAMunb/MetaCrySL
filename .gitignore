@@ -1,6 +1,5 @@
 **/target/
 .settings/
 **/*.class
-**/src-gen/
 **/generated/
 **/.metadata/

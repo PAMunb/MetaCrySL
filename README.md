@@ -13,7 +13,7 @@ The original MetaCrySL implementation was developed in Rascal, this one tries to
 * XText
 * Eclipse
 
-### Instructions to develop in Eclipse
+### Instructions to develop MetaCrySL in Eclipse
 
 1. Import the MetaCrySL project
 2. Add an XText nature to the MetaCrySL project (if not already configured).

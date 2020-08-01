@@ -26,7 +26,7 @@ The original MetaCrySL implementation was developed in Rascal, this one tries to
 1. Execute all steps in section "Instructions to develop in Eclipse".
 2. Right click on the **br.unb.cic.mcsl** project and navigate to Run As | Run Configurations...; in the dialog, select Eclipse Application. A new Eclipse instance will be run and a new workbench will appear. 
 4. Select the perspective with Window | Perspective | Open Perspective | Plug-in Development.
-5. Create a new project with File | New | Project... | General | Project.
+5. Create a new project with File | New | Project... | Java Project.
 6. Create a new file with extension **"*.mcsl"**. 
 7. Have fun!
 

@@ -1,9 +1,6 @@
 grammar br.unb.cic.mcsl.MetaCrySL with org.eclipse.xtext.xbase.Xtype
 
-
-
 generate metaCrySL "http://www.unb.br/cic/mcsl/MetaCrySL"
-
 
 Model:
 	metaCrySL = Spec;
@@ -25,6 +22,7 @@ Spec
      eventSpec     = EventSpec  
      orderSpec     = OrderSpec
      (constraintSpec = ConstraintSpec)?
+     (requireSpec = RequireSpec)?     
  ;
     
 /* ObjectSpec rule
@@ -92,16 +90,14 @@ MethodDef: methodName = ID '(' (args ?= FormalArgs?) ')' ;
  * 
  * Represents a list of formal arguments. 
  */
-FormalArgs: args += [FormalArg] (',' args += [FormalArg])* ;
+FormalArgs: args += FormalArg (',' args += FormalArg)* ;
 
 /* FormalArg rule
  * 
  * It should accept a wild card ('_') or something like 'int x'  
  */
-FormalArg 
- : {Wildcard} '_'
- | {Formal} (argument = JvmArgumentTypeReference)	 
- ;
+FormalArg: 
+	({Wildcard} '_' | {Formal} (argument = JvmArgumentTypeReference));
  
 
 /* OrderSpec rule
@@ -139,8 +135,7 @@ EventExp
  ;
 
 ChoiceExp returns EventExp
- : SequenceExp => ({ChoiceExp.left = current}'|' right = SequenceExp)* 	
- ;
+ : SequenceExp => ({ChoiceExp.left = current}'|' right = SequenceExp)*;
  
 SequenceExp returns EventExp
  : PrimaryExp => ({SequenceExp.left = current} ',' right = PrimaryExp)*;
@@ -160,8 +155,7 @@ ConstraintSpec : {ConstraintSpec} 'CONSTRAINTS' constraints += Constraint+;
 
 Constraint : exp = ConstraintExp ';';
 
-ConstraintExp : BooleanExp
-; 
+ConstraintExp : BooleanExp; 
 
 /*
  * The set of boolean expressions. I think that the precedence should
@@ -177,29 +171,23 @@ ConstraintExp : BooleanExp
 BooleanExp : exp = ImpliesExp;
   
 ImpliesExp returns ConstraintExp
- : DisjunctionExp ({ImpliesExp.left = current} '=>' right = ConstraintExp)* 
- ;
+ : DisjunctionExp ({ImpliesExp.left = current} '=>' right = DisjunctionExp)*;
 
 DisjunctionExp returns ConstraintExp
- : ConjunctionExp ({DisjunctionExp.left = current} '||' right = ConstraintExp)*
- ; 
+ : ConjunctionExp ({DisjunctionExp.left = current} '||' right = ConjunctionExp)*;
 
 ConjunctionExp returns ConstraintExp
- : RelationalExp ({ConjunctionExp.left = current} '&&' right = ConstraintExp)*
- ;
-
+ : RelationalExp ({ConjunctionExp.left = current} '&&' right = RelationalExp)*;
 
 /*  
  * The relational expressions. They all have the same priority.  
  */
 RelationalExp returns ConstraintExp
- : ArithmeticExp ({RelationalExp.left = current} opr = ('<' | '>' | '<=' | '>=' | '==' | '!=') right = ConstraintExp)*
- ;
+ : ArithmeticExp ({RelationalExp.left = current} operator = ('<' | '>' | '<=' | '>=' | '==' | '!=') right = ArithmeticExp)*;
 
 /* The arithmetic expressions. They all have the same priority */
 ArithmeticExp 
- : BasicExp ({ArithmeticExp.left = current} oper = ('+' | '-') right = ConstraintExp)*
- ;
+ : BasicExp ({ArithmeticExp.left = current} operator = ('+' | '-') right = BasicExp)*;
 
  BasicExp
   : {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = JvmTypeReference ']'
@@ -231,6 +219,28 @@ AtomicConstraintExp
   | {StringValue} value = STRING	
   | {id} value = ID
   ;
+
+// REQUIRE
+RequireSpec : {RequireSpec} 'REQUIRES' requires += Predicate+;
+
+Predicate : exp = PredicateExp ';';
+
+PredicateExp: PredicateOr;
+
+PredicateOr returns PredicateExp 
+	: AtomicPredicate ({PredicateOr.leftExpression = current} '||' right = AtomicPredicate)*;
+
+AtomicPredicate: 
+	(cons = (ConstraintExp | Pred) "=>")? (not = '!')? pred = Pred;
+	
+Pred:
+	name = ID '[' (parans = PredParans) ']';
+	
+PredParans:
+	(parameters += ParamType (',' parameters += ParamType)*);
+
+ParamType:
+	{ParanType} (val = Value | '_' | 'this'); 
  
  terminal NUMBER : ('0'..'9')*;
 

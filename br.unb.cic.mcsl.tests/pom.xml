@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -9,8 +10,33 @@
 	<artifactId>br.unb.cic.mcsl.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<dependencies>
+		<dependency>
+			<groupId>br.unb.cic</groupId>
+			<artifactId>MCSLTestGeneration</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>br.unb.cic</groupId>
+				<artifactId>MCSLTestGeneration</artifactId>
+				<version>0.0.1</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<configuration>
+							<inputDirectory>${project.basedir}/src/br/unb/cic/mcsl/tests/files/</inputDirectory>
+							<outputDirectory>${project.basedir}/src</outputDirectory>
+						</configuration>
+						<goals>
+							<goal>gentest</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>

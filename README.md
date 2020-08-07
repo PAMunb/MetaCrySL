@@ -16,8 +16,7 @@ The original MetaCrySL implementation was developed in Rascal, this one tries to
 ### Installation Procedure
 
 1. Clone the repository and submodules: git clone --recursive https://github.com/PAMunb/MetaCrySL.git
-2. Run maven: mvn -U clean package
-3. 
+2. Run maven: mvn -U clean install
 
 ### Instructions to develop MetaCrySL in Eclipse
 

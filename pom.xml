@@ -21,6 +21,7 @@
 		<additionalTestArguments></additionalTestArguments>
 	</properties>
 	<modules>
+		<module>br.unb.cic.mcsl.gen-tests</module>	
 		<module>br.unb.cic.mcsl</module>
 		<module>br.unb.cic.mcsl.ide</module>
 		<module>br.unb.cic.mcsl.ui</module>

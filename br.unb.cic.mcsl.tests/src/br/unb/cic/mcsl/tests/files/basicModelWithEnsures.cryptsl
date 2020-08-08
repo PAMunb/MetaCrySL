@@ -1,0 +1,23 @@
+ABSTRACT SPEC java.lang.String
+OBJECTS
+	java.lang.String foo;
+	
+EVENTS
+	c1 : method1();
+	c2 : method2(int, int);
+	c3 : method2(_);
+	cs := c1 | c2 ; 
+ORDER
+	cs
+REQUIRES
+	generatedKeyParameter[foo];
+	generatedKeyParameter[foo,foo];
+	generatedKeyParameter[foo,_,this];
+	generatedKeyParameter[_];
+    preparedAlg[foo, _];	
+	generatedRSAKeyParameters[foo] || generatedRSAPrivateCrtKeyParameters[foo] || generatedECPublicKeyParameters[foo];
+	!macced[_, foo];
+    keyPairAlgorithm in {"RSA"} => preparedRSA[foo];
+ENSURES
+	generatedRSAKeyPair[this] after co;
+	macced[output];	

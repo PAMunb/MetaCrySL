@@ -18,11 +18,12 @@ Model:
 Spec
  : 'ABSTRACT'? 'SPEC' className = JvmTypeReference
      objectSpec    = ObjectSpec
-     (forbiddenSpec = ForbiddenSpec)? 
-     eventSpec     = EventSpec  
+     (forbiddenSpec = ForbiddenSpec)?
+     eventSpec     = EventSpec
      orderSpec     = OrderSpec
      (constraintSpec = ConstraintSpec)?
-     (requireSpec = RequireSpec)?     
+     (requireSpec = RequireSpec)?
+     (ensureSpec = EnsureSpec)?
  ;
     
 /* ObjectSpec rule
@@ -221,11 +222,9 @@ AtomicConstraintExp
   ;
 
 // REQUIRE
-RequireSpec : {RequireSpec} 'REQUIRES' requires += Predicate+;
+RequireSpec : {RequireSpec} 'REQUIRES' requires += RequirePredicate+;
 
-Predicate : exp = PredicateExp ';';
-
-PredicateExp: PredicateOr;
+RequirePredicate : exp = PredicateOr ';';
 
 PredicateOr returns PredicateExp 
 	: AtomicPredicate ({PredicateOr.leftExpression = current} '||' right = AtomicPredicate)*;
@@ -240,7 +239,13 @@ PredParans:
 	(parameters += ParamType (',' parameters += ParamType)*);
 
 ParamType:
-	{ParanType} (val = Value | '_' | 'this'); 
+	{ParamType} (val = Value | '_' | 'this'); 
+
+// ENSURE
+EnsureSpec : {EnsureSpec} 'ENSURES' ensures += EnsurePredicate+;
+
+EnsurePredicate:
+	predicate = AtomicPredicate ('after' label = ID)? ';';
  
  terminal NUMBER : ('0'..'9')*;
 

@@ -3,7 +3,7 @@ grammar br.unb.cic.mcsl.MetaCrySL with org.eclipse.xtext.xbase.Xtype
 generate metaCrySL "http://www.unb.br/cic/mcsl/MetaCrySL"
 
 Model:
-	metaCrySL = Spec;
+	metaCrySL = Spec | Refinement ;
 
 /* Spec rule 
  * 
@@ -248,4 +248,21 @@ EnsurePredicate:
 	predicate = AtomicPredicate ('after' label = ID)? ';';
  
  terminal NUMBER : ('0'..'9')*;
+ 
+ /* Refinement rule 
+ * 
+ * We can also specify refinements in MetaCrySL. 
+ */	
+ 
+Refinement
+  : "SPEC" name = ID "REFINES" type = JvmTypeReference "{" refinements += RefinementOpr+ "}"; 
+  
+RefinementOpr 
+  : {Rename} "rename" "spec" type = JvmTypeReference ";"
+  | {AddEvent} "add" "event" event = Event ";"
+  | {AddConstraint} "add" "constraint" contraint = ConstraintExp ";"
+  | {AddRequie} "add" "require" require = RequirePredicate ";"
+  | {AddEnsure} "add" "ensure" ensure = EnsurePredicate ";"
+  | {DefineLiteralSet} "define" var = ID "=" set = LiteralSet ";"  	
+  ;  
 

@@ -7,4 +7,4 @@ EVENTS
 	c3 : method2(_);
 	cs := c1 | c2 ;
 ORDER
-	cs | (c1, c2)*    
+	c1, c2?, c3*	

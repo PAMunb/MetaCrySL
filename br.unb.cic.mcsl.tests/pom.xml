@@ -28,7 +28,7 @@
 						<execution>
 							<phase>generate-sources</phase>
 							<configuration>
-								<inputDirectory>${project.basedir}/src/br/unb/cic/mcsl/tests/files/</inputDirectory>
+								<inputDirectory>${project.basedir}/test-resources/cryptsl-files</inputDirectory>
 								<outputDirectory>${project.basedir}/src-gen</outputDirectory>
 							</configuration>
 							<goals>

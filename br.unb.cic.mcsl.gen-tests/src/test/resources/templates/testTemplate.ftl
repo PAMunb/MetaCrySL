@@ -6,14 +6,20 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.Ignore
+import java.nio.file.Paths
+import java.nio.file.Files
+
 
 @RunWith(XtextRunner)
 @InjectWith(MetaCrySLInjectorProvider)
-class MetaCrySLParsingTest extends MetaCrySLAbstractTests {
+class GeneratedMetaCrySLParsingTest extends MetaCrySLAbstractTests {
 	<#list rules as rule>
 	@Test
 	def void ${rule.name}() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "${rule.fileName}")
+		val path = Paths.get("${rule.path}" + "/" + "${rule.fileName}")
+		val content = String.join("\n", Files.readAllLines(path))
+		
+		val result = super.parseHelper.parse(content)
 		
 		val result = super.parseHelper.parse(file)
 		Assert.assertNotNull(result)

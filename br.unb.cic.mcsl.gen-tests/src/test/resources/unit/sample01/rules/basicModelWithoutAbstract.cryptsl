@@ -1,0 +1,8 @@
+SPEC java.lang.String
+OBJECTS
+	java.lang.String foo;
+EVENTS
+	c1: String(x);
+ORDER
+	c1
+	

@@ -3,91 +3,23 @@
  */
 package br.unb.cic.mcsl.tests
 
+import br.unb.cic.mcsl.metaCrySL.Model
+import com.google.inject.Inject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Assert
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
 @InjectWith(MetaCrySLInjectorProvider)
-class MetaCrySLParsingTest extends MetaCrySLAbstractTests {
-
-
-	@Test
-	def void loadOnlySpecModelWithoutAbstract() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithoutAbstract.cryptsl")
-		
-		val result = super.parseHelper.parse(file)
-		Assert.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
-	}
-
-	@Test
-	def void loadBasicModelWithTypeObject() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithTypeObject.cryptsl")
-		val result = super.parseHelper.parse(file)
-		Assert.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
-		
-		val object = result.metaCrySL.objectSpec.getObjects().get(0)
-		Assert.assertEquals(object.objectName, "foo")
-		Assert.assertEquals(object.objectTypeParam, "T")
-	}
+class MetaCrySLParsingTest {
+	@Inject
+	ParseHelper<Model> parseHelper
 	
 	@Test
-	def void loadBasicModel() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModel.cryptsl")
-		val result = super.parseHelper.parse(file)
-		Assert.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	def void loadModel() {
+		Assert.assertTrue(true)
 	}
-	
-	@Test
-	def void loadBasicModelWithOrderClause() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithOrderClause.cryptsl")
-		val result = super.parseHelper.parse(file)		
-		Assert.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
-	}
-	
-	@Test
-	def void loadBasicModelWithForbiddenClause() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithForbiddenClause.cryptsl")
-		val result = super.parseHelper.parse(file)		
-		Assert.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
-	}
-	
-	@Test
-	def void loadBasicModelWithConstraintClause() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithConstraintsClause.cryptsl")
-		var result = super.parseHelper.parse(file)
-		Assert.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
-	}
-	
-	@Test
-	def void loadBasicModelWithAdditionalConstraintClause() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithAdditionalConstraintsClause.cryptsl")
-		var result = super.parseHelper.parse(file)
-		Assert.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
-	}
-	@Test
-	def void loadBasicModelWithRequires() {
-		val file = super.readFileIntoString(BR_UNB_CIC_METACRYSL_TESTS_FILES + "basicModelWithRequires.cryptsl")
-		var result = super.parseHelper.parse(file)
-		Assert.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
-	}	
 }

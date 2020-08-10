@@ -13,35 +13,35 @@
 	<dependencies>
 		<dependency>
 			<groupId>br.unb.cic</groupId>
-			<artifactId>MCSLTestGeneration</artifactId>
-			<version>0.0.1</version>
+			<artifactId>br.unb.cic.mcsl.gen-tests</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>br.unb.cic</groupId>
-				<artifactId>MCSLTestGeneration</artifactId>
-				<version>0.0.1</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<configuration>
-							<inputDirectory>${project.basedir}/src/br/unb/cic/mcsl/tests/files/</inputDirectory>
-							<outputDirectory>${project.basedir}/src</outputDirectory>
-						</configuration>
-						<goals>
-							<goal>gentest</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+			<plugins>
+				<plugin>
+					<groupId>br.unb.cic</groupId>
+					<artifactId>br.unb.cic.mcsl.gen-tests</artifactId>
+					<version>1.0.0-SNAPSHOT</version>
+					<executions>
+						<execution>
+							<phase>generate-sources</phase>
+							<configuration>
+								<inputDirectory>${project.basedir}/src/br/unb/cic/mcsl/tests/files/</inputDirectory>
+								<outputDirectory>${project.basedir}/src-gen</outputDirectory>
+							</configuration>
+							<goals>
+								<goal>gentest</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
 	</build>
 
 </project>

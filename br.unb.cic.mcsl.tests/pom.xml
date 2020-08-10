@@ -19,7 +19,6 @@
 	</dependencies>
 
 	<build>
-		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>br.unb.cic</groupId>
@@ -43,7 +42,6 @@
 					<artifactId>xtend-maven-plugin</artifactId>
 				</plugin>
 			</plugins>
-		</pluginManagement>
 	</build>
 
 </project>

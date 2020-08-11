@@ -3,10 +3,19 @@
  */
 package br.unb.cic.mcsl.generator
 
+import br.unb.cic.mcsl.MetaCrySLStandaloneSetup
+import br.unb.cic.mcsl.metaCrySL.Configuration
+import br.unb.cic.mcsl.metaCrySL.Model
+import com.google.inject.Inject
+import java.io.FileReader
+import java.nio.file.Files
+import java.nio.file.Paths
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eclipse.xtext.parser.IParseResult
+import org.eclipse.xtext.parser.IParser
 
 /**
  * Generates code from your model files on save.
@@ -15,6 +24,9 @@ import org.eclipse.xtext.generator.IGeneratorContext
  */
 class MetaCrySLGenerator extends AbstractGenerator {
 
+	@Inject
+	private IParser parser; 
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
@@ -22,4 +34,46 @@ class MetaCrySLGenerator extends AbstractGenerator {
 //				.map[name]
 //				.join(', '))
 	}
+	
+	
+	def void generateCode(String configuration) {
+		val config = parseConfiguration(configuration)
+		val src = config.inputDir
+		
+		val modules = config.modules
+		
+		for(m: modules) {
+			println(src + m.module)
+			
+			// TODO: parse each module in src + "/" + m.module
+			// check if the parsed value is a specification or a 
+			// refinement. 
+			// populate two distinct lists. one list with the 
+			// specification, and another list with the refinements. 
+		}	
+		
+		// TODO: call the generator procedure
+	}
+	
+	protected def Configuration parseConfiguration(String configuration) {
+		val path = Paths.get(configuration)
+		
+		if(!Files.exists(path)) {
+			throw new RuntimeException("The configuration file does not exist " + path)
+		}
+		
+		setupParser()
+		
+		val result = parser.parse(new FileReader(configuration))
+		
+		if(result.syntaxErrors.size > 0) {
+			throw new RuntimeException("Parser error: " + result.syntaxErrors)
+		}
+		(result.rootASTElement as Configuration).configuration
+	}
+	
+	def void setupParser() {
+        val injector = new MetaCrySLStandaloneSetup().createInjectorAndDoEMFRegistration()
+        injector.injectMembers(this)
+    }
 }

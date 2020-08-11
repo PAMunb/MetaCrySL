@@ -2,8 +2,11 @@ grammar br.unb.cic.mcsl.MetaCrySL with org.eclipse.xtext.xbase.Xtype
 
 generate metaCrySL "http://www.unb.br/cic/mcsl/MetaCrySL"
 
-Model:
-	metaCrySL = Spec | Refinement;
+Model
+ : {MetaCrySL} spec = Spec 
+ | {Refinement} refinement = Refinement 
+ | {Configuration} configuration = Configuration 
+ ;
 
 /* Spec rule 
  * 
@@ -247,7 +250,6 @@ EnsureSpec : {EnsureSpec} 'ENSURES' ensures += EnsurePredicate+;
 EnsurePredicate:
 	predicate = AtomicPredicate ('after' label = ID)? ';';
  
- terminal NUMBER : ('0'..'9')*;
  
 /* Refinement rule 
  * 
@@ -266,5 +268,15 @@ Refinement
   | {AddEnsure} "add" "ensure" ensure = EnsurePredicate ";"
   | {DefineLiteralSet} "define" var = ID "=" set = LiteralSet ";"  	
   ;  
- 
 
+Configuration 
+  : "CONFIG" config = ID "{" 
+  	  'inputDir'  '=' inputDir  = STRING ";" 
+  	  'outputDir'  '=' outputDir  = STRING ";" 
+  	  modules += LoadModule+
+  "}";
+ 
+LoadModule
+ :  "load" module = STRING ";" ;
+
+terminal NUMBER : ('0'..'9')*;

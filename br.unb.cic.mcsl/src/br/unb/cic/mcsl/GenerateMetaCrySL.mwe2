@@ -32,7 +32,7 @@ Workflow {
 		}
 		language = StandardLanguage {
 			name = "br.unb.cic.mcsl.MetaCrySL"
-			fileExtensions = "mcsl"
+			fileExtensions = "mcsl,ref,config"
 
 			serializer = {
 				generateStub = false

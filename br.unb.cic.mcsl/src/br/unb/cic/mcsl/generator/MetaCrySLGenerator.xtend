@@ -16,6 +16,11 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eclipse.xtext.parser.IParseResult
 import org.eclipse.xtext.parser.IParser
+import br.unb.cic.mcsl.metaCrySL.Refinement
+import br.unb.cic.mcsl.metaCrySL.Spec
+import java.util.HashMap;
+import java.util.ArrayList
+import java.util.Optional
 
 /**
  * Generates code from your model files on save.
@@ -25,7 +30,12 @@ import org.eclipse.xtext.parser.IParser
 class MetaCrySLGenerator extends AbstractGenerator {
 
 	@Inject
-	private IParser parser; 
+	private IParser parser;
+	
+	// hashmap to associate each SPEC to a merged set of refinements
+	private HashMap<String, ArrayList<String>> specRefs = new HashMap<String, ArrayList<String>>
+	// list with all refs to be parsed
+	private ArrayList<String> refs = new ArrayList<String>
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
@@ -33,6 +43,16 @@ class MetaCrySLGenerator extends AbstractGenerator {
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
+	}
+	
+	def void mergeRefinements() {
+		// TODO: receives a list of refinements modules and returns one module with all merged
+	}
+	
+	def Optional<String> getExtensionByStringHandling(String filename) {
+	    return Optional.ofNullable(filename)
+	      .filter(f | f.contains("."))
+	      .map(f | f.substring(filename.lastIndexOf(".") + 1));
 	}
 	
 	
@@ -43,14 +63,32 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		val modules = config.modules
 		
 		for(m: modules) {
-			println(src + m.module)
+			// println(src + m.module)
 			
-			// TODO: parse each module in src + "/" + m.module
-			// check if the parsed value is a specification or a 
-			// refinement. 
-			// populate two distinct lists. one list with the 
-			// specification, and another list with the refinements. 
-		}	
+			// get all files with .cryptsl and add to HashMap with empty list
+			if(getExtensionByStringHandling(m.module).get() == 'cryptsl') {
+				println(getExtensionByStringHandling(m.module).get())
+				
+				specRefs.put(m.module, new ArrayList<String>)
+				println("Initialize a new specRefs entry with a empty set")
+			}
+			else if(getExtensionByStringHandling(m.module).get() == 'ref') {
+				// append to list of refs
+				refs.add(m.module)
+			}
+			
+			// iterate over specRefs
+			for(String key: specRefs.keySet()) {
+				// TODO: parse key (with is the SPEC)
+				refs.forEach(ref |
+					// TODO: parse each ref. If it's equal to current spec class, append to it and remove from refs
+					println(ref)
+				)
+			}
+			
+		}
+		println(specRefs)
+		println(refs)
 		
 		// TODO: call the generator procedure
 	}
@@ -70,6 +108,14 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			throw new RuntimeException("Parser error: " + result.syntaxErrors)
 		}
 		(result.rootASTElement as Configuration).configuration
+	}
+	
+	protected def Refinement parseRefinement(String refinement) {
+		// TODO: implement parser for refinement files
+	}
+	
+	protected def Spec parseSpec(String spec) {
+		// TODO: implement parser for spec rules
 	}
 	
 	def void setupParser() {

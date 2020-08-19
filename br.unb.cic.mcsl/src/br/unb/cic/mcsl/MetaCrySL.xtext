@@ -27,6 +27,7 @@ Spec
      (constraintSpec = ConstraintSpec)?
      (requireSpec = RequireSpec)?
      (ensureSpec = EnsureSpec)?
+     (negateSpec = NegateSpec)?     
  ;
     
 /* ObjectSpec rule
@@ -224,7 +225,9 @@ AtomicConstraintExp
   | {id} value = ID
   ;
 
-// REQUIRE
+/* RequireSpec rule
+ * 
+*/
 RequireSpec : {RequireSpec} 'REQUIRES' requires += RequirePredicate+;
 
 RequirePredicate : exp = PredicateOr ';';
@@ -244,13 +247,20 @@ PredParans:
 ParamType:
 	{ParamType} (val = Value | '_' | 'this'); 
 
-// ENSURE
+/* EnsureSpec rule
+ * 
+*/
 EnsureSpec : {EnsureSpec} 'ENSURES' ensures += EnsurePredicate+;
 
 EnsurePredicate:
 	predicate = AtomicPredicate ('after' label = ID)? ';';
+
+/* NegatesSpec rule
+ * 
+*/
+NegateSpec : {NegateSpec} 'NEGATES' negates += EnsurePredicate+;
  
- 
+
 /* Refinement rule 
  * 
  * We can also specify refinements in MetaCrySL. 

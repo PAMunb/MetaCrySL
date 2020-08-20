@@ -2,6 +2,6 @@ CONFIG ANDROID {
   inputDir  = "/MetaCrySL/Android/spec/" ; 
   outputDir = "/MetaCrySL/Android/spec/target/" ;
   
-  load "Cypher.cryptsl"  ;
-  load "0110.ref"  ;
+  load "basicModel.cryptsl"  ;
+  load "basicRefinement.cryptsl"  ;
 }

@@ -57,13 +57,14 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	
 	
 	def void generateCode(String configuration) {
+		println(configuration)
 		val config = parseConfiguration(configuration)
 		val src = config.inputDir
 		
 		val modules = config.modules
 		
 		for(m: modules) {
-			// println(src + m.module)
+			println(src + m.module)
 			
 			// get all files with .cryptsl and add to HashMap with empty list
 			if(getExtensionByStringHandling(m.module).get() == 'cryptsl') {
@@ -75,17 +76,18 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			else if(getExtensionByStringHandling(m.module).get() == 'ref') {
 				// append to list of refs
 				refs.add(m.module)
-			}
-			
+			}			
+		}
 			// iterate over specRefs
-			for(String key: specRefs.keySet()) {
-				// TODO: parse key (with is the SPEC)
-				refs.forEach(ref |
-					// TODO: parse each ref. If it's equal to current spec class, append to it and remove from refs
-					println(ref)
-				)
-			}
-			
+		for(String key: specRefs.keySet()) {
+			val spec = parseSpec(src + key)
+			println('parsed SPECs')
+			println(spec)
+			// TODO: parse key (with is the SPEC)
+			refs.forEach(ref |
+				// TODO: parse each ref. If it's equal to current spec class, append to it and remove from refs
+				println(ref)
+			)
 		}
 		println(specRefs)
 		println(refs)
@@ -116,6 +118,20 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	
 	protected def Spec parseSpec(String spec) {
 		// TODO: implement parser for spec rules
+		val path = Paths.get(spec)
+		
+		if(!Files.exists(path)) {
+			throw new RuntimeException("The spec file does not exist " + path)
+		}
+		
+		setupParser()
+		
+		val result = parser.parse(new FileReader(spec))
+		
+		if(result.syntaxErrors.size > 0) {
+			throw new RuntimeException("Parser error: " + result.syntaxErrors)
+		}
+		(result.rootASTElement as Spec)
 	}
 	
 	def void setupParser() {

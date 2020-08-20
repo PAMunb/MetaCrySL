@@ -11,7 +11,7 @@ class MetaCrySLGeneratorTest {
 	
 	@Test
 	def void loadModel() {
-		val config = URI.createURI("./test-resources/cryptsl-files/basicConfig.cryptsl").path
+		val config = URI.createURI("./test-resources/cryptsl-files/basicConfig.config").path
 		val generator = new MetaCrySLGenerator
 		generator.generateCode(config)
 	}

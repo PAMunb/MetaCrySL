@@ -66,8 +66,8 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		for(m: modules) {
 			println(src + m.module)
 			
-			// get all files with .cryptsl and add to HashMap with empty list
-			if(getExtensionByStringHandling(m.module).get() == 'cryptsl') {
+			// get all files with .mcsl and add to HashMap with empty list
+			if(getExtensionByStringHandling(m.module).get() == 'mcsl') {
 				println(getExtensionByStringHandling(m.module).get())
 				
 				specRefs.put(m.module, new ArrayList<String>)

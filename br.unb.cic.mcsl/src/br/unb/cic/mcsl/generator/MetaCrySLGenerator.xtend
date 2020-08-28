@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.ArrayList
 import java.util.Optional
 import org.eclipse.emf.ecore.EObject
+import br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLImpl
+import br.unb.cic.mcsl.metaCrySL.MetaCrySL
 
 /**
  * Generates code from your model files on save.
@@ -37,6 +39,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	private HashMap<String, ArrayList<String>> specRefs = new HashMap<String, ArrayList<String>>
 	// list with all refs to be parsed
 	private ArrayList<String> refs = new ArrayList<String>
+	val specs = new ArrayList<Spec>
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
@@ -58,41 +61,37 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	
 	
 	def void generateCode(String configuration) {
+//		TODO: return CrySL code to be written to the file system
 		val config = parseConfiguration(configuration)
 		val src = config.inputDir
 		
 		val modules = config.modules
 		
+		// TODO: associate classNames to refinements (get className from refinement jvm type)
 		for(m: modules) {
-			// println(src + m.module)
-			
-			// get all files with .mcsl and add to HashMap with empty list
+			// get all files with .mcsl and add to a list
 			if(getExtensionByStringHandling(m.module).get() == 'mcsl') {
-				// println(getExtensionByStringHandling(m.module).get())
-				
-				specRefs.put(m.module, new ArrayList<String>)
-				// println("Initialize a new specRefs entry with an empty set")
+				val parsedSpec = parseSpec(src + m.module)
+				specs.add(parsedSpec) // add parsed spec to list of specs
 			}
 			else if(getExtensionByStringHandling(m.module).get() == 'ref') {
-				// append to list of refs
+				val parsedRef = parseRefinement(src + m.module) // parse refinement and try to get classname
+				println("TYPE === ")
+				println(parsedRef.type)
+				
 				refs.add(m.module)
 			}			
 		}
-			// iterate over specRefs
+		
+		
 		for(String key: specRefs.keySet()) {
-//			val spec = parseSpec(src + key)
-//			println('parsed SPECs')
-//			println(spec)
-			// TODO: parse key (with is the SPEC)
+			val spec = parseSpec(src + key)
 			for(String ref: refs) {
-				// TODO: parse each ref. If it's equal to current spec class, append to it and remove from refs
 				val r = parseRefinement(src + ref)
 				println('refinements:')
 				println(r)
 			}
 		}
-		println(specRefs)
-		println(refs)
 		
 		// TODO: call the generator procedure
 	}
@@ -145,7 +144,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		if(result.syntaxErrors.size > 0) {
 			throw new RuntimeException("Parser error: " + result.syntaxErrors)
 		}
-//		(result.rootASTElement as Spec).spec
+		(result.rootASTElement as MetaCrySL).spec
 	}
 	
 	def void setupParser() {

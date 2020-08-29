@@ -76,10 +76,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			}
 			else if(getExtensionByStringHandling(m.module).get() == 'ref') {
 				val parsedRef = parseRefinement(src + m.module) // parse refinement and try to get classname
-				println("TYPE === ")
-				println(parsedRef.type)
-				
-				refs.add(m.module)
+				// refs.add(m.module)
 			}			
 		}
 		

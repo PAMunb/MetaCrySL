@@ -5,6 +5,13 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
+import br.unb.cic.mcsl.metaCrySL.Refinement
+import org.junit.Assert
+
+// Testing class to allow protected methods to be tested
+class GeneratorTest extends MetaCrySLGenerator {
+	override Refinement parseRefinement(String refinement) {}
+}
 
 @RunWith(XtextRunner)
 class MetaCrySLGeneratorTest {
@@ -14,6 +21,14 @@ class MetaCrySLGeneratorTest {
 		val config = URI.createURI("./test-resources/cryptsl-files/basicConfig.config").path
 		val generator = new MetaCrySLGenerator
 		generator.generateCode(config)
+	}
+	
+	@Test
+	def void parseRefinement() {
+		val ref = URI.createURI("./test-resources/cryptsl-files/basicRefinement.config").path
+		val generator = new GeneratorTest
+		val parsedRef = generator.parseRefinement(ref)
+		Assert.assertNotNull(parsedRef.type)
 	}
 	
 }

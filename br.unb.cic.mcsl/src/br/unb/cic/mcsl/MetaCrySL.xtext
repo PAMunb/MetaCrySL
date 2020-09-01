@@ -266,8 +266,11 @@ NegateSpec : {NegateSpec} 'NEGATES' negates += EnsurePredicate+;
  * We can also specify refinements in MetaCrySL. 
  */	
 
+@Override 
+QualifiedName: ID ('.' ID)* ;
+
 Refinement
-  : "SPEC" name = ID "REFINES" type = JvmTypeReference "{" refinements += RefinementOpr+ "}"; 
+  : "SPEC" name = ID "REFINES" type = QualifiedName "{" refinements += RefinementOpr+ "}"; 
  
  
  RefinementOpr 

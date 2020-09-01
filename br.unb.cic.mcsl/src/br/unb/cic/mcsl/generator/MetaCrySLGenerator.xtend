@@ -110,7 +110,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		(result.rootASTElement as Configuration).configuration
 	}
 	
-	protected def Refinement parseRefinement(String refinement) {
+	def Refinement parseRefinement(String refinement) {
 		val path = Paths.get(refinement)
 		
 		if(!Files.exists(path)) {

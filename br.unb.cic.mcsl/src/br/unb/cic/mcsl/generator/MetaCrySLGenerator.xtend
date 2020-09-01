@@ -36,9 +36,9 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	private IParser parser;
 	
 	// hashmap to associate each SPEC to a merged set of refinements
-	private HashMap<String, ArrayList<String>> specRefs = new HashMap<String, ArrayList<String>>
+	val specRefs = new HashMap<String, ArrayList<Refinement>>
 	// list with all refs to be parsed
-	private ArrayList<String> refs = new ArrayList<String>
+	val refs = new ArrayList<String>
 	val specs = new ArrayList<Spec>
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -75,9 +75,30 @@ class MetaCrySLGenerator extends AbstractGenerator {
 				specs.add(parsedSpec) // add parsed spec to list of specs
 			}
 			else if(getExtensionByStringHandling(m.module).get() == 'ref') {
-				val parsedRef = parseRefinement(src + m.module) // parse refinement and try to get classname
+				val parsedRef = parseRefinement(src + m.module)
+				
+				// check if current ref className type is already present in the Hashmap
+				// if not, add to hashmap and add ref to the associated <ArrayList>
+				// if yes, find the key and add ref to associated <ArrayList>
+				
+				if (specRefs.containsKey(parsedRef.type) ) {
+					val refsList = specRefs.get(parsedRef.type)
+					refsList.add(parsedRef)
+					specRefs.put(parsedRef.type, refsList)
+				} else {
+					val newRefsList = new ArrayList<Refinement>
+					newRefsList.add(parsedRef)
+					specRefs.put(parsedRef.type, newRefsList)
+				}
+				
+				//specRefs.put(parsedRef.type, parsedRef)
 				// refs.add(m.module)
 			}			
+		}
+		
+		for(String key: specRefs.keySet()) {
+			println("testes")
+			println(key)
 		}
 		
 		

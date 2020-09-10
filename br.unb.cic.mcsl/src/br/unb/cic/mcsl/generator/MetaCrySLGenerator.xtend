@@ -24,6 +24,12 @@ import java.util.Optional
 import org.eclipse.emf.ecore.EObject
 import br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLImpl
 import br.unb.cic.mcsl.metaCrySL.MetaCrySL
+import br.unb.cic.mcsl.metaCrySL.impl.RefinementImpl
+import br.unb.cic.mcsl.metaCrySL.impl.MetaCrySLFactoryImpl
+import java.util.Iterator
+import java.util.Map
+import java.util.Collection
+import br.unb.cic.mcsl.metaCrySL.RefinementOpr
 
 /**
  * Generates code from your model files on save.
@@ -49,8 +55,26 @@ class MetaCrySLGenerator extends AbstractGenerator {
 //				.join(', '))
 	}
 	
-	def void mergeRefinements() {
+	def Refinement mergeRefinements(String name, ArrayList<Refinement> refs) {
 		// TODO: receives a list of refinements modules and returns one module with all merged
+		val newRefinement = (new MetaCrySLFactoryImpl()).createRefinement()
+		val operationsList = new ArrayList<RefinementOpr>;
+		newRefinement.name = name
+		
+		// Creates a flat list with all refinement operations
+		val oprList = refs.map(r | r.refinements)
+		for(list: oprList) {
+			for(el: list) {
+				operationsList.add(el)
+			}
+		}
+		
+		for(el: operationsList) {
+			println(el)
+			newRefinement.refinements.add(el)
+		}
+		
+		return newRefinement
 	}
 	
 	def Optional<String> getExtensionByStringHandling(String filename) {
@@ -81,35 +105,28 @@ class MetaCrySLGenerator extends AbstractGenerator {
 				// if not, add to hashmap and add ref to the associated <ArrayList>
 				// if yes, find the key and add ref to associated <ArrayList>
 				
-				if (specRefs.containsKey(parsedRef.type) ) {
-					val refsList = specRefs.get(parsedRef.type)
-					refsList.add(parsedRef)
-					specRefs.put(parsedRef.type, refsList)
+				val refsList = if (!specRefs.containsKey(parsedRef.type) ) {
+					new ArrayList<Refinement>
 				} else {
-					val newRefsList = new ArrayList<Refinement>
-					newRefsList.add(parsedRef)
-					specRefs.put(parsedRef.type, newRefsList)
+					specRefs.get(parsedRef.type)
 				}
-				
-				//specRefs.put(parsedRef.type, parsedRef)
-				// refs.add(m.module)
+				refsList.add(parsedRef)
+				specRefs.put(parsedRef.type, refsList)
 			}			
 		}
 		
-		for(String key: specRefs.keySet()) {
-			println("testes")
-			println(key)
+		// Merge all collected refinements
+		for(entry : specRefs.entrySet()) {
+			val ref = mergeRefinements(entry.getKey(), entry.getValue())
+			print(ref)
 		}
+//	
+//		
+//		for(String key: specRefs.keySet()) {
+//			println("testes")
+//			println(key)
+//		}
 		
-		
-		for(String key: specRefs.keySet()) {
-			val spec = parseSpec(src + key)
-			for(String ref: refs) {
-				val r = parseRefinement(src + ref)
-				println('refinements:')
-				println(r)
-			}
-		}
 		
 		// TODO: call the generator procedure
 	}

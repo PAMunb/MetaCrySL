@@ -30,6 +30,9 @@ import java.util.Iterator
 import java.util.Map
 import java.util.Collection
 import br.unb.cic.mcsl.metaCrySL.RefinementOpr
+import br.unb.cic.mcsl.metaCrySL.impl.AddConstraintImpl
+import br.unb.cic.mcsl.metaCrySL.impl.DefineLiteralSetImpl
+import br.unb.cic.mcsl.metaCrySL.Constraint
 
 /**
  * Generates code from your model files on save.
@@ -44,7 +47,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	// hashmap to associate classnames to a list of refinements
 	val specRefs = new HashMap<String, ArrayList<Refinement>>
 	// hashmap to associate parsed SPEC to a merged REFINEMENT
-	val specification = new HashMap<Spec, Refinement>
+	// val specification = new HashMap<Spec, Refinement>
 	// list with all refs to be parsed
 	val refs = new ArrayList<String>
 	val specs = new ArrayList<Spec>
@@ -86,7 +89,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	
 	
 	def void generateCode(String configuration) {
-//		TODO: return CrySL code to be written to the file system
+		val specification = new HashMap<Spec, Refinement>
 		val config = parseConfiguration(configuration)
 		val src = config.inputDir
 		
@@ -126,7 +129,22 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			}
 		}
 		
+		
 		// TODO: apply refinements to SPEC file
+		for(spec: specification.entrySet()) {
+			val refinement = spec.getValue()
+			val finalSpec = spec.getKey()
+			for(opr: refinement.refinements) { // Check for each possible expression type
+				if(opr instanceof AddConstraintImpl) {
+					val newConstraint = (new MetaCrySLFactoryImpl()).createConstraint()
+					newConstraint.exp = opr.constraint
+					finalSpec.constraintSpec.constraints.add(newConstraint)
+				}
+				else if(opr instanceof DefineLiteralSetImpl) {
+					
+				}
+			}
+		}
 		
 		// TODO: call the code generator procedure
 	}

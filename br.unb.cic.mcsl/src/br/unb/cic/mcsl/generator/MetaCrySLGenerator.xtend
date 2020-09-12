@@ -41,8 +41,10 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	@Inject
 	private IParser parser;
 	
-	// hashmap to associate each SPEC to a merged set of refinements
+	// hashmap to associate classnames to a list of refinements
 	val specRefs = new HashMap<String, ArrayList<Refinement>>
+	// hashmap to associate parsed SPEC to a merged REFINEMENT
+	val specification = new HashMap<Spec, Refinement>
 	// list with all refs to be parsed
 	val refs = new ArrayList<String>
 	val specs = new ArrayList<Spec>
@@ -70,7 +72,6 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		}
 		
 		for(el: operationsList) {
-			println(el)
 			newRefinement.refinements.add(el)
 		}
 		
@@ -115,20 +116,19 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			}			
 		}
 		
-		// Merge all collected refinements
+		// Merge refinements and associate with individual SPEC file
 		for(entry : specRefs.entrySet()) {
 			val ref = mergeRefinements(entry.getKey(), entry.getValue())
-			print(ref)
+			for(spec: specs) {
+				if(spec.className == ref.name) {
+					specification.put(spec, ref)
+				}
+			}
 		}
-//	
-//		
-//		for(String key: specRefs.keySet()) {
-//			println("testes")
-//			println(key)
-//		}
 		
+		// TODO: apply refinements to SPEC file
 		
-		// TODO: call the generator procedure
+		// TODO: call the code generator procedure
 	}
 	
 	protected def Configuration parseConfiguration(String configuration) {

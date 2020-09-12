@@ -19,7 +19,7 @@ Model
  * and so on. 
  */	
 Spec
- : 'ABSTRACT'? 'SPEC' className = JvmTypeReference
+ : 'ABSTRACT'? 'SPEC' className = QualifiedName
      objectSpec    = ObjectSpec
      (forbiddenSpec = ForbiddenSpec)?
      eventSpec     = EventSpec

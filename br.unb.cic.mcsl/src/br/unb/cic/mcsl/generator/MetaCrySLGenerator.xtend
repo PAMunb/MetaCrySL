@@ -33,6 +33,8 @@ import br.unb.cic.mcsl.metaCrySL.RefinementOpr
 import br.unb.cic.mcsl.metaCrySL.impl.AddConstraintImpl
 import br.unb.cic.mcsl.metaCrySL.impl.DefineLiteralSetImpl
 import br.unb.cic.mcsl.metaCrySL.Constraint
+import javax.swing.text.html.parser.Entity
+import org.eclipse.emf.common.util.URI
 
 /**
  * Generates code from your model files on save.
@@ -47,26 +49,27 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	// hashmap to associate classnames to a list of refinements
 	val specRefs = new HashMap<String, ArrayList<Refinement>>
 	// hashmap to associate parsed SPEC to a merged REFINEMENT
-	// val specification = new HashMap<Spec, Refinement>
+	val specification = new HashMap<Spec, Refinement>
 	// list with all refs to be parsed
 	val refs = new ArrayList<String>
 	val specs = new ArrayList<Spec>
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		for (e : resource.allContents.toIterable.filter(Spec)) {
+        	fsa.generateFile(
+            	"teste.crysl",
+            	generateCode(URI.createURI("./test-resources/cryptsl-files/basicConfig.config").path))
+    	}
 	}
 	
 	def Refinement mergeRefinements(String name, ArrayList<Refinement> refs) {
-		// TODO: receives a list of refinements modules and returns one module with all merged
 		val newRefinement = (new MetaCrySLFactoryImpl()).createRefinement()
 		val operationsList = new ArrayList<RefinementOpr>;
 		newRefinement.name = name
 		
 		// Creates a flat list with all refinement operations
+		
+		// TODO: treat `rename` and `define` as special cases 		
 		val oprList = refs.map(r | r.refinements)
 		for(list: oprList) {
 			for(el: list) {
@@ -88,8 +91,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	}
 	
 	
-	def void generateCode(String configuration) {
-		val specification = new HashMap<Spec, Refinement>
+	def String generateCode(String configuration) {
 		val config = parseConfiguration(configuration)
 		val src = config.inputDir
 		
@@ -141,13 +143,20 @@ class MetaCrySLGenerator extends AbstractGenerator {
 					finalSpec.constraintSpec.constraints.add(newConstraint)
 				}
 				else if(opr instanceof DefineLiteralSetImpl) {
-					
+					println(opr)
 				}
+				
+				// Call the compiler
+				val output = compile(finalSpec)
+				return output as String
 			}
 		}
-		
-		// TODO: call the code generator procedure
 	}
+	
+	// Template for outputting final CrySL file from a Spec model
+	private def compile(Spec e)'''
+		ABSTRACT SPEC «e.className»
+	'''
 	
 	protected def Configuration parseConfiguration(String configuration) {
 		val path = Paths.get(configuration)

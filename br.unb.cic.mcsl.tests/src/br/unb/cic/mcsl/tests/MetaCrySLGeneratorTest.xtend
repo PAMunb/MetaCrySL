@@ -26,5 +26,4 @@ class MetaCrySLGeneratorTest {
 		val parsedRef = generator.parseRefinement(ref)
 		Assert.assertNotNull(parsedRef.type)
 	}
-	
 }

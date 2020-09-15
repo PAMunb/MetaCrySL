@@ -35,6 +35,10 @@ import br.unb.cic.mcsl.metaCrySL.impl.DefineLiteralSetImpl
 import br.unb.cic.mcsl.metaCrySL.Constraint
 import javax.swing.text.html.parser.Entity
 import org.eclipse.emf.common.util.URI
+import br.unb.cic.mcsl.metaCrySL.Rename
+import org.eclipse.emf.ecore.util.EObjectContainmentEList
+import org.eclipse.emf.common.util.EList
+import br.unb.cic.mcsl.metaCrySL.Value
 
 /**
  * Generates code from your model files on save.
@@ -55,11 +59,25 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	val specs = new ArrayList<Spec>
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		for (e : resource.allContents.toIterable.filter(Spec)) {
-        	fsa.generateFile(
-            	"teste.crysl",
-            	generateCode(URI.createURI("./test-resources/cryptsl-files/basicConfig.config").path))
-    	}
+//		for (e : resource.allContents.toIterable.filter(Spec)) {
+//        	fsa.generateFile(
+//            	"teste.crysl",
+//            	generateCode(URI.createURI("./test-resources/cryptsl-files/basicConfig.config").path))
+//    	}
+	}
+	
+	// Check if a list of refinements contains a define operation with given value
+	// If true, appends given value to the list of defined values in operation
+	def boolean contains(EList<RefinementOpr> list, String value, EList<Value> values) {
+		for (el : list) {
+			if(el instanceof DefineLiteralSetImpl) {
+				if(el.^var.equals(value)) {
+					el.set.values.addAll(values)
+					return true
+				}
+			}
+		}
+		return false
 	}
 	
 	def Refinement mergeRefinements(String name, ArrayList<Refinement> refs) {
@@ -68,8 +86,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		newRefinement.name = name
 		
 		// Creates a flat list with all refinement operations
-		
-		// TODO: treat `rename` and `define` as special cases 		
+			
 		val oprList = refs.map(r | r.refinements)
 		for(list: oprList) {
 			for(el: list) {
@@ -78,7 +95,26 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		}
 		
 		for(el: operationsList) {
-			newRefinement.refinements.add(el)
+//			switch el {
+//				case el instanceof DefineLiteralSetImpl:
+//					val newLiteralSet = (new MetaCrySLFactoryImpl()).createDefineLiteralSet()
+//				default:
+//					newRefinement.refinements.add(el)
+//			}
+
+			if(el instanceof DefineLiteralSetImpl) {
+				// Check if final refinement contains this specific 'define' opr
+				val containsValue = contains(newRefinement.refinements, el.^var, el.set.values)
+				if(!containsValue) {
+					newRefinement.refinements.add(el)
+				}
+			}
+			else if(el instanceof Rename) { // TODO: implement case
+				val newRename = (new MetaCrySLFactoryImpl()).createRename()
+			}
+			else {
+				newRefinement.refinements.add(el)
+			}
 		}
 		
 		return newRefinement
@@ -97,7 +133,6 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		
 		val modules = config.modules
 		
-		// TODO: associate classNames to refinements (get className from refinement jvm type)
 		for(m: modules) {
 			// get all files with .mcsl and add to a list
 			if(getExtensionByStringHandling(m.module).get() == 'mcsl') {
@@ -124,6 +159,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		// Merge refinements and associate with individual SPEC file
 		for(entry : specRefs.entrySet()) {
 			val ref = mergeRefinements(entry.getKey(), entry.getValue())
+			print(ref)
 			for(spec: specs) {
 				if(spec.className == ref.name) {
 					specification.put(spec, ref)
@@ -137,6 +173,16 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			val refinement = spec.getValue()
 			val finalSpec = spec.getKey()
 			for(opr: refinement.refinements) { // Check for each possible expression type
+				// TODO: refactor to use switch...case
+//				switch opr {
+//					case opr instanceof AddConstraintImpl:
+//						val newConstraint = (new MetaCrySLFactoryImpl()).createConstraint()
+//						newConstraint.exp = (opr as AddConstraintImpl).constraint
+//						finalSpec.constraintSpec.constraints.add(newConstraint)
+//					default:
+//						println(opr)
+//				}
+					
 				if(opr instanceof AddConstraintImpl) {
 					val newConstraint = (new MetaCrySLFactoryImpl()).createConstraint()
 					newConstraint.exp = opr.constraint
@@ -148,7 +194,6 @@ class MetaCrySLGenerator extends AbstractGenerator {
 				
 				// Call the compiler
 				val output = compile(finalSpec)
-				return output as String
 			}
 		}
 	}

@@ -274,10 +274,10 @@ Refinement
  
  
  RefinementOpr 
-  : {Rename} "rename" "spec" type = JvmTypeReference ";"
+  : {Rename} "rename" "spec" type = QualifiedName ";"
   | {AddEvent} "add" "event" event = Event ";"
   | {AddConstraint} "add" "constraint" constraint = ConstraintExp ";"
-  | {AddRequie} "add" "require" require = RequirePredicate ";"
+  | {AddRequire} "add" "require" require = RequirePredicate ";"
   | {AddEnsure} "add" "ensure" ensure = EnsurePredicate ";"
   | {DefineLiteralSet} "define" var = ID "=" set = LiteralSet ";"  	
   ;  

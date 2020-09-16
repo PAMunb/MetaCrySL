@@ -52,11 +52,9 @@ class MetaCrySLGenerator extends AbstractGenerator {
 
 	// hashmap to associate classnames to a list of refinements
 	val specRefs = new HashMap<String, ArrayList<Refinement>>
-	// hashmap to associate parsed SPEC to a merged REFINEMENT
-	val specification = new HashMap<Spec, Refinement>
-	// list with all refs to be parsed
-	val refs = new ArrayList<String>
-	val specs = new ArrayList<Spec>
+	
+	val specs = new HashMap<String, Spec>
+	val refs = new HashMap<String, Refinement>
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 //		for (e : resource.allContents.toIterable.filter(Spec)) {
@@ -66,8 +64,9 @@ class MetaCrySLGenerator extends AbstractGenerator {
 //    	}
 	}
 
-	def Refinement mergeRefinements(String name, ArrayList<Refinement> refs) {
+	def Refinement mergeRefinements(String name, Refinement ref1, Refinement ref2) {
 		val visitor = new MergeRefinementVisitor(name)
+		val refs = CollectionLiterals.newArrayList(ref1, ref2)
 		
 		for(ref: refs) {
 			for(r: ref.refinements) {
@@ -93,60 +92,29 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			// get all files with .mcsl and add to a list
 			if (getExtensionByStringHandling(m.module).get() == 'mcsl') {
 				val parsedSpec = parseSpec(src + m.module)
-				specs.add(parsedSpec) // add parsed spec to list of specs
+				specs.put(parsedSpec.className, parsedSpec) // add parsed spec to list of specs
 			} else if (getExtensionByStringHandling(m.module).get() == 'ref') {
 				val parsedRef = parseRefinement(src + m.module)
-
-				// check if current ref className type is already present in the Hashmap
-				// if not, add to hashmap and add ref to the associated <ArrayList>
-				// if yes, find the key and add ref to associated <ArrayList>
-				val refsList = if (!specRefs.containsKey(parsedRef.type)) {
-						new ArrayList<Refinement>
-					} else {
-						specRefs.get(parsedRef.type)
-					}
-				refsList.add(parsedRef)
-				specRefs.put(parsedRef.type, refsList)
-			}
-		}
-
-		// Merge refinements and associate with individual SPEC file
-		for (entry : specRefs.entrySet()) {
-			val ref = mergeRefinements(entry.getKey(), entry.getValue())
-			print(ref)
-			for (spec : specs) {
-				if (spec.className == ref.name) {
-					specification.put(spec, ref)
-				}
-			}
-		}
-
-		// TODO: apply refinements to SPEC file
-		for (spec : specification.entrySet()) {
-			val refinement = spec.getValue()
-			val finalSpec = spec.getKey()
-			for (opr : refinement.refinements) { // Check for each possible expression type
-			// TODO: refactor to use switch...case
-//				switch opr {
-//					case opr instanceof AddConstraintImpl:
-//						val newConstraint = (new MetaCrySLFactoryImpl()).createConstraint()
-//						newConstraint.exp = (opr as AddConstraintImpl).constraint
-//						finalSpec.constraintSpec.constraints.add(newConstraint)
-//					default:
-//						println(opr)
-//				}
-				if (opr instanceof AddConstraintImpl) {
-					val newConstraint = (new MetaCrySLFactoryImpl()).createConstraint()
-					newConstraint.exp = opr.constraint
-					finalSpec.constraintSpec.constraints.add(newConstraint)
-				} else if (opr instanceof DefineLiteralSetImpl) {
-					println(opr)
+				
+				if(refs.containsKey(parsedRef.type)) {
+					val ref = refs.get(parsedRef.type)
+					refs.put(parsedRef.type, mergeRefinements(parsedRef.type, ref, parsedRef))
+				} else {
+					refs.put(parsedRef.type, parsedRef)
 				}
 
-				// Call the compiler
-				val output = compile(finalSpec)
 			}
 		}
+
+		for(k : specs.keySet()) {
+			val spec = specs.get(k)
+			if (refs.containsKey(k)) {
+				val ref = refs.get(k)
+				// TODO: apply Visitor logic
+			}
+		}
+		
+		return null
 	}
 
 	// Template for outputting final CrySL file from a Spec model

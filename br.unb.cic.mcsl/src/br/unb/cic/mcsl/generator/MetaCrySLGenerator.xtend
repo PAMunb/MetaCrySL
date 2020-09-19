@@ -55,6 +55,8 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	
 	val specs = new HashMap<String, Spec>
 	val refs = new HashMap<String, Refinement>
+	
+	val compiledSpecs = new ArrayList<Spec>
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 //		for (e : resource.allContents.toIterable.filter(Spec)) {
@@ -82,7 +84,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			map(f|f.substring(filename.lastIndexOf(".") + 1));
 	}
 
-	def String generateCode(String configuration) {
+	def generateCode(String configuration) {
 		val config = parseConfiguration(configuration)
 		val src = config.inputDir
 
@@ -110,11 +112,18 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			val spec = specs.get(k)
 			if (refs.containsKey(k)) {
 				val ref = refs.get(k)
-				// TODO: apply Visitor logic
+				val applyVisitor = new ApplyRefinementVisitor(spec.className)
+				
+				for(r: ref.refinements) {
+					applyVisitor.doSwitch(r)
+				}
+				
+				val finalSpec = applyVisitor.spec
+				compiledSpecs.add(finalSpec)
 			}
 		}
 		
-		return null
+		return compiledSpecs
 	}
 
 	// Template for outputting final CrySL file from a Spec model

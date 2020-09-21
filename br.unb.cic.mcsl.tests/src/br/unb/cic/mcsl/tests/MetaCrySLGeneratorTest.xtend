@@ -7,7 +7,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import br.unb.cic.mcsl.metaCrySL.Refinement
 import org.junit.Assert
-
+import br.unb.cic.mcsl.generator.MetaCrySLGenerator.ModelType
 
 @RunWith(XtextRunner)
 class MetaCrySLGeneratorTest {
@@ -23,7 +23,7 @@ class MetaCrySLGeneratorTest {
 	def void parseRefinement() {
 		val ref = URI.createURI("./test-resources/cryptsl-files/basicRefinement.ref").path
 		val generator = new MetaCrySLGenerator
-		val parsedRef = generator.parseRefinement(ref)
+		val parsedRef = generator.genericMetaCrySLParser(ref, ModelType.REFINEMENT) as Refinement
 		Assert.assertNotNull(parsedRef.type)
 	}
 }

@@ -12,21 +12,22 @@ import br.unb.cic.mcsl.metaCrySL.LiteralSet
 import br.unb.cic.mcsl.metaCrySL.Constraint
 import br.unb.cic.mcsl.metaCrySL.EnsurePredicate
 import br.unb.cic.mcsl.metaCrySL.Event
+import br.unb.cic.mcsl.metaCrySL.BaseSpecType
 
 class ApplyRefinementVisitor extends MetaCrySLSwitch<Void> {
-	var name = new String
+	var BaseSpecType classType 
 	var literalSet = new ArrayList<LiteralSet>
 	var constraints = new ArrayList<Constraint>
 	var ensures = new ArrayList<EnsurePredicate>
 	var events = new ArrayList<Event>
 	
-	new(String name) {
-		this.name = name
+	new(BaseSpecType specType) {
+		this.classType = specType
 	}
 	
 	def getSpec() {
 		val newSpec = (new MetaCrySLFactoryImpl()).createSpec()
-		newSpec.className = this.name
+		newSpec.classType = this.classType
 		newSpec.constraintSpec = (new MetaCrySLFactoryImpl()).createConstraintSpec()
 		newSpec.ensureSpec = (new MetaCrySLFactoryImpl()).createEnsureSpec()
 		newSpec.eventSpec = (new MetaCrySLFactoryImpl()).createEventSpec()
@@ -47,7 +48,12 @@ class ApplyRefinementVisitor extends MetaCrySLSwitch<Void> {
 	}
 	
 	override Void caseRename(Rename object) {
-		this.name = object.type
+		// TODO: we have to discuss this case here. 
+		// I am not completely sure that the implementation 
+		// should work as it is implemented here. 	
+		this.classType = (new MetaCrySLFactoryImpl()).createSimpleType()
+		classType.typeName = object.type
+
 		return super.caseRename(object)
 	}
 

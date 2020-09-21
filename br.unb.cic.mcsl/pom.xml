@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -67,41 +68,101 @@
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
-	
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<configuration>
 					<filesets combine.children="append">
 						<fileset>
+							<directory>${basedir}/../br.unb.cic.mcsl/xtend-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../br.unb.cic.mcsl.tests/xtend-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
+						</fileset>						
+						<fileset>
+							<directory>${basedir}/../br.unb.cic.mcsl.ide/xtend-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../br.unb.cic.mcsl.ui/xtend-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../br.unb.cic.mcsl.ui.tests/xtend-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
+						</fileset>					
+						<fileset>
 							<directory>${basedir}/../br.unb.cic.mcsl/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
 						</fileset>
 						<fileset>
 							<directory>${basedir}/../br.unb.cic.mcsl.tests/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
-						</fileset>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
+						</fileset>						
 						<fileset>
 							<directory>${basedir}/../br.unb.cic.mcsl.ide/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
 						</fileset>
 						<fileset>
 							<directory>${basedir}/../br.unb.cic.mcsl.ui/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
 						</fileset>
 						<fileset>
 							<directory>${basedir}/../br.unb.cic.mcsl.ui.tests/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
+							<excludes>
+								<exclude>**/.gitignore</exclude>
+							</excludes>
 						</fileset>
 						<fileset>
 							<directory>${basedir}/model/generated/</directory>

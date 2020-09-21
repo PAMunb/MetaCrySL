@@ -1,0 +1,4 @@
+SPEC Cipher REFINES javax.crypto.Cipher {
+    define algorithm = {"AESWRAP", "DESedeWRAP", "HmacSHA224"};
+    add constraint part(0, "/", transformation) in {"AES_128", "AES_256"} => part(1, "/", transformation) in {"CBC", "ECB", "GCM"};
+}

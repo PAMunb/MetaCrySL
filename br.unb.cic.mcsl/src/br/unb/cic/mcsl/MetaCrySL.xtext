@@ -19,7 +19,7 @@ Model
  * and so on. 
  */	
 Spec
- : 'ABSTRACT'? 'SPEC' className = QualifiedName
+ : 'ABSTRACT'? 'SPEC' classType = BaseSpecType
      objectSpec    = ObjectSpec
      (forbiddenSpec = ForbiddenSpec)?
      eventSpec     = EventSpec
@@ -29,6 +29,11 @@ Spec
      (ensureSpec = EnsureSpec)?
      (negateSpec = NegateSpec)?     
  ;
+ 
+BaseSpecType 
+ : {SimpleType} typeName = QualifiedName
+ | {ParameterizedType} typeName = QualifiedName '<' typeParameter = ID '>'	     
+ ; 
     
 /* ObjectSpec rule
  * 
@@ -132,19 +137,22 @@ OrderSpec: {OrderSpec} 'ORDER' order = EventExp ;
  * be quite expensive, so perhaps we should investigate an 
  * alternative to this design.  
  */
-EventExp
- : {Optional}   exp = ChoiceExp '?'
- | {ZeroOrMore} exp = ChoiceExp '*' 
- | {OneOrMore}  exp = ChoiceExp '+'	
- | {ChoiceExp}  exp = ChoiceExp 
- ;
+EventExp 
+ :  ChoiceExp ;
 
 ChoiceExp returns EventExp
- : SequenceExp => ({ChoiceExp.left = current}'|' right = SequenceExp)*;
+ : SequenceExp => ({ChoiceExp.left = current} '|' right = SequenceExp)*;
  
 SequenceExp returns EventExp
- : PrimaryExp => ({SequenceExp.left = current} ',' right = PrimaryExp)*;
-  
+ : BasicEventExp => ({SequenceExp.left = current} ',' right = BasicEventExp)*;
+
+BasicEventExp
+ : {Optional}    exp = PrimaryExp '?'
+ | {ZeroOrMore}  exp = PrimaryExp '*' 
+ | {OneOrMore}   exp = PrimaryExp '+'	
+ | {PrimaryExp}  exp = PrimaryExp 
+ ;  
+ 
 PrimaryExp returns EventExp
  : label = ID
  | '(' ChoiceExp ')' 	

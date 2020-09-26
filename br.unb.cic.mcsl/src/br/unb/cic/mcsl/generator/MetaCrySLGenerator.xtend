@@ -112,10 +112,14 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		return compiledSpecs
 	}
 
-	// Template for outputting final CrySL file from a Spec model
-	private def compile(Spec e) '''
-		ABSTRACT SPEC «e.classType»
-	'''
+	// Write specs to the file system
+	def void compile(List<Spec> specs) {
+		for(spec: specs) {
+			val code_writer = new CodeWriter(spec)
+			code_writer.generate()
+		}
+	}
+	
 
 	def String specName(BaseSpecType specType) {
 		val visitor = new CollectSpecTypeVisitor()

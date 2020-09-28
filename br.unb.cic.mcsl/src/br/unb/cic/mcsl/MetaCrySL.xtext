@@ -168,7 +168,7 @@ ConstraintSpec : {ConstraintSpec} 'CONSTRAINTS' constraints += Constraint+;
 
 Constraint : exp = ConstraintExp ';';
 
-ConstraintExp : BooleanExp; 
+ConstraintExp : booleanExp = BooleanExp; 
 
 /*
  * The set of boolean expressions. I think that the precedence should
@@ -181,7 +181,7 @@ ConstraintExp : BooleanExp;
  * (=>) 
  */
  
-BooleanExp : exp = ImpliesExp;
+BooleanExp : ImpliesExp;
   
 ImpliesExp returns ConstraintExp
  : DisjunctionExp ({ImpliesExp.left = current} '=>' right = DisjunctionExp)*;
@@ -215,7 +215,6 @@ ArithmeticExp
  
 AtomicConstraintExp 
  : {Value} val = Value
- | {Variable} var = ID
  | '(' ConstraintExp ')'
  | {FunctionCall} methodName=ID '(' params += Value (',' params += Value)* ')' 
  ;  

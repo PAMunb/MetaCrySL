@@ -26,4 +26,11 @@ class MetaCrySLGeneratorTest {
 		val parsedRef = generator.genericMetaCrySLParser(ref, ModelType.REFINEMENT) as Refinement
 		Assert.assertNotNull(parsedRef.type)
 	}
+	
+	@Test
+	def void executeAndroidMessageDigestConfig() {
+		val config = URI.createURI("./test-resources/cryptsl-files/jca/configurations/0108.config").path
+		val generator = new MetaCrySLGenerator
+		generator.generateCode(config)
+	}
 }

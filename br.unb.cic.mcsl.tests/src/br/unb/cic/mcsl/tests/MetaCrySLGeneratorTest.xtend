@@ -31,6 +31,9 @@ class MetaCrySLGeneratorTest {
 	def void executeAndroidMessageDigestConfig() {
 		val config = URI.createURI("./test-resources/cryptsl-files/jca/configurations/0108.config").path
 		val generator = new MetaCrySLGenerator
-		generator.generateCode(config)
+		val specs = generator.generateCode(config)
+		
+		Assert.assertEquals(1, specs.size)
+		Assert.assertEquals(3, specs.get(0).constraintSpec.constraints.size)
 	}
 }

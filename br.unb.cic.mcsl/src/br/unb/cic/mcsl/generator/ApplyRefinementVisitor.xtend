@@ -20,18 +20,7 @@ class ApplyRefinementVisitor extends MetaCrySLSwitch<Void> {
 	var defineVariables = new HashMap<String, LiteralSet>
 
 	new(Spec spec) {
-		// I wonder: is there a better way to clone an XTend object? 
-		this.newspec = (new MetaCrySLFactoryImpl()).createSpec
-
-		newspec.classType = spec.classType
-		newspec.objectSpec = spec.objectSpec
-		newspec.forbiddenSpec = spec.forbiddenSpec
-		newspec.eventSpec = spec.eventSpec
-		newspec.orderSpec = spec.orderSpec
-		newspec.constraintSpec = spec.constraintSpec
-		newspec.requireSpec = spec.requireSpec
-		newspec.ensureSpec = spec.ensureSpec
-		newspec.negateSpec = spec.negateSpec
+		this.newspec = spec; 
 	}
 
 	def getSpec() {

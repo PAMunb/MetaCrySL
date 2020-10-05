@@ -4,6 +4,9 @@ import br.unb.cic.mcsl.metaCrySL.Spec
 import java.io.PrintWriter
 import br.unb.cic.mcsl.metaCrySL.impl.ConstraintImpl
 import java.util.List
+import br.unb.cic.mcsl.metaCrySL.impl.RelationalExpImpl
+import br.unb.cic.mcsl.metaCrySL.impl.ConjunctionExpImpl
+import br.unb.cic.mcsl.metaCrySL.impl.DisjunctionExpImpl
 
 class CodeWriter {
 	var Spec spec
@@ -15,13 +18,39 @@ class CodeWriter {
 		this.typeName = spec.classType.typeName
 	}
 	
+	def String writeConstraint() {
+		val visitor = new CodeWriterVisitor(spec)
+		
+		for(c: spec.constraintSpec.constraints) {
+			println(c)
+			visitor.doSwitch(c.exp.booleanExp)
+		}
+		
+//		for(c: spec.constraintSpec.constraints) {
+//			val exp = c.exp.booleanExp
+//			switch(exp) {
+//				case exp instanceof RelationalExpImpl:
+//					println(exp)
+//				case exp instanceof ConjunctionExpImpl:
+//					println(exp)
+//				case exp instanceof DisjunctionExpImpl:
+//					println(exp)
+//				default:
+//					println(exp)
+//			}
+//		}
+		
+		return null
+	}
+	
 	def String writeHeader()'''
 		ABSTRACT SPEC «this.typeName»
 	'''
 	
-	def String writeConstraints()'''
-		CONSTRAINTS
-	'''
+	def String writeConstraints() {
+		val c = writeConstraint()
+		return 'CONSTRAINT'	
+	}
 	
 	def String writeEvents()'''
 		EVENTS

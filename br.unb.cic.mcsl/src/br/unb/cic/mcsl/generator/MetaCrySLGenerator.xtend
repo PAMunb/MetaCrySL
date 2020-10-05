@@ -4,8 +4,10 @@
 package br.unb.cic.mcsl.generator
 
 import br.unb.cic.mcsl.MetaCrySLStandaloneSetup
+import br.unb.cic.mcsl.metaCrySL.BaseSpecType
 import br.unb.cic.mcsl.metaCrySL.Configuration
 import br.unb.cic.mcsl.metaCrySL.MetaCrySL
+import br.unb.cic.mcsl.metaCrySL.Model
 import br.unb.cic.mcsl.metaCrySL.Refinement
 import br.unb.cic.mcsl.metaCrySL.Spec
 import com.google.inject.Inject
@@ -14,15 +16,13 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.ArrayList
 import java.util.HashMap
+import java.util.List
 import java.util.Optional
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eclipse.xtext.parser.IParser
-import java.util.List
-import br.unb.cic.mcsl.metaCrySL.BaseSpecType
-import br.unb.cic.mcsl.metaCrySL.Model
 
 /**
  * Generates code from your model files on save.
@@ -100,7 +100,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 			val spec = specs.get(k)
 			if (refs.containsKey(k)) {
 				val ref = refs.get(k)
-				val applyVisitor = new ApplyRefinementVisitor(spec.classType)
+				val applyVisitor = new ApplyRefinementVisitor(spec)
 				for (r : ref.refinements) {
 					applyVisitor.doSwitch(r)
 				}

@@ -36,4 +36,12 @@ class MetaCrySLGeneratorTest {
 		Assert.assertEquals(1, specs.size)
 		Assert.assertEquals(3, specs.get(0).constraintSpec.constraints.size)
 	}
+	
+	@Test
+	def void generateFiles() {
+		val config = URI.createURI("./test-resources/cryptsl-files/basicConfig.config").path
+		val generator = new MetaCrySLGenerator
+		val specs = generator.generateCode(config)
+		generator.compile(specs)
+	}
 }

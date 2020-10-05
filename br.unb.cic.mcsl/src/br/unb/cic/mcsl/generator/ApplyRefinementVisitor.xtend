@@ -74,6 +74,7 @@ class ApplyRefinementVisitor extends MetaCrySLSwitch<Void> {
 
 	override caseAddConstraint(AddConstraint object) {
 		val newConstraint = (new MetaCrySLFactoryImpl()).createConstraint
+		newConstraint.exp = (new MetaCrySLFactoryImpl()).createConstraintExp
 		newConstraint.exp.booleanExp = object.constraint
 		newspec.constraintSpec.constraints.add(newConstraint)
 		return super.caseAddConstraint(object)

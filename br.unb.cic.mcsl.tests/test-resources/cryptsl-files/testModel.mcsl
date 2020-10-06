@@ -12,4 +12,4 @@ ORDER
 	cs
 
 CONSTRAINTS
-	function(text) <= doo + foo;
+	kaa + haa <= doo + foo;

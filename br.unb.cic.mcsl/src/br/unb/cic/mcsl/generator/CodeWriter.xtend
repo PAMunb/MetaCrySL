@@ -19,26 +19,11 @@ class CodeWriter {
 	}
 	
 	def String writeConstraint() {
-		val visitor = new CodeWriterVisitor(spec)
+		val visitor = new CodeWriterVisitor()
 		
 		for(c: spec.constraintSpec.constraints) {
-			println(c)
 			visitor.doSwitch(c.exp.booleanExp)
 		}
-		
-//		for(c: spec.constraintSpec.constraints) {
-//			val exp = c.exp.booleanExp
-//			switch(exp) {
-//				case exp instanceof RelationalExpImpl:
-//					println(exp)
-//				case exp instanceof ConjunctionExpImpl:
-//					println(exp)
-//				case exp instanceof DisjunctionExpImpl:
-//					println(exp)
-//				default:
-//					println(exp)
-//			}
-//		}
 		
 		return null
 	}

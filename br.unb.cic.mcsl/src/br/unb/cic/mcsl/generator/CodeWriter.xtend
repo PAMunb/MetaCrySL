@@ -23,6 +23,9 @@ class CodeWriter {
 		
 		for(c: spec.constraintSpec.constraints) {
 			visitor.doSwitch(c.exp.booleanExp)
+			println(visitor.left)
+			println(visitor.operator)
+			println(visitor.right)
 		}
 		
 		return null

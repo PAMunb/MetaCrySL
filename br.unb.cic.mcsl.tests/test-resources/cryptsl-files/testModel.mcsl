@@ -13,3 +13,13 @@ ORDER
 
 CONSTRAINTS
 	kaa + haa <= doo + foo;
+
+REQUIRES
+	generatedKeyParameter[foo];
+	generatedKeyParameter[foo,foo];
+	generatedKeyParameter[foo,_,this];
+	generatedKeyParameter[_];
+    preparedAlg[foo, _];	
+	generatedRSAKeyParameters[foo] || generatedRSAPrivateCrtKeyParameters[foo] || generatedECPublicKeyParameters[foo];
+	!macced[_, foo];
+    keyPairAlgorithm in {"RSA"} => preparedRSA[foo];

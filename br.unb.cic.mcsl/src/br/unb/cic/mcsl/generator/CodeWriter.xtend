@@ -45,20 +45,11 @@ class CodeWriter {
 	
 	def String writeEvents() {
 		val events = new ArrayList<String>
+		val visitor = new CodeWriterVisitor()
 		events.add('EVENTS\n')
 		
 		for(event: spec.eventSpec.events) {
-			val label = event.label
-			if(event instanceof EventMethod) {
-				val method = (event as EventMethod).method.methodName + '();'
-				val finalString = label + ' : ' + method
-				events.add(finalString)
-			}
-			else if(event instanceof EventAggregate) {
-				val aggregate = String.join('|', event.aggregate.labels)
-				val finalString = label +  ':= ' + aggregate + ';'
-				events.add(finalString)
-			}
+			events.add(visitor.prettyPrint(event))
 		}
 		
 		return String.join('\n', events)

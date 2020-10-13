@@ -22,6 +22,12 @@ import br.unb.cic.mcsl.metaCrySL.Value
 import br.unb.cic.mcsl.metaCrySL.FunctionCall
 import br.unb.cic.mcsl.metaCrySL.LiteralSet
 import br.unb.cic.mcsl.metaCrySL.MetaVariable
+import br.unb.cic.mcsl.metaCrySL.Event
+import br.unb.cic.mcsl.metaCrySL.EventMethod
+import br.unb.cic.mcsl.metaCrySL.EventAggregate
+import br.unb.cic.mcsl.metaCrySL.MethodDef
+import br.unb.cic.mcsl.metaCrySL.AggregateList
+import br.unb.cic.mcsl.metaCrySL.FormalArgs
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrint(ConstraintExp object) {
@@ -103,6 +109,36 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
 	def String prettyPrint(Value object) {
 		return object.value
+	}
+	
+	// EVENTS
+	def String prettyPrint(Event object) {
+		if(object instanceof EventMethod) {
+			return prettyPrint(object as EventMethod)
+		}
+		else if(object instanceof EventAggregate) {
+			return prettyPrint(object as EventAggregate)
+		}
+	}
+	
+	def String prettyPrint(EventMethod object) {
+		return object.label + ' : ' + prettyPrint(object.method)
+	}
+	
+	def String prettyPrint(EventAggregate object) {
+		return object.label + ' := ' + prettyPrint(object.aggregate)
+	}
+	
+	def String prettyPrint(MethodDef object) {
+		return object.methodName + '(' + ')'
+	}
+	
+	def String prettyPrint(AggregateList object) {
+		return String.join('|', object.labels)
+	}
+	
+	def String prettyPrint(FormalArgs object) {
+		// TODO
 	}
 
 }

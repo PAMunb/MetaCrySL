@@ -20,16 +20,10 @@ import br.unb.cic.mcsl.metaCrySL.InSet
 import br.unb.cic.mcsl.metaCrySL.AtomicConstraint
 import br.unb.cic.mcsl.metaCrySL.Value
 import br.unb.cic.mcsl.metaCrySL.FunctionCall
+import br.unb.cic.mcsl.metaCrySL.LiteralSet
+import br.unb.cic.mcsl.metaCrySL.MetaVariable
 
-/*
- * Controls variables left, right and operator
- */
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
-	public var String left
-	public var String operator
-	public var String right
-
-
 	def String prettyPrint(ConstraintExp object) {
 		return prettyPrint(object.booleanExp)
 	}
@@ -41,7 +35,15 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	}
 	
 	def String prettyPrint(ImpliesExp object) {
-		return prettyPrint(object.left) + '=>' + prettyPrint(object.right)
+		return prettyPrint(object.left) + ' => ' + prettyPrint(object.right)
+	}
+	
+	def String prettyPrint(DisjunctionExp object) {
+		return prettyPrint(object.left) + ' || ' + prettyPrint(object.right)
+	}
+	
+	def String prettyPrint(ConjunctionExp object) {
+		return prettyPrint(object.left) + ' && ' + prettyPrint(object.right)
 	}
 	
 	def String prettyPrint(RelationalExp object) {
@@ -54,28 +56,36 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
 	def String prettyPrint(BasicExp object) {
 		if(object instanceof NeverTypeOf) {
-			// TODO
+			return 'neverTypeOf' + '[' + object.^var + ',' + object.varType + ']'
 		}
 		else if(object instanceof NoCallTo) {
-			// TODO
+			return 'noCallTo' + '[' + object.method + ']'
 		}
 		else if(object instanceof CallTo) {
-			// TODO
+			return 'callTo' + '[' + object.method + ']'
 		}
 		else if(object instanceof NotHardCoded) {
-			// TODO
+			return 'notHardCoded' + '[' + object.^var + ']'
 		}
 		else if(object instanceof Length) {
-			// TODO
+			return 'length' + '[' + object.^var + ']'
 		}
 		else if(object instanceof InstanceOf) {
-			// TODO
+			return 'instanceOf' + '[' + object.^var + ',' + object.varType + ']'
 		}
 		else if(object instanceof InSet) {
-			// TODO
+			return prettyPrint(object.left) + ' in ' + prettyPrint(object.literalSet)
 		}
 		else if(object instanceof AtomicConstraint) {
 			return prettyPrint(object.exp as AtomicConstraintExp)
+		}
+	}
+	
+	def String prettyPrint(LiteralSet object) {
+		if(object instanceof MetaVariable) {
+			return object.^var
+		} else if(object instanceof LiteralSet) {
+			// TODO
 		}
 	}
 	

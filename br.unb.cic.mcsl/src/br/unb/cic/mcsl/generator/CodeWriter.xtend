@@ -22,9 +22,9 @@ class CodeWriter {
 		this.typeName = spec.classType.typeName
 	}
 	
-	def String writeConstraint() {
+	def String writeConstraints() {
 		val constraints = new ArrayList<String>
-		constraints.add('CONSTRAINTS\n')
+		constraints.add('\nCONSTRAINTS\n')
 		val visitor = new CodeWriterVisitor()
 		
 		for(c: spec.constraintSpec.constraints) {
@@ -38,15 +38,11 @@ class CodeWriter {
 		ABSTRACT SPEC «this.typeName»
 	'''
 	
-	def String writeConstraints() {
-		val c = writeConstraint()
-		return 'CONSTRAINT'	
-	}
 	
 	def String writeEvents() {
 		val events = new ArrayList<String>
 		val visitor = new CodeWriterVisitor()
-		events.add('EVENTS\n')
+		events.add('\nEVENTS\n')
 		
 		for(event: spec.eventSpec.events) {
 			events.add(visitor.prettyPrint(event))
@@ -69,19 +65,10 @@ class CodeWriter {
 	
 	def String writeRequire() {
 		val requires = new ArrayList<String>
-		requires.add('REQUIRES\n')
+		val visitor = new CodeWriterVisitor()
+		requires.add('\nREQUIRES\n')
 		for(require: spec.requireSpec.requires) {
-			if(require.exp instanceof AtomicPredicate) {
-				var params = (require.exp as AtomicPredicate).pred.parans.parameters.map(el |
-					if(el.^val != null) {
-						el.^val.value
-					} else {
-						'_'
-					}
-				)
-				val exp = (require.exp as AtomicPredicate).pred.name + '[' +  String.join(',', params) + '];'
-				requires.add(exp)
-			}
+			requires.add(visitor.prettyPrint(require))
 		}
 		
 		return String.join('\n', requires)
@@ -89,7 +76,7 @@ class CodeWriter {
 	
 	def String writeObjects() {
 		val objects = new ArrayList<String>
-		objects.add('OBJECTS\n')
+		objects.add('\nOBJECTS\n')
 		
 		for(object: spec.objectSpec.objects) {
 			val type = object.objectType

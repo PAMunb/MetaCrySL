@@ -28,6 +28,12 @@ import br.unb.cic.mcsl.metaCrySL.EventAggregate
 import br.unb.cic.mcsl.metaCrySL.MethodDef
 import br.unb.cic.mcsl.metaCrySL.AggregateList
 import br.unb.cic.mcsl.metaCrySL.FormalArgs
+import br.unb.cic.mcsl.metaCrySL.RequirePredicate
+import br.unb.cic.mcsl.metaCrySL.PredicateOr
+import br.unb.cic.mcsl.metaCrySL.AtomicPredicate
+import br.unb.cic.mcsl.metaCrySL.Pred
+import br.unb.cic.mcsl.metaCrySL.PredParams
+import java.util.ArrayList
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrint(ConstraintExp object) {
@@ -139,6 +145,66 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
 	def String prettyPrint(FormalArgs object) {
 		// TODO
+	}
+	
+	// REQUIRES
+	def String prettyPrint(RequirePredicate object) {
+		if(object.exp instanceof AtomicPredicate) {
+			return prettyPrint(object.exp as AtomicPredicate)	
+		}
+		else if (object.exp instanceof PredicateOr) {
+			return prettyPrint(object.exp as PredicateOr)
+		}
+	}
+	
+	def String prettyPrint(PredicateOr object) {
+		if(object.leftExpression instanceof PredicateOr) {
+			return prettyPrint(object.leftExpression as PredicateOr) + ' || ' + prettyPrint(object.right)
+		}
+		else if(object.leftExpression instanceof AtomicPredicate) {
+			return prettyPrint(object.leftExpression as AtomicPredicate) + ' || ' + prettyPrint(object.right)
+		}
+	}
+	
+	def String prettyPrint(AtomicPredicate object) {
+		// TODO: Maybe try a better way of handling this case
+		var String predicate = ''
+		
+		if(object.cons !== null) {
+			if(object.cons instanceof ConstraintExp) {
+				predicate += prettyPrint(object.cons as ConstraintExp)
+			}
+			else if(object.cons instanceof Pred) {
+				predicate += prettyPrint(object.cons as Pred)
+			}
+			predicate += ' => '
+		}
+		
+		if(object.not !== null) {
+			predicate += '!'
+		}
+		
+		return predicate + prettyPrint(object.pred)
+		
+	}
+	
+	def String prettyPrint(Pred object) {
+		return object.name + '[' + prettyPrint(object.params) + ']'
+	}
+	
+	def String prettyPrint(PredParams object) {
+		val list = new ArrayList<String>
+		
+		for(p: object.parameters) {
+			if(p.^val !== null) {
+				list.add(p.^val.value)
+			} else {
+				list.add('_')
+			}
+			// TODO: when to use 'this' literal?
+		}
+		
+		return String.join(',', list)
 	}
 
 }

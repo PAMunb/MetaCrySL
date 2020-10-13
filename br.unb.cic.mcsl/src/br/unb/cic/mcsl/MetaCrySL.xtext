@@ -246,9 +246,9 @@ AtomicPredicate:
 	(cons = (ConstraintExp | Pred) "=>")? (not = '!')? pred = Pred;
 	
 Pred:
-	name = ID '[' (parans = PredParans) ']';
+	name = ID '[' (params = PredParams) ']';
 	
-PredParans:
+PredParams:
 	(parameters += ParamType (',' parameters += ParamType)*);
 
 ParamType:

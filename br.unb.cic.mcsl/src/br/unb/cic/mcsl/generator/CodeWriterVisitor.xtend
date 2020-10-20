@@ -34,15 +34,22 @@ import br.unb.cic.mcsl.metaCrySL.AtomicPredicate
 import br.unb.cic.mcsl.metaCrySL.Pred
 import br.unb.cic.mcsl.metaCrySL.PredParams
 import java.util.ArrayList
+import br.unb.cic.mcsl.metaCrySL.ParamType
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrint(ConstraintExp object) {
 		return prettyPrint(object.booleanExp)
 	}
 	
+	def String prettyPrint(InSet object) {
+		// TODO
+	}
+	
 	def String prettyPrint(BooleanExp object) {
-		if(object instanceof RelationalExp) {
-			return prettyPrint(object as RelationalExp)
+		// TODO: colocar todas as possiveis alternativas de BooleanExp
+		// TODO: definir vários casos de testes para testar se estamos capturando todos os casos de BooleanExp
+		switch(object) {
+			RelationalExp: return prettyPrint(object as RelationalExp)
 		}
 	}
 	
@@ -205,6 +212,10 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 		}
 		
 		return String.join(',', list)
+	}
+	
+	def String prettyPrint(ParamType object) {
+		return ''
 	}
 
 }

@@ -249,10 +249,13 @@ Pred:
 	name = ID '[' (params = PredParams) ']';
 	
 PredParams:
-	(parameters += ParamType (',' parameters += ParamType)*);
+	(parameters += PredParameter (',' parameters += PredParameter)*);
 
-ParamType:
-	{ParamType} (val = Value | '_' | 'this'); 
+PredParameter
+: {PredValue} val = Value
+| {PredWildcard} '_' 
+| {PredThis} 'this'
+; 
 
 /* EnsureSpec rule
  * 

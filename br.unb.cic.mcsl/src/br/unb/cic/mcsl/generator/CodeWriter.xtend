@@ -51,17 +51,17 @@ class CodeWriter {
 		return String.join('\n', events)
 	}
 	
-	def String writeEnsure()'''
-		ENSURES
-	'''
+	def String writeEnsure() {
+		//TODO
+	}
 	
-	def String writeForbidden()'''
-		FORBIDDEN
-	'''
+	def String writeForbidden() {
+		// TODO
+	}
 	
-	def String writeOrder()'''
-		ORDER
-	'''
+	def String writeOrder() {
+		//TODO
+	}
 	
 	def String writeRequire() {
 		val requires = new ArrayList<String>
@@ -78,6 +78,7 @@ class CodeWriter {
 		val objects = new ArrayList<String>
 		objects.add('\nOBJECTS\n')
 		
+		// TODO: refactor to use visitor
 		for(object: spec.objectSpec.objects) {
 			val type = object.objectType
 			val name = object.objectName
@@ -89,6 +90,7 @@ class CodeWriter {
 	}
 	
 	def void generate() {
+		// TODO: the generated file must be written at the PATH specified in the config file
 		val pw = new PrintWriter("out.crysl", "UTF-8")
 		pw.println(writeHeader())
 		pw.println(writeObjects())

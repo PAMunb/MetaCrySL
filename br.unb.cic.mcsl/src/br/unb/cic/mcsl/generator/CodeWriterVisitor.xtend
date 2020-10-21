@@ -34,7 +34,6 @@ import br.unb.cic.mcsl.metaCrySL.AtomicPredicate
 import br.unb.cic.mcsl.metaCrySL.Pred
 import br.unb.cic.mcsl.metaCrySL.PredParams
 import java.util.ArrayList
-import br.unb.cic.mcsl.metaCrySL.ParamType
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrint(ConstraintExp object) {
@@ -74,29 +73,15 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	}
 	
 	def String prettyPrint(BasicExp object) {
-		if(object instanceof NeverTypeOf) {
-			return 'neverTypeOf' + '[' + object.^var + ',' + object.varType + ']'
-		}
-		else if(object instanceof NoCallTo) {
-			return 'noCallTo' + '[' + object.method + ']'
-		}
-		else if(object instanceof CallTo) {
-			return 'callTo' + '[' + object.method + ']'
-		}
-		else if(object instanceof NotHardCoded) {
-			return 'notHardCoded' + '[' + object.^var + ']'
-		}
-		else if(object instanceof Length) {
-			return 'length' + '[' + object.^var + ']'
-		}
-		else if(object instanceof InstanceOf) {
-			return 'instanceOf' + '[' + object.^var + ',' + object.varType + ']'
-		}
-		else if(object instanceof InSet) {
-			return prettyPrint(object.left) + ' in ' + prettyPrint(object.literalSet)
-		}
-		else if(object instanceof AtomicConstraint) {
-			return prettyPrint(object.exp as AtomicConstraintExp)
+		switch(object) {
+			NeverTypeOf: return 'neverTypeOf' + '[' + object.^var + ',' + object.varType + ']'
+			NoCallTo: return 'noCallTo' + '[' + object.method + ']'
+			CallTo: return 'callTo' + '[' + object.method + ']'
+			NotHardCoded: return 'notHardCoded' + '[' + object.^var + ']'
+			Length: return 'length' + '[' + object.^var + ']'
+			InstanceOf: return 'instanceOf' + '[' + object.^var + ',' + object.varType + ']'
+			InSet: return prettyPrint(object.left) + ' in ' + prettyPrint(object.literalSet)
+			AtomicConstraint: return prettyPrint(object.exp as AtomicConstraintExp)	
 		}
 	}
 	
@@ -156,33 +141,26 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
 	// REQUIRES
 	def String prettyPrint(RequirePredicate object) {
-		if(object.exp instanceof AtomicPredicate) {
-			return prettyPrint(object.exp as AtomicPredicate)	
-		}
-		else if (object.exp instanceof PredicateOr) {
-			return prettyPrint(object.exp as PredicateOr)
+		switch(object) {
+			AtomicPredicate: return prettyPrint(object.exp as AtomicPredicate)
+			PredicateOr: return prettyPrint(object.exp as PredicateOr)
 		}
 	}
 	
 	def String prettyPrint(PredicateOr object) {
-		if(object.leftExpression instanceof PredicateOr) {
-			return prettyPrint(object.leftExpression as PredicateOr) + ' || ' + prettyPrint(object.right)
-		}
-		else if(object.leftExpression instanceof AtomicPredicate) {
-			return prettyPrint(object.leftExpression as AtomicPredicate) + ' || ' + prettyPrint(object.right)
+		switch(object) {
+			PredicateOr: return prettyPrint(object.leftExpression as PredicateOr) + ' || ' + prettyPrint(object.right)
+			AtomicPredicate: return prettyPrint(object.leftExpression as AtomicPredicate) + ' || ' + prettyPrint(object.right)
 		}
 	}
 	
 	def String prettyPrint(AtomicPredicate object) {
-		// TODO: Maybe try a better way of handling this case
 		var String predicate = ''
 		
 		if(object.cons !== null) {
-			if(object.cons instanceof ConstraintExp) {
-				predicate += prettyPrint(object.cons as ConstraintExp)
-			}
-			else if(object.cons instanceof Pred) {
-				predicate += prettyPrint(object.cons as Pred)
+			switch(object.cons) {
+				ConstraintExp: predicate += prettyPrint(object.cons as ConstraintExp)
+				Pred: predicate += prettyPrint(object.cons as Pred)
 			}
 			predicate += ' => '
 		}
@@ -202,20 +180,16 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrint(PredParams object) {
 		val list = new ArrayList<String>
 		
-		for(p: object.parameters) {
-			if(p.^val !== null) {
-				list.add(p.^val.value)
-			} else {
-				list.add('_')
-			}
-			// TODO: when to use 'this' literal?
-		}
+//		for(p: object.parameters) {
+//			if(p.^val !== null) {
+//				list.add(p.^val.value)
+//			} else {
+//				list.add('_')
+//			}
+//			// TODO: when to use 'this' literal?
+//		}
 		
 		return String.join(',', list)
-	}
-	
-	def String prettyPrint(ParamType object) {
-		return ''
 	}
 
 }

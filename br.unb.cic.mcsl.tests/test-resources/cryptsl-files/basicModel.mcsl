@@ -1,6 +1,7 @@
 ABSTRACT SPEC java.lang.String
 OBJECTS
 	java.lang.String foo;
+
 	
 EVENTS
 	c1 : method1();

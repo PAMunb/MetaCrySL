@@ -49,7 +49,7 @@ ObjectSpec: {ObjectSpec} 'OBJECTS' objects += Object+ ;
  * variable that can be used in the remaining 
  * sections of the specification. 
  */
-Object: {Object} ((ObjectType = JvmTypeReference) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
+Object: {Object} ((ObjectType = QualifiedName) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
 
 /* ForbiddenSpec */
 ForbiddenSpec: {ForbiddenSpec} 'FORBIDDEN' forbidenMethods += ForbiddenMethod+;
@@ -246,13 +246,16 @@ AtomicPredicate:
 	(cons = (ConstraintExp | Pred) "=>")? (not = '!')? pred = Pred;
 	
 Pred:
-	name = ID '[' (parans = PredParans) ']';
+	name = ID '[' (params = PredParams) ']';
 	
-PredParans:
-	(parameters += ParamType (',' parameters += ParamType)*);
+PredParams:
+	(parameters += PredParameter (',' parameters += PredParameter)*);
 
-ParamType:
-	{ParamType} (val = Value | '_' | 'this'); 
+PredParameter
+: {PredValue} val = Value
+| {PredWildcard} '_' 
+| {PredThis} 'this'
+; 
 
 /* EnsureSpec rule
  * 

@@ -12,7 +12,8 @@ ORDER
 	cs
 
 CONSTRAINTS
-	kaa + haa <= doo + foo;
+	foo + bar => foo + bar;
+	
 
 REQUIRES
 	generatedKeyParameter[foo];

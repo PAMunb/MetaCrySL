@@ -45,7 +45,7 @@ class CodeWriter {
 		events.add('\nEVENTS\n')
 		
 		for(event: spec.eventSpec.events) {
-			events.add(visitor.prettyPrint(event))
+	//		events.add(visitor.prettyPrint(event))
 		}
 		
 		return String.join('\n', events)
@@ -68,7 +68,7 @@ class CodeWriter {
 		val visitor = new CodeWriterVisitor()
 		requires.add('\nREQUIRES\n')
 		for(require: spec.requireSpec.requires) {
-			requires.add(visitor.prettyPrint(require))
+//			requires.add(visitor.prettyPrint(require))
 		}
 		
 		return String.join('\n', requires)

@@ -49,6 +49,7 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 		// TODO: definir vários casos de testes para testar se estamos capturando todos os casos de BooleanExp
 		switch(object) {
 			RelationalExp: return prettyPrint(object as RelationalExp)
+			ImpliesExp: return prettyPrint(object as ImpliesExp)
 		}
 	}
 	

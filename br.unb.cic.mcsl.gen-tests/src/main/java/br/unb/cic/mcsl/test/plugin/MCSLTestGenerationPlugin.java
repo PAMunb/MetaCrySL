@@ -80,8 +80,9 @@ public class MCSLTestGenerationPlugin extends AbstractMojo
             
             
             for(File aFile: f.listFiles()) {
-            	rules.add(new TestObject(aFile.getName(), aFile.getAbsolutePath()));
+            	if(aFile.isFile()) rules.add(new TestObject(aFile.getName(), aFile.getAbsolutePath()));
             }
+            
             input.put("rules", rules);
             try {
             	Template template = cfg.getTemplate("testTemplate.ftl");

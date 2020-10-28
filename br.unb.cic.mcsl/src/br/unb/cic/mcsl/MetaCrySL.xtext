@@ -168,7 +168,7 @@ ConstraintSpec : {ConstraintSpec} 'CONSTRAINTS' constraints += Constraint+;
 
 Constraint : exp = ConstraintExp ';';
 
-ConstraintExp : booleanExp = BooleanExp; 
+ConstraintExp : ImpliesExp; 
 
 /*
  * The set of boolean expressions. I think that the precedence should
@@ -199,10 +199,10 @@ RelationalExp returns ConstraintExp
  : ArithmeticExp ({RelationalExp.left = current} operator = ('<' | '>' | '<=' | '>=' | '==' | '!=') right = ArithmeticExp)*;
 
 /* The arithmetic expressions. They all have the same priority */
-ArithmeticExp 
+ArithmeticExp returns ConstraintExp
  : BasicExp ({ArithmeticExp.left = current} operator = ('+' | '-') right = BasicExp)*;
 
- BasicExp
+ BasicExp returns ConstraintExp
   : {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = JvmTypeReference ']'
   | {NoCallTo} 'noCallTo' '[' method = ID ']'
   | {CallTo} 'callTo' '[' method = ID ']'
@@ -214,8 +214,8 @@ ArithmeticExp
   ;
  
 AtomicConstraintExp 
- : {Value} val = Value
- | '(' ConstraintExp ')'
+ : {Value} exp = Value
+ | {Brackets} '(' exp = ConstraintExp ')'
  | {FunctionCall} methodName=ID '(' params += Value (',' params += Value)* ')' 
  ;  
   
@@ -228,8 +228,8 @@ AtomicConstraintExp
  
  Value 
   : {IntValue} value = NUMBER 
-  | {StringValue} value = STRING	
-  | {id} value = ID
+  | {StringValue} value = STRING
+  | {Variable} varName = ID	
   ;
 
 /* RequireSpec rule

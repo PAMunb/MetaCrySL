@@ -13,6 +13,8 @@ ORDER
 
 CONSTRAINTS
 	foo + bar => foo + bar;
+	foo => foo && bar;
+	foo => foo >= 10; 
 	
 
 REQUIRES

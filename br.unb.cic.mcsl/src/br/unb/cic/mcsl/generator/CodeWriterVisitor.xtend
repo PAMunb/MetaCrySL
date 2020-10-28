@@ -7,6 +7,10 @@ import br.unb.cic.mcsl.metaCrySL.ImpliesExp
 import br.unb.cic.mcsl.metaCrySL.Variable
 import br.unb.cic.mcsl.metaCrySL.impl.ValueImpl
 import br.unb.cic.mcsl.metaCrySL.util.MetaCrySLSwitch
+import br.unb.cic.mcsl.metaCrySL.ConjunctionExp
+import br.unb.cic.mcsl.metaCrySL.DisjunctionExp
+import br.unb.cic.mcsl.metaCrySL.RelationalExp
+import br.unb.cic.mcsl.metaCrySL.IntValue
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -17,22 +21,46 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	 */
 	def String prettyPrint(ConstraintExp exp) {
 		switch (exp) {
-			ImpliesExp: return prettyPrintImpliesConstraint(exp)
-			ArithmeticExp: return prettyPrintArithmeticExpression(exp)
+			ImpliesExp    : return prettyPrintImpliesExpression(exp)
+			ConjunctionExp: return prettyPrintConjunctionExpression(exp)
+			DisjunctionExp: return prettyPrintDisjunctionExpression(exp)
+			RelationalExp : return prettyPrintRelationalExpression(exp)
+			ArithmeticExp : return prettyPrintArithmeticExpression(exp)
 			AtomicConstraint: return prettyPrintAtomicConstraint(exp) 
 		}
 		throw new RuntimeException("not implemented yet " + exp)
 	}
 	
 	/**
-	 * pretty print an *implies* constraint
+	 * pretty print an *implies* expression
 	 */
-	def String prettyPrintImpliesConstraint(ImpliesExp exp) {
-		return prettyPrint(exp.left) + "=>" + prettyPrint(exp.right) 
+	def String prettyPrintImpliesExpression(ImpliesExp exp) {
+		return prettyPrint(exp.left) + " => " + prettyPrint(exp.right) 
 	}
 	
 	/**
-	 * pretty print an *arithmetic* constraint
+	 * pretty print an *disjunction* expression
+	 */
+	def String prettyPrintConjunctionExpression(ConjunctionExp exp) {
+		return prettyPrint(exp.left) + " && " + prettyPrint(exp.right)
+	}
+	
+	/**
+	 * pretty print an *conjunction* expression
+	 */
+	def String prettyPrintDisjunctionExpression(DisjunctionExp exp) {
+		return prettyPrint(exp.left) + " || " + prettyPrint(exp.right)
+	}
+	
+	/**
+	 * pretty print a *relational* expression
+	 */
+	 def String prettyPrintRelationalExpression(RelationalExp exp) {
+	 	return prettyPrint(exp.left) + exp.operator + prettyPrint(exp.right)
+	 }
+	 
+	/**
+	 * pretty print an *arithmetic* expression
 	 */
 	def String prettyPrintArithmeticExpression(ArithmeticExp exp) {
 		return prettyPrint(exp.left) + exp.operator + prettyPrint(exp.right)
@@ -56,6 +84,10 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			Variable: {
 				val v = value.exp as Variable
 				return v.varName
+			}
+			IntValue: {
+				val v = value.exp as IntValue
+				return v.value.toString
 			}
 		}
 		throw new RuntimeException("not supported yet " + value.exp)

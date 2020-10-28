@@ -33,8 +33,8 @@ class ApplyRefinementVisitor extends MetaCrySLSwitch<Void> {
 		val toInclude = new ArrayList<Constraint>()
 		val toRemove = new ArrayList<Constraint>()
 		for (c : newspec.constraintSpec.constraints) {
-			if (c.exp.booleanExp instanceof InSet) {
-				val current = c.exp.booleanExp as InSet
+			if (c.exp instanceof InSet) {
+				val current = c.exp as InSet
 				if (current.literalSet instanceof MetaVariable) {
 					val mv = (current.literalSet as MetaVariable).^var
 					if (defineVariables.containsKey(mv)) {
@@ -75,7 +75,7 @@ class ApplyRefinementVisitor extends MetaCrySLSwitch<Void> {
 	override caseAddConstraint(AddConstraint object) {
 		val newConstraint = (new MetaCrySLFactoryImpl()).createConstraint
 		newConstraint.exp = (new MetaCrySLFactoryImpl()).createConstraintExp
-		newConstraint.exp.booleanExp = object.constraint
+		newConstraint.exp = object.constraint
 		newspec.constraintSpec.constraints.add(newConstraint)
 		return super.caseAddConstraint(object)
 	}

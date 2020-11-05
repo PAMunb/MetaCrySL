@@ -23,6 +23,7 @@ CONSTRAINTS
 	length[foo] <= length[bar];
 	instanceOf[foo, bar] <= foo + bar;
 	notHardCoded[foo] => bar;
+	foo in {foo, bar};
 	
 
 REQUIRES

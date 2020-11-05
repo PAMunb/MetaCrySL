@@ -17,6 +17,12 @@ import br.unb.cic.mcsl.metaCrySL.NoCallTo
 import br.unb.cic.mcsl.metaCrySL.Length
 import br.unb.cic.mcsl.metaCrySL.InstanceOf
 import br.unb.cic.mcsl.metaCrySL.NotHardCoded
+import br.unb.cic.mcsl.metaCrySL.InSet
+import br.unb.cic.mcsl.metaCrySL.LiteralSet
+import br.unb.cic.mcsl.metaCrySL.impl.LiteralSetImpl
+import br.unb.cic.mcsl.metaCrySL.impl.AtomicConstraintImpl
+import java.util.ArrayList
+import br.unb.cic.mcsl.metaCrySL.impl.VariableImpl
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -39,6 +45,7 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			Length        : return prettyPrintLength(exp)
 			InstanceOf    : return prettyPrintInstanceOf(exp)
 			NotHardCoded  : return prettyPrintNotHardCoded(exp)
+			InSet         : return prettyPrintInSet(exp)
 		}
 		throw new RuntimeException("not implemented yet " + exp)
 	}
@@ -124,8 +131,39 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 		return 'instanceOf[' + exp.^var + ',' + exp.varType + ']'
 	}
 	
+	/**
+	 * pretty print a *NotHardCoded* constraint
+	 */
 	def String prettyPrintNotHardCoded(NotHardCoded exp) {
 		return 'notHardCoded[' + exp.^var  + ']'
+	}
+	
+	/**
+	 * pretty print a *InSet* constraint
+	 */
+	def String prettyPrintInSet(InSet exp) {
+		switch(exp.left) {
+			ValueImpl: {
+				return prettyPrintValue(exp.left as ValueImpl) + 
+					' in ' + prettyPrintLiteralSet(exp.literalSet)
+			}
+		}
+	}
+	
+	/**
+	 * pretty print a *LiteralSet* constraint
+	 */
+	def String prettyPrintLiteralSet(LiteralSet exp) {
+		switch(exp) {
+			LiteralSet: {
+				val values = new ArrayList<String>
+				for(obj: exp.values) {
+					val el = obj as VariableImpl
+					values.add(el.varName)
+				}
+				return '{' + String.join(',', values) + '}'
+			}
+		}
 	}
 	
 	/**

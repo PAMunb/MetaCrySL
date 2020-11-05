@@ -14,6 +14,9 @@ import br.unb.cic.mcsl.metaCrySL.AtomicConstraint
 import br.unb.cic.mcsl.metaCrySL.NeverTypeOf
 import br.unb.cic.mcsl.metaCrySL.CallTo
 import br.unb.cic.mcsl.metaCrySL.NoCallTo
+import br.unb.cic.mcsl.metaCrySL.Length
+import br.unb.cic.mcsl.metaCrySL.InstanceOf
+import br.unb.cic.mcsl.metaCrySL.NotHardCoded
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -33,6 +36,9 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			NeverTypeOf   : return prettyPrintNeverTypeOf(exp)
 			CallTo        : return prettyPrintCallTo(exp)
 			NoCallTo      : return prettyPrintNoCallTo(exp)
+			Length        : return prettyPrintLength(exp)
+			InstanceOf    : return prettyPrintInstanceOf(exp)
+			NotHardCoded  : return prettyPrintNotHardCoded(exp)
 		}
 		throw new RuntimeException("not implemented yet " + exp)
 	}
@@ -102,6 +108,24 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	 */
 	def String prettyPrintNoCallTo(NoCallTo exp) {
 		return 'noCallTo[' + exp.method + ']'
+	}
+	
+	/**
+	 * pretty print a *Length* constraint
+	 */
+	def String prettyPrintLength(Length exp) {
+		return 'length[' + exp.^var + ']'
+	}
+	
+	/**
+	 * pretty print a *InstanceOf* constraint
+	 */
+	def String prettyPrintInstanceOf(InstanceOf exp) {
+		return 'instanceOf[' + exp.^var + ',' + exp.varType + ']'
+	}
+	
+	def String prettyPrintNotHardCoded(NotHardCoded exp) {
+		return 'notHardCoded[' + exp.^var  + ']'
 	}
 	
 	/**

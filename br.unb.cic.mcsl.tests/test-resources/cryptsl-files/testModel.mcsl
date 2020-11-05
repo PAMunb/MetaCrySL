@@ -20,7 +20,9 @@ CONSTRAINTS
 	neverTypeOf[foo,bar] || bar;
 	noCallTo[foo] => bar;
 	callTo[foo] => bar;
-
+	length[foo] <= length[bar];
+	instanceOf[foo, bar] <= foo + bar;
+	notHardCoded[foo] => bar;
 	
 
 REQUIRES

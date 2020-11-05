@@ -208,7 +208,7 @@ ArithmeticExp returns ConstraintExp
   | {CallTo} 'callTo' '[' method = ID ']'
   | {NotHardCoded} 'notHardCoded' '[' var = ID "]"
   | {Length} 'length' '[' var = ID ']'
-  | {InstanceOf} 'instanceOf' '[' var = ID ',' varType = JvmTypeReference ']'
+  | {InstanceOf} 'instanceOf' '[' var = ID ',' varType = ID ']'
   |	{InSet} left = AtomicConstraintExp 'in' literalSet = LiteralSet
   | {AtomicConstraint} exp = AtomicConstraintExp
   ;

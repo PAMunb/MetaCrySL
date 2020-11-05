@@ -12,6 +12,8 @@ import br.unb.cic.mcsl.metaCrySL.RelationalExp
 import br.unb.cic.mcsl.metaCrySL.IntValue
 import br.unb.cic.mcsl.metaCrySL.AtomicConstraint
 import br.unb.cic.mcsl.metaCrySL.NeverTypeOf
+import br.unb.cic.mcsl.metaCrySL.CallTo
+import br.unb.cic.mcsl.metaCrySL.NoCallTo
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -28,7 +30,9 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			RelationalExp : return prettyPrintRelationalExpression(exp)
 			ArithmeticExp : return prettyPrintArithmeticExpression(exp)
 			AtomicConstraint: return prettyPrintAtomicConstraint(exp)
-			NeverTypeOf: return prettyPrintNeverTypeOf(exp)
+			NeverTypeOf   : return prettyPrintNeverTypeOf(exp)
+			CallTo        : return prettyPrintCallTo(exp)
+			NoCallTo      : return prettyPrintNoCallTo(exp)
 		}
 		throw new RuntimeException("not implemented yet " + exp)
 	}
@@ -83,6 +87,21 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	 */
 	def String prettyPrintNeverTypeOf(NeverTypeOf exp) {
 		return 'neverTypeOf[' + exp.^var + ',' + exp.varType + ']' 
+	}
+	
+	
+	/**
+	 * pretty print a *CallTo* constraint
+	 */
+	def String prettyPrintCallTo(CallTo exp) {
+		return 'callTo[' + exp.method + ']'
+	}
+	
+	/**
+	 * pretty print a *NoCallTo* constraint
+	 */
+	def String prettyPrintNoCallTo(NoCallTo exp) {
+		return 'noCallTo[' + exp.method + ']'
 	}
 	
 	/**

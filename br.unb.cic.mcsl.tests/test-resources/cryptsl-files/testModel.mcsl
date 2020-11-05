@@ -18,6 +18,8 @@ CONSTRAINTS
 	foo => bar || foo + bar;
 	foo || foo + bar;
 	neverTypeOf[foo,bar] || bar;
+	noCallTo[foo] => bar;
+	callTo[foo] => bar;
 
 	
 

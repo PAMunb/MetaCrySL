@@ -25,6 +25,7 @@ CONSTRAINTS
 	notHardCoded[foo] => bar;
 	foo in {foo, bar};
 	foo in ${bar};
+	(foo + bar) in {foo, bar};
 	
 
 REQUIRES

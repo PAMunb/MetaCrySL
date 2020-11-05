@@ -25,6 +25,7 @@ import java.util.ArrayList
 import br.unb.cic.mcsl.metaCrySL.impl.VariableImpl
 import br.unb.cic.mcsl.metaCrySL.MetaVariable
 import br.unb.cic.mcsl.metaCrySL.impl.MetaVariableImpl
+import br.unb.cic.mcsl.metaCrySL.impl.BracketsImpl
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -149,7 +150,18 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 				return prettyPrintValue(exp.left as ValueImpl) + 
 					' in ' + prettyPrintLiteralSet(exp.literalSet)
 			}
+			BracketsImpl: {
+				return prettyPrintBackets(exp.left as BracketsImpl) + 
+					' in ' + prettyPrintLiteralSet(exp.literalSet)
+			}
 		}
+	}
+	
+	/**
+	 * pretty print a *Brackets* constraint
+	 */
+	def String prettyPrintBackets(BracketsImpl exp) {
+		return '(' + prettyPrint(exp.exp as ConstraintExp) + ')'
 	}
 	
 	/**

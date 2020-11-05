@@ -26,6 +26,7 @@ import br.unb.cic.mcsl.metaCrySL.impl.VariableImpl
 import br.unb.cic.mcsl.metaCrySL.MetaVariable
 import br.unb.cic.mcsl.metaCrySL.impl.MetaVariableImpl
 import br.unb.cic.mcsl.metaCrySL.impl.BracketsImpl
+import br.unb.cic.mcsl.metaCrySL.impl.FunctionCallImpl
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -94,6 +95,7 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrintAtomicConstraint(AtomicConstraint atomic) {
 		switch(atomic.exp) {
 			ValueImpl: return prettyPrintValue(atomic.exp as ValueImpl)
+			FunctionCallImpl: return prettyPrintFunctionCall(atomic.exp as FunctionCallImpl)
 		}
 		throw new RuntimeException("not supported yet " + atomic.exp)
 	}
@@ -154,7 +156,20 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 				return prettyPrintBackets(exp.left as BracketsImpl) + 
 					' in ' + prettyPrintLiteralSet(exp.literalSet)
 			}
+			FunctionCallImpl: {
+				return prettyPrintFunctionCall(exp.left as FunctionCallImpl) + 
+					' in ' + prettyPrintLiteralSet(exp.literalSet)
+			}
 		}
+	}
+	
+	def String prettyPrintFunctionCall(FunctionCallImpl exp) {
+		val params = new ArrayList<String>
+		for(obj: exp.params) {
+			val el = obj as VariableImpl
+			params.add(el.varName)
+		}
+		return exp.methodName + '(' + String.join(',', params) + ')'
 	}
 	
 	/**

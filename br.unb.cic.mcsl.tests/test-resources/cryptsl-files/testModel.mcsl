@@ -26,6 +26,7 @@ CONSTRAINTS
 	foo in {foo, bar};
 	foo in ${bar};
 	(foo + bar) in {foo, bar};
+	foo(foo, bar) => foo + bar;
 	
 
 REQUIRES

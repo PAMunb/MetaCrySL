@@ -24,6 +24,7 @@ CONSTRAINTS
 	instanceOf[foo, bar] <= foo + bar;
 	notHardCoded[foo] => bar;
 	foo in {foo, bar};
+	foo in ${bar};
 	
 
 REQUIRES

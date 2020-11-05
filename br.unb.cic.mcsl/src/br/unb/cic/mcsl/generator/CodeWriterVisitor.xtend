@@ -23,6 +23,8 @@ import br.unb.cic.mcsl.metaCrySL.impl.LiteralSetImpl
 import br.unb.cic.mcsl.metaCrySL.impl.AtomicConstraintImpl
 import java.util.ArrayList
 import br.unb.cic.mcsl.metaCrySL.impl.VariableImpl
+import br.unb.cic.mcsl.metaCrySL.MetaVariable
+import br.unb.cic.mcsl.metaCrySL.impl.MetaVariableImpl
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -155,6 +157,9 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	 */
 	def String prettyPrintLiteralSet(LiteralSet exp) {
 		switch(exp) {
+			MetaVariable: {
+				return prettyPrintMetaVariable(exp)
+			}
 			LiteralSet: {
 				val values = new ArrayList<String>
 				for(obj: exp.values) {
@@ -164,6 +169,13 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 				return '{' + String.join(',', values) + '}'
 			}
 		}
+	}
+	
+	/**
+	 * pretty print a *MetaVariable* constraint
+	 */
+	def String prettyPrintMetaVariable(MetaVariable exp) {
+		return exp.^var
 	}
 	
 	/**

@@ -203,7 +203,7 @@ ArithmeticExp returns ConstraintExp
  : BasicExp ({ArithmeticExp.left = current} operator = ('+' | '-') right = BasicExp)*;
 
  BasicExp returns ConstraintExp
-  : {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = JvmTypeReference ']'
+  : {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = ID ']'
   | {NoCallTo} 'noCallTo' '[' method = ID ']'
   | {CallTo} 'callTo' '[' method = ID ']'
   | {NotHardCoded} 'notHardCoded' '[' var = ID "]"

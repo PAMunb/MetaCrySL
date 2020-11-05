@@ -15,6 +15,10 @@ CONSTRAINTS
 	foo + bar => foo + bar;
 	foo => foo && bar;
 	foo => foo >= 10; 
+	foo => bar || foo + bar;
+	foo || foo + bar;
+	neverTypeOf[foo,bar] || bar;
+
 	
 
 REQUIRES

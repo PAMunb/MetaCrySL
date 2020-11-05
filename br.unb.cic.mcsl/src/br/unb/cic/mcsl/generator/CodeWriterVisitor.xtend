@@ -1,7 +1,6 @@
 package br.unb.cic.mcsl.generator
 
 import br.unb.cic.mcsl.metaCrySL.ArithmeticExp
-import br.unb.cic.mcsl.metaCrySL.AtomicConstraint
 import br.unb.cic.mcsl.metaCrySL.ConstraintExp
 import br.unb.cic.mcsl.metaCrySL.ImpliesExp
 import br.unb.cic.mcsl.metaCrySL.Variable
@@ -11,6 +10,8 @@ import br.unb.cic.mcsl.metaCrySL.ConjunctionExp
 import br.unb.cic.mcsl.metaCrySL.DisjunctionExp
 import br.unb.cic.mcsl.metaCrySL.RelationalExp
 import br.unb.cic.mcsl.metaCrySL.IntValue
+import br.unb.cic.mcsl.metaCrySL.AtomicConstraint
+import br.unb.cic.mcsl.metaCrySL.NeverTypeOf
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -26,7 +27,8 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			DisjunctionExp: return prettyPrintDisjunctionExpression(exp)
 			RelationalExp : return prettyPrintRelationalExpression(exp)
 			ArithmeticExp : return prettyPrintArithmeticExpression(exp)
-			AtomicConstraint: return prettyPrintAtomicConstraint(exp) 
+			AtomicConstraint: return prettyPrintAtomicConstraint(exp)
+			NeverTypeOf: return prettyPrintNeverTypeOf(exp)
 		}
 		throw new RuntimeException("not implemented yet " + exp)
 	}
@@ -74,6 +76,13 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			ValueImpl: return prettyPrintValue(atomic.exp as ValueImpl)
 		}
 		throw new RuntimeException("not supported yet " + atomic.exp)
+	}
+	
+	/**
+	 * pretty print an *neverTypeOf* constraint
+	 */
+	def String prettyPrintNeverTypeOf(NeverTypeOf exp) {
+		return 'neverTypeOf[' + exp.^var + ',' + exp.varType + ']' 
 	}
 	
 	/**

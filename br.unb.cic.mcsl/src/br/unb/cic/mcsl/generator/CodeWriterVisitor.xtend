@@ -27,6 +27,7 @@ import br.unb.cic.mcsl.metaCrySL.MetaVariable
 import br.unb.cic.mcsl.metaCrySL.impl.MetaVariableImpl
 import br.unb.cic.mcsl.metaCrySL.impl.BracketsImpl
 import br.unb.cic.mcsl.metaCrySL.impl.FunctionCallImpl
+import br.unb.cic.mcsl.metaCrySL.StringValue
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -216,6 +217,10 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			}
 			IntValue: {
 				val v = value.exp as IntValue
+				return v.value.toString
+			}
+			StringValue: {
+				val v = value.exp as StringValue
 				return v.value.toString
 			}
 		}

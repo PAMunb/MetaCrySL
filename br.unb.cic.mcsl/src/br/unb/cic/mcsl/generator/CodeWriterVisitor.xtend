@@ -30,6 +30,16 @@ import br.unb.cic.mcsl.metaCrySL.impl.MetaVariableImpl
 import br.unb.cic.mcsl.metaCrySL.impl.BracketsImpl
 import br.unb.cic.mcsl.metaCrySL.impl.FunctionCallImpl
 import br.unb.cic.mcsl.metaCrySL.StringValue
+import br.unb.cic.mcsl.metaCrySL.Pred
+import br.unb.cic.mcsl.metaCrySL.PredParams
+import br.unb.cic.mcsl.metaCrySL.PredParameter
+import br.unb.cic.mcsl.metaCrySL.PredValue
+import br.unb.cic.mcsl.metaCrySL.PredWildcard
+import br.unb.cic.mcsl.metaCrySL.PredThis
+import br.unb.cic.mcsl.metaCrySL.impl.PredValueImpl
+import br.unb.cic.mcsl.metaCrySL.impl.PredWildcardImpl
+import br.unb.cic.mcsl.metaCrySL.impl.PredThisImpl
+
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
 	/**
@@ -228,6 +238,27 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 		throw new RuntimeException("not supported yet " + value.exp)
 	}
 	
+	/**
+	 * Uses method overloading to pretty print values for Pred expressions
+	 */
+	def String prettyPrintValue(PredValueImpl value) {
+		switch(value.^val) {
+			Variable: {
+				val v = value.^val as Variable
+				return v.varName
+			}
+			IntValue: {
+				val v = value.^val as IntValue
+				return v.value.toString
+			}
+			StringValue: {
+				val v = value.^val as StringValue
+				return v.value.toString
+			}
+		}
+		throw new RuntimeException("not supported yet " + value)
+	}
+	
 	
 	// ENSURES
 	
@@ -237,20 +268,59 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrintEnsures(EnsurePredicate exp) {
 		var after = ''
 		if(exp.label !== null) {
-			after = 'after' + exp.label
+			after = ' after ' + exp.label
 		}
 		return prettyPrintAtomicPredicate(exp.predicate) + after
 	}
 	
+	/**
+	 * Pretty print an Atomic Predicate expression
+	 */
 	def String prettyPrintAtomicPredicate(AtomicPredicate exp) {
 		var cons = ''
 		var not = ''
 		if(exp.cons !== null) {
 			switch(exp.cons) {
 				ConstraintExp: cons = prettyPrint(exp.cons as ConstraintExp)
+				Pred: cons = prettyPrintPred(exp.cons as Pred)
 			}
+			cons = cons + ' => '
+			throw new RuntimeException("not implemented yet " + exp)
 		}
-		return ''
+		if(exp.not !== null ) {
+			not = '!'
+		}
+		return cons + not + prettyPrintPred(exp.pred)
+	}
+	
+	/**
+	 * Pretty print a Pred expression
+	 */
+	def String prettyPrintPred(Pred exp) {
+		return exp.name + '[' + prettyPrintPredParams(exp.params) + ']'
+	}
+	
+	/**
+	 * Pretty print a PredParams expression
+	 */
+	def String prettyPrintPredParams(PredParams exp) {
+		val params = new ArrayList<String>
+		for(o: exp.parameters) {
+			params.add(prettyPrintPredParameter(o))
+		}
+		return String.join(',', params)
+	}
+	
+	/**
+	 * Pretty print a PredParameter expression
+	 */
+	def String prettyPrintPredParameter(PredParameter exp) {
+		switch(exp) {
+			PredValueImpl: return prettyPrintValue(exp)
+			PredWildcardImpl: return '_'
+			PredThisImpl: return 'this'
+		}
+		throw new RuntimeException("not implemented yet " + exp)
 	}
 
 }

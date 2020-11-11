@@ -95,7 +95,7 @@ class CodeWriter {
 		ensures.add('\nENSURES\n')
 		
 		for(e: spec.ensureSpec.ensures) {
-			ensures.add(visitor.prettyPrintEnsures(e))
+			ensures.add(visitor.prettyPrintEnsures(e) + ';')
 		}
 		
 		return String.join('\n', ensures)

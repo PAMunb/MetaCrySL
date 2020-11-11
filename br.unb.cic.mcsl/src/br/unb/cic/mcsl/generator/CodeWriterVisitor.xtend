@@ -28,6 +28,15 @@ import br.unb.cic.mcsl.metaCrySL.impl.MetaVariableImpl
 import br.unb.cic.mcsl.metaCrySL.impl.BracketsImpl
 import br.unb.cic.mcsl.metaCrySL.impl.FunctionCallImpl
 import br.unb.cic.mcsl.metaCrySL.StringValue
+import br.unb.cic.mcsl.metaCrySL.Event
+import br.unb.cic.mcsl.metaCrySL.EventMethod
+import br.unb.cic.mcsl.metaCrySL.EventAggregate
+import br.unb.cic.mcsl.metaCrySL.MethodDef
+import br.unb.cic.mcsl.metaCrySL.FormalArg
+import br.unb.cic.mcsl.metaCrySL.impl.FormalImpl
+import br.unb.cic.mcsl.metaCrySL.FormalArgs
+import br.unb.cic.mcsl.metaCrySL.Wildcard
+import br.unb.cic.mcsl.metaCrySL.Formal
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -226,5 +235,71 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 		}
 		throw new RuntimeException("not supported yet " + value.exp)
 	}
+	
+	// EVENTS
+	
+	/**
+	 * Uses pattern matching to print an event spec
+	 */
+	def String prettyPrintEvent(Event exp) {
+		switch(exp) {
+			EventMethod: return prettyPrintEventMethod(exp)
+			EventAggregate: return prettyPrintEventAggregate(exp)
+		}
+	}
+	
+	/**
+	 * Pretty print an Event Method expression
+	 */
+	def prettyPrintEventMethod(EventMethod exp) {
+		var optional = ''
+		if(exp.^var !== null) {
+			optional = exp.^var + ' = '
+		}
+		return exp.label + ' : ' + optional + prettyPrintMethodDef(exp.method)
+	}
+	
+	def prettyPrintMethodDef(MethodDef exp) {
+		var formalArgs = ''
+		if(exp.args !== null) {
+			formalArgs = prettyPrintFormalArgs(exp.args)
+		}
+		return exp.methodName + '(' + formalArgs + ')'
+	}
+	
+	/**
+	 * Pretty print a FormalArgs expression
+	 */
+	def prettyPrintFormalArgs(FormalArgs exp) {
+		var argsList = new ArrayList<String>
+		for(arg: exp.args) {
+			argsList.add(prettyPrintFormalArg(arg))
+		}
+		return String.join(',', argsList)
+	}
+
+	/**
+	 * Pretty print a FormalArg expression
+	 */
+	def prettyPrintFormalArg(FormalArg exp) {
+		switch(exp) {
+			case exp instanceof FormalImpl: return prettyPrintFormalImpl(exp as Formal)
+			case exp instanceof Wildcard: return '_'
+		}
+		throw new RuntimeException("not implemented yet " + exp)
+	}
+	
+	def prettyPrintFormalImpl(Formal exp) {
+		return exp.argument
+	}
+	
+	/**
+	 * Pretty print an Event Aggregate
+	 */
+	def prettyPrintEventAggregate(EventAggregate exp) {
+		return ''
+	}
+	
+	
 
 }

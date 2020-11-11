@@ -37,6 +37,7 @@ import br.unb.cic.mcsl.metaCrySL.impl.FormalImpl
 import br.unb.cic.mcsl.metaCrySL.FormalArgs
 import br.unb.cic.mcsl.metaCrySL.Wildcard
 import br.unb.cic.mcsl.metaCrySL.Formal
+import br.unb.cic.mcsl.metaCrySL.AggregateList
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -297,9 +298,12 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	 * Pretty print an Event Aggregate
 	 */
 	def prettyPrintEventAggregate(EventAggregate exp) {
-		return ''
+		return exp.label + ' := ' + prettyPrintAggregateList(exp.aggregate)
 	}
 	
+	def prettyPrintAggregateList(AggregateList exp) {
+		return String.join('|', exp.labels)
+	}
 	
 
 }

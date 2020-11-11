@@ -45,7 +45,10 @@ class CodeWriter {
 		events.add('\nEVENTS\n')
 		
 		for(event: spec.eventSpec.events) {
-			events.add(visitor.prettyPrintEvent(event) + ';')
+			val e = visitor.prettyPrintEvent(event)
+			if(e !== null) {
+				events.add(e + ';')
+			}
 		}
 		
 		return String.join('\n', events)

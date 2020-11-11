@@ -89,6 +89,18 @@ class CodeWriter {
 		return String.join("\n", objects)
 	}
 	
+	def String writeEnsures() {
+		val ensures = new ArrayList<String>
+		val visitor = new CodeWriterVisitor()
+		ensures.add('\nENSURES\n')
+		
+		for(e: spec.ensureSpec.ensures) {
+			ensures.add(visitor.prettyPrintEnsures(e))
+		}
+		
+		return String.join('\n', ensures)
+	}
+	
 	def void generate() {
 		// TODO: the generated file must be written at the PATH specified in the config file
 		val pw = new PrintWriter("out.crysl", "UTF-8")
@@ -97,6 +109,7 @@ class CodeWriter {
 		pw.println(writeEvents())
 		pw.println(writeOrder())
 		pw.println(writeRequire())
+		pw.println(writeEnsures())
 		pw.println(writeConstraints())
 		
 		

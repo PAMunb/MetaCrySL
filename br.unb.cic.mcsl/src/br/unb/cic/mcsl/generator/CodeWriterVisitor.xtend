@@ -11,6 +11,8 @@ import br.unb.cic.mcsl.metaCrySL.ConjunctionExp
 import br.unb.cic.mcsl.metaCrySL.DisjunctionExp
 import br.unb.cic.mcsl.metaCrySL.RelationalExp
 import br.unb.cic.mcsl.metaCrySL.IntValue
+import br.unb.cic.mcsl.metaCrySL.EnsurePredicate
+import br.unb.cic.mcsl.metaCrySL.AtomicPredicate
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -91,6 +93,31 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			}
 		}
 		throw new RuntimeException("not supported yet " + value.exp)
+	}
+	
+	
+	// ENSURES
+	
+	/**
+	 * Pretty print an Ensures expression
+	 */
+	def String prettyPrintEnsures(EnsurePredicate exp) {
+		var after = ''
+		if(exp.label !== null) {
+			after = 'after' + exp.label
+		}
+		return prettyPrintAtomicPredicate(exp.predicate) + after
+	}
+	
+	def String prettyPrintAtomicPredicate(AtomicPredicate exp) {
+		var cons = ''
+		var not = ''
+		if(exp.cons !== null) {
+			switch(exp.cons) {
+				ConstraintExp: cons = prettyPrint(exp.cons as ConstraintExp)
+			}
+		}
+		return ''
 	}
 
 }

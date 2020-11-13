@@ -39,6 +39,10 @@ import br.unb.cic.mcsl.metaCrySL.PredThis
 import br.unb.cic.mcsl.metaCrySL.impl.PredValueImpl
 import br.unb.cic.mcsl.metaCrySL.impl.PredWildcardImpl
 import br.unb.cic.mcsl.metaCrySL.impl.PredThisImpl
+import br.unb.cic.mcsl.metaCrySL.RequirePredicate
+import br.unb.cic.mcsl.metaCrySL.PredicateOr
+import br.unb.cic.mcsl.metaCrySL.impl.StringValueImpl
+import br.unb.cic.mcsl.metaCrySL.impl.InSetImpl
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -202,8 +206,11 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			LiteralSet: {
 				val values = new ArrayList<String>
 				for(obj: exp.values) {
-					val el = obj as VariableImpl
-					values.add(el.varName)
+					var el = ''
+					switch(obj) {
+						StringValueImpl: values.add('"' + obj.value + '"')
+						default: values.add('"' + (obj as VariableImpl).varName + '"')
+					}
 				}
 				return '{' + String.join(',', values) + '}'
 			}
@@ -283,9 +290,9 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			switch(exp.cons) {
 				ConstraintExp: cons = prettyPrint(exp.cons as ConstraintExp)
 				Pred: cons = prettyPrintPred(exp.cons as Pred)
+				default: cons = prettyPrint(exp.cons as ConstraintExp)
 			}
 			cons = cons + ' => '
-			throw new RuntimeException("not implemented yet " + exp)
 		}
 		if(exp.not !== null ) {
 			not = '!'
@@ -321,6 +328,25 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			PredThisImpl: return 'this'
 		}
 		throw new RuntimeException("not implemented yet " + exp)
+	}
+	
+	// REQUIRES
+	def String prettyPrintRequire(RequirePredicate exp) {
+		switch(exp.exp) {
+			PredicateOr: return prettyPrintPredicateOr(exp.exp as PredicateOr)
+			AtomicPredicate: return prettyPrintAtomicPredicate(exp.exp as AtomicPredicate)
+			Pred: return prettyPrintPred(exp.exp as Pred)
+		}
+		
+		switch(exp) {
+			PredicateOr: return prettyPrintPredicateOr(exp as PredicateOr)
+			AtomicPredicate: return prettyPrintAtomicPredicate(exp)
+		}
+	}
+	
+	def String prettyPrintPredicateOr(PredicateOr exp) {
+		return prettyPrintRequire(exp.leftExpression) +
+			   ' || ' + prettyPrintRequire(exp.right) 
 	}
 
 }

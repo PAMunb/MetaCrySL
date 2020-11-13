@@ -239,7 +239,7 @@ RequireSpec : {RequireSpec} 'REQUIRES' requires += RequirePredicate+;
 
 RequirePredicate : exp = PredicateOr ';';
 
-PredicateOr returns PredicateExp 
+PredicateOr returns RequirePredicate 
 	: AtomicPredicate ({PredicateOr.leftExpression = current} '||' right = AtomicPredicate)*;
 
 AtomicPredicate: 

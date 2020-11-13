@@ -338,12 +338,47 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	 */
 	def String prettyPrintOrder(EventExp exp) {
 		switch(exp) {
-			PrimaryExp: return prettyPrintPrimaryExp(exp)
 			ChoiceExp: return prettyPrintChoiceExp(exp)
 			SequenceExp: return prettyPrintSequenceExp(exp)
-			BasicEventExp: return prettyPrintBasicEventExp(exp)
+			Optional: return prettyPrintOptional(exp) + '?'
+			ZeroOrMore: return prettyPrintZeroOrMore(exp) + '*'
+			OneOrMore: return prettyPrintOneOrMore(exp) + '+'
+			PrimaryExp: return prettyPrintPrimaryExp(exp)
 		}
 		throw new RuntimeException("not implemented yet " + exp)
+	}
+	
+	/**
+	 * Pretty print a Optional expression
+	 */
+	def String prettyPrintOptional(Optional exp) {
+		if(exp.exp.label !== null) {
+			return exp.exp.label
+		} else {
+			return '(' + prettyPrintOrder(exp.exp) + ')'
+		}
+	}
+	
+	/**
+	 * Pretty print a ZeroOrMore expression
+	 */
+	def String prettyPrintZeroOrMore(ZeroOrMore exp) {
+		if(exp.exp.label !== null) {
+			return exp.exp.label
+		} else {
+			return '(' + prettyPrintOrder(exp.exp) + ')'
+		}	
+	}
+	
+	/**
+	 * Pretty print a OneOrMore expression
+	 */
+	def String prettyPrintOneOrMore(OneOrMore exp) {
+		if(exp.exp.label !== null) {
+			return exp.exp.label
+		} else {
+			return '(' + prettyPrintOrder(exp.exp) + ')'
+		}
 	}
 	
 	/**
@@ -361,26 +396,13 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	}
 	
 	/**
-	 * Pretty print a BasicEventExp expression
-	 */
-	def String prettyPrintBasicEventExp(BasicEventExp exp) {
-		switch(exp) {
-			Optional: return prettyPrintOrder(exp.exp) + '?'
-			ZeroOrMore: return prettyPrintOrder(exp.exp) + '*'
-			OneOrMore: return prettyPrintOrder(exp.exp) + '+'
-			PrimaryExp: return prettyPrintPrimaryExp(exp as PrimaryExp)
-		}
-		throw new RuntimeException("not implemented yet " + exp)
-	}
-	
-	/**
 	 * Pretty print a PrimaryExp expression
 	 */
 	def String prettyPrintPrimaryExp(PrimaryExp exp) {
 		if(exp.exp.label !== null) {
 			return exp.exp.label
 		} else {
-			return '(' + prettyPrintOrder(exp) + ')'
+			return '(' + prettyPrintOrder(exp.exp) + ')'
 		}
 	}
 

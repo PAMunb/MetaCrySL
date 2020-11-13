@@ -9,7 +9,7 @@ EVENTS
 	cs := c1 | c2 ;
 
 ORDER
-	cs
+	cs | (c1, c2, c3)*
 
 CONSTRAINTS
 	foo + bar => foo + bar;

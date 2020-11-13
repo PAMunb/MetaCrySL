@@ -39,6 +39,14 @@ import br.unb.cic.mcsl.metaCrySL.PredThis
 import br.unb.cic.mcsl.metaCrySL.impl.PredValueImpl
 import br.unb.cic.mcsl.metaCrySL.impl.PredWildcardImpl
 import br.unb.cic.mcsl.metaCrySL.impl.PredThisImpl
+import br.unb.cic.mcsl.metaCrySL.EventExp
+import br.unb.cic.mcsl.metaCrySL.ChoiceExp
+import br.unb.cic.mcsl.metaCrySL.SequenceExp
+import br.unb.cic.mcsl.metaCrySL.BasicEventExp
+import br.unb.cic.mcsl.metaCrySL.PrimaryExp
+import br.unb.cic.mcsl.metaCrySL.Optional
+import br.unb.cic.mcsl.metaCrySL.ZeroOrMore
+import br.unb.cic.mcsl.metaCrySL.OneOrMore
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -321,6 +329,59 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			PredThisImpl: return 'this'
 		}
 		throw new RuntimeException("not implemented yet " + exp)
+	}
+	
+	// ORDER
+	
+	/**
+	 * Uses pattern matching for Order expression
+	 */
+	def String prettyPrintOrder(EventExp exp) {
+		switch(exp) {
+			PrimaryExp: return prettyPrintPrimaryExp(exp)
+			ChoiceExp: return prettyPrintChoiceExp(exp)
+			SequenceExp: return prettyPrintSequenceExp(exp)
+			BasicEventExp: return prettyPrintBasicEventExp(exp)
+		}
+		throw new RuntimeException("not implemented yet " + exp)
+	}
+	
+	/**
+	 * Pretty print a ChoiceExp expression
+	 */
+	def String prettyPrintChoiceExp(ChoiceExp exp) {
+		return prettyPrintOrder(exp.left) + '|' + prettyPrintOrder(exp.right)
+	}
+	
+	/**
+	 * Pretty print a SequenceExp expression
+	 */
+	def String prettyPrintSequenceExp(SequenceExp exp) {
+		return prettyPrintOrder(exp.left) + ',' + prettyPrintOrder(exp.right)
+	}
+	
+	/**
+	 * Pretty print a BasicEventExp expression
+	 */
+	def String prettyPrintBasicEventExp(BasicEventExp exp) {
+		switch(exp) {
+			Optional: return prettyPrintOrder(exp.exp) + '?'
+			ZeroOrMore: return prettyPrintOrder(exp.exp) + '*'
+			OneOrMore: return prettyPrintOrder(exp.exp) + '+'
+			PrimaryExp: return prettyPrintPrimaryExp(exp as PrimaryExp)
+		}
+		throw new RuntimeException("not implemented yet " + exp)
+	}
+	
+	/**
+	 * Pretty print a PrimaryExp expression
+	 */
+	def String prettyPrintPrimaryExp(PrimaryExp exp) {
+		if(exp.exp.label !== null) {
+			return exp.exp.label
+		} else {
+			return '(' + prettyPrintOrder(exp) + ')'
+		}
 	}
 
 }

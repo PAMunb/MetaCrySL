@@ -60,7 +60,12 @@ class CodeWriter {
 	}
 	
 	def String writeOrder() {
-		//TODO
+		val orders = new ArrayList<String>
+		val visitor = new CodeWriterVisitor()
+		orders.add('\nORDER\n')
+		orders.add(visitor.prettyPrintOrder(spec.orderSpec.order) + ';')
+		
+		return String.join('\n', orders)
 	}
 	
 	def String writeRequire() {

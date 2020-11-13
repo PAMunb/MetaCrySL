@@ -28,7 +28,7 @@ class CodeWriter {
 		val visitor = new CodeWriterVisitor()
 		
 		for(c: spec.constraintSpec.constraints) {
-			constraints.add(visitor.prettyPrint(c.exp))
+			constraints.add('\t' + visitor.prettyPrint(c.exp))
 		}
 		
 		return String.join('\n', constraints)
@@ -63,7 +63,7 @@ class CodeWriter {
 		val orders = new ArrayList<String>
 		val visitor = new CodeWriterVisitor()
 		orders.add('\nORDER\n')
-		orders.add(visitor.prettyPrintOrder(spec.orderSpec.order) + ';')
+		orders.add('\t' + visitor.prettyPrintOrder(spec.orderSpec.order) + ';')
 		
 		return String.join('\n', orders)
 	}
@@ -81,14 +81,11 @@ class CodeWriter {
 	
 	def String writeObjects() {
 		val objects = new ArrayList<String>
+		val visitor = new CodeWriterVisitor()
 		objects.add('\nOBJECTS\n')
 		
-		// TODO: refactor to use visitor
 		for(object: spec.objectSpec.objects) {
-			val type = object.objectType
-			val name = object.objectName
-			val obj = type + ' ' + name + ';'
-			objects.add(obj)
+			objects.add('\t' + visitor.prettyPrintObject(object) + ';')
 		}
 		
 		return String.join("\n", objects)
@@ -100,7 +97,7 @@ class CodeWriter {
 		ensures.add('\nENSURES\n')
 		
 		for(e: spec.ensureSpec.ensures) {
-			ensures.add(visitor.prettyPrintEnsures(e) + ';')
+			ensures.add('\t' + visitor.prettyPrintEnsures(e) + ';')
 		}
 		
 		return String.join('\n', ensures)

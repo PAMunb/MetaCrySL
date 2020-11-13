@@ -1,6 +1,7 @@
 ABSTRACT SPEC javax.crypto.Cipher
 OBJECTS
 	java.lang.String foo;
+	java.lang.String bar;
 	
 EVENTS
 	c1 : method1();

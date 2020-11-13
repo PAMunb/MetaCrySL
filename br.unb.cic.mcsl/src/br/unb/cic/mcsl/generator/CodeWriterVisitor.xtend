@@ -1,6 +1,7 @@
 package br.unb.cic.mcsl.generator
 
 import br.unb.cic.mcsl.metaCrySL.ArithmeticExp
+import br.unb.cic.mcsl.metaCrySL.Object
 import br.unb.cic.mcsl.metaCrySL.ConstraintExp
 import br.unb.cic.mcsl.metaCrySL.ImpliesExp
 import br.unb.cic.mcsl.metaCrySL.Variable
@@ -405,5 +406,19 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			return '(' + prettyPrintOrder(exp.exp) + ')'
 		}
 	}
+	
+	// OBJECTS
+	def String prettyPrintObject(Object exp) {
+		var obj_type = ''
+		var obj_type_param = ''
+		if(exp.objectType !== null) {
+			obj_type = exp.objectType
+		}
+		if(exp.objectTypeParam !== null) {
+			obj_type_param = '<' + exp.objectTypeParam + '>'
+		}
+		
+		return obj_type + obj_type_param + ' ' + exp.objectName
+	}	
 
 }

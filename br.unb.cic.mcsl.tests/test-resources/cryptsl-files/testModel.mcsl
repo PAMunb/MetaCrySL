@@ -15,6 +15,18 @@ CONSTRAINTS
 	foo + bar => foo + bar;
 	foo => foo && bar;
 	foo => foo >= 10; 
+	foo => bar || foo + bar;
+	foo || foo + bar;
+	neverTypeOf[foo,bar] || bar;
+	noCallTo[foo] => bar;
+	callTo[foo] => bar;
+	length[foo] <= length[bar];
+	instanceOf[foo, bar] <= foo + bar;
+	notHardCoded[foo] => bar;
+	foo in {foo, bar};
+	foo in ${bar};
+	(foo + bar) in {foo, bar};
+	foo(foo, bar) => foo + bar;
 	
 
 REQUIRES

@@ -46,6 +46,16 @@ import br.unb.cic.mcsl.metaCrySL.impl.InSetImpl
 import br.unb.cic.mcsl.metaCrySL.ForbiddenMethod
 import br.unb.cic.mcsl.metaCrySL.Forbidden
 import br.unb.cic.mcsl.metaCrySL.impl.ForbiddenImpl
+import br.unb.cic.mcsl.metaCrySL.Event
+import br.unb.cic.mcsl.metaCrySL.EventMethod
+import br.unb.cic.mcsl.metaCrySL.EventAggregate
+import br.unb.cic.mcsl.metaCrySL.MethodDef
+import br.unb.cic.mcsl.metaCrySL.FormalArg
+import br.unb.cic.mcsl.metaCrySL.impl.FormalImpl
+import br.unb.cic.mcsl.metaCrySL.FormalArgs
+import br.unb.cic.mcsl.metaCrySL.Wildcard
+import br.unb.cic.mcsl.metaCrySL.Formal
+import br.unb.cic.mcsl.metaCrySL.AggregateList
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -248,6 +258,7 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 		throw new RuntimeException("not supported yet " + value.exp)
 	}
 	
+
 	/**
 	 * Uses method overloading to pretty print values for Pred expressions
 	 */
@@ -329,10 +340,63 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			PredValueImpl: return prettyPrintValue(exp)
 			PredWildcardImpl: return '_'
 			PredThisImpl: return 'this'
+
+		}
+	}
+	// EVENTS
+	
+	/**
+	 * Uses pattern matching to print an event spec
+	 */
+	def String prettyPrintEvent(Event exp) {
+		switch(exp) {
+			EventMethod: return prettyPrintEventMethod(exp)
+			EventAggregate: return prettyPrintEventAggregate(exp)
+		}
+	}
+	
+	/**
+	 * Pretty print an Event Method expression
+	 */
+	def prettyPrintEventMethod(EventMethod exp) {
+		var optional = ''
+		if(exp.^var !== null) {
+			optional = exp.^var + ' = '
+		}
+		return exp.label + ' : ' + optional + prettyPrintMethodDef(exp.method)
+	}
+	
+	def prettyPrintMethodDef(MethodDef exp) {
+		var formalArgs = ''
+		if(exp.args !== null) {
+			formalArgs = prettyPrintFormalArgs(exp.args)
+		}
+		return exp.methodName + '(' + formalArgs + ')'
+	}
+	
+	/**
+	 * Pretty print a FormalArgs expression
+	 */
+	def prettyPrintFormalArgs(FormalArgs exp) {
+		var argsList = new ArrayList<String>
+		for(arg: exp.args) {
+			argsList.add(prettyPrintFormalArg(arg))
+		}
+		return String.join(',', argsList)
+	}
+
+	/**
+	 * Pretty print a FormalArg expression
+	 */
+	def prettyPrintFormalArg(FormalArg exp) {
+		switch(exp) {
+			case exp instanceof FormalImpl: return prettyPrintFormalImpl(exp as Formal)
+			case exp instanceof Wildcard: return '_'
 		}
 		throw new RuntimeException("not implemented yet " + exp)
 	}
 	
+
 	// REQUIRES
 	def String prettyPrintRequire(RequirePredicate exp) {
 		switch(exp.exp) {
@@ -352,21 +416,35 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 			   ' || ' + prettyPrintRequire(exp.right) 
 	}
 	
+	def prettyPrintFormalImpl(Formal exp) {
+		return exp.argument
+	}
+	
+	/**
+	 * Pretty print an Event Aggregate
+	 */
+	def prettyPrintEventAggregate(EventAggregate exp) {
+		return exp.label + ' := ' + prettyPrintAggregateList(exp.aggregate)
+	}
+	
+	def prettyPrintAggregateList(AggregateList exp) {
+		return String.join('|', exp.labels)
+	}
+	
 	// FORBIDDEN
 	def String prettyPrintForbiddenMethod(ForbiddenMethod exp) {
-		val args = ''
-		val alternative = ''
+		var args = ''
+		var alternative = ''
 		
 		if((exp as Forbidden).args !== null) {
-
+			args = prettyPrintFormalArgs((exp as Forbidden).args)
 		}
 		
 		if((exp as Forbidden).alternative !== null) {
-			
+			alternative = ' => ' + (exp as Forbidden).alternative
 		}
 		
-		return (exp as Forbidden).method + 	
-		
+		return (exp as Forbidden).method + '(' + args + ')' + alternative
 	}
 
 }

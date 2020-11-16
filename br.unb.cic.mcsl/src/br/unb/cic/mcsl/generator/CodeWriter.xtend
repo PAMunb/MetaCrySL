@@ -28,7 +28,7 @@ class CodeWriter {
 		val visitor = new CodeWriterVisitor()
 		
 		for(c: spec.constraintSpec.constraints) {
-			constraints.add(visitor.prettyPrint(c.exp))
+			constraints.add(visitor.prettyPrint(c.exp) + ';')
 		}
 		
 		return String.join('\n', constraints)
@@ -45,7 +45,10 @@ class CodeWriter {
 		events.add('\nEVENTS\n')
 		
 		for(event: spec.eventSpec.events) {
-	//		events.add(visitor.prettyPrint(event))
+			val e = visitor.prettyPrintEvent(event)
+			if(e !== null) {
+				events.add(e + ';')
+			}
 		}
 		
 		return String.join('\n', events)

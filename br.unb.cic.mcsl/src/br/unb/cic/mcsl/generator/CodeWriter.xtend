@@ -52,7 +52,14 @@ class CodeWriter {
 	}
 	
 	def String writeForbidden() {
-		// TODO
+		val forbidden = new ArrayList<String>
+		val visitor = new CodeWriterVisitor()
+		forbidden.add('\nFORBIDDEN\n')
+		for(f: spec.forbiddenSpec.forbidenMethods) {
+			forbidden.add('\t' + visitor.prettyPrintForbiddenMethod(f) + ';')
+		}
+		
+		return String.join('\n', forbidden)
 	}
 	
 	def String writeOrder() {
@@ -107,6 +114,7 @@ class CodeWriter {
 		pw.println(writeRequire())
 		pw.println(writeEnsures())
 		pw.println(writeConstraints())
+		pw.println(writeForbidden())
 		
 		
 		pw.close()

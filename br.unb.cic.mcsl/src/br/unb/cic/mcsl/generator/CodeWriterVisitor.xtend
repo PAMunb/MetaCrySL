@@ -43,6 +43,9 @@ import br.unb.cic.mcsl.metaCrySL.RequirePredicate
 import br.unb.cic.mcsl.metaCrySL.PredicateOr
 import br.unb.cic.mcsl.metaCrySL.impl.StringValueImpl
 import br.unb.cic.mcsl.metaCrySL.impl.InSetImpl
+import br.unb.cic.mcsl.metaCrySL.ForbiddenMethod
+import br.unb.cic.mcsl.metaCrySL.Forbidden
+import br.unb.cic.mcsl.metaCrySL.impl.ForbiddenImpl
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -347,6 +350,23 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrintPredicateOr(PredicateOr exp) {
 		return prettyPrintRequire(exp.leftExpression) +
 			   ' || ' + prettyPrintRequire(exp.right) 
+	}
+	
+	// FORBIDDEN
+	def String prettyPrintForbiddenMethod(ForbiddenMethod exp) {
+		val args = ''
+		val alternative = ''
+		
+		if((exp as Forbidden).args !== null) {
+
+		}
+		
+		if((exp as Forbidden).alternative !== null) {
+			
+		}
+		
+		return (exp as Forbidden).method + 	
+		
 	}
 
 }

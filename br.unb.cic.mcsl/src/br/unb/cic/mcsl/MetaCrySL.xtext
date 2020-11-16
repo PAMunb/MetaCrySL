@@ -54,7 +54,7 @@ Object: {Object} ((ObjectType = QualifiedName) | ("<"ObjectTypeParam = ValidID">
 /* ForbiddenSpec */
 ForbiddenSpec: {ForbiddenSpec} 'FORBIDDEN' forbidenMethods += ForbiddenMethod+;
 
-ForbiddenMethod: {Forbidden} method = ID '(' (args ?= FormalArgs)? ')' ('=>' alternative ?= ID)? ';';
+ForbiddenMethod: {Forbidden} method = ID '(' (args = FormalArgs)? ')' ('=>' alternative = ID)? ';';
 
 /* EventSpec rule 
  * 

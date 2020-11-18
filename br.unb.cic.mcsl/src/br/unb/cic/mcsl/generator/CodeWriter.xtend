@@ -51,10 +51,6 @@ class CodeWriter {
 		return String.join('\n', events)
 	}
 	
-	def String writeEnsure() {
-		//TODO
-	}
-	
 	def String writeForbidden() {
 		// TODO
 	}
@@ -73,7 +69,7 @@ class CodeWriter {
 		val visitor = new CodeWriterVisitor()
 		requires.add('\nREQUIRES\n')
 		for(require: spec.requireSpec.requires) {
-//			requires.add(visitor.prettyPrint(require))
+			requires.add('\t' + visitor.prettyPrintRequire(require) + ';')
 		}
 		
 		return String.join('\n', requires)

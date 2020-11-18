@@ -39,7 +39,7 @@ REQUIRES
 	generatedRSAKeyParameters[foo] || generatedRSAPrivateCrtKeyParameters[foo] || generatedECPublicKeyParameters[foo];
 	!macced[_, foo];
     keyPairAlgorithm in {"RSA"} => preparedRSA[foo];
-    
+
 ENSURES
-	generatedRSAKeyPair[this] after co;
+	a[this] after co;
 	macced[output];	

@@ -45,14 +45,24 @@ class CodeWriter {
 		events.add('\nEVENTS\n')
 		
 		for(event: spec.eventSpec.events) {
-	//		events.add(visitor.prettyPrint(event))
+			val e = visitor.prettyPrintEvent(event)
+			if(e !== null) {
+				events.add(e + ';')
+			}
 		}
 		
 		return String.join('\n', events)
 	}
 	
 	def String writeForbidden() {
-		// TODO
+		val forbidden = new ArrayList<String>
+		val visitor = new CodeWriterVisitor()
+		forbidden.add('\nFORBIDDEN\n')
+		for(f: spec.forbiddenSpec.forbidenMethods) {
+			forbidden.add('\t' + visitor.prettyPrintForbiddenMethod(f) + ';')
+		}
+		
+		return String.join('\n', forbidden)
 	}
 	
 	def String writeOrder() {
@@ -109,6 +119,7 @@ class CodeWriter {
 		pw.println(writeRequire())
 		pw.println(writeEnsures())
 		pw.println(writeConstraints())
+		pw.println(writeForbidden())
 		
 		
 		pw.close()

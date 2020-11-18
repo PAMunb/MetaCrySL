@@ -30,7 +30,7 @@ import org.eclipse.xtext.parser.IParser
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class MetaCrySLGenerator extends AbstractGenerator {
-
+	var String outputDir
 	@Inject
 	IParser parser;
 
@@ -80,6 +80,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		val refs = new HashMap<String, Refinement>
 		val config = (genericMetaCrySLParser(configuration, ModelType.CONFIGURATION) as Configuration)
 		val src = config.inputDir
+		this.outputDir = config.outputDir
 
 		for (m : config.modules) {
 			if (getExtensionByStringHandling(m.module).get() == 'mcsl') {
@@ -115,7 +116,7 @@ class MetaCrySLGenerator extends AbstractGenerator {
 	// Write specs to the file system
 	def void compile(List<Spec> specs) {
 		for(spec: specs) {
-			val code_writer = new CodeWriter(spec)
+			val code_writer = new CodeWriter(spec, this.outputDir)
 			code_writer.generate()
 		}
 	}

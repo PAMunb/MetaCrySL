@@ -16,10 +16,12 @@ import br.unb.cic.mcsl.metaCrySL.AtomicPredicate
 class CodeWriter {
 	var Spec spec
 	var String typeName
+	var String outputDir
 	
-	new(Spec spec) {
+	new(Spec spec, String outputDir) {
 		this.spec = spec
 		this.typeName = spec.classType.typeName
+		this.outputDir = outputDir
 	}
 	
 	def String writeConstraints() {
@@ -110,7 +112,7 @@ class CodeWriter {
 	}
 	
 	def void generate() {
-		// TODO: the generated file must be written at the PATH specified in the config file
+		// TODO: generate pw into outputDir if it exists
 		val pw = new PrintWriter(this.typeName + ".crysl", "UTF-8")
 		pw.println(writeHeader())
 		pw.println(writeObjects())
@@ -120,7 +122,6 @@ class CodeWriter {
 		pw.println(writeConstraints())
 		pw.println(writeRequire())
 		pw.println(writeEnsures())
-		
 		
 		pw.close()
 	}

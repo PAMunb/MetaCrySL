@@ -28,14 +28,14 @@ class CodeWriter {
 		val visitor = new CodeWriterVisitor()
 		
 		for(c: spec.constraintSpec.constraints) {
-			constraints.add('\t' + visitor.prettyPrint(c.exp))
+			constraints.add('\t' + visitor.prettyPrint(c.exp) + ';')
 		}
 		
 		return String.join('\n', constraints)
 	}
 	
 	def String writeHeader()'''
-		ABSTRACT SPEC «this.typeName»
+		SPEC «this.typeName»
 	'''
 	
 	
@@ -47,7 +47,7 @@ class CodeWriter {
 		for(event: spec.eventSpec.events) {
 			val e = visitor.prettyPrintEvent(event)
 			if(e !== null) {
-				events.add(e + ';')
+				events.add('\t' + e + ';')
 			}
 		}
 		
@@ -111,15 +111,15 @@ class CodeWriter {
 	
 	def void generate() {
 		// TODO: the generated file must be written at the PATH specified in the config file
-		val pw = new PrintWriter("out.crysl", "UTF-8")
+		val pw = new PrintWriter(this.typeName + ".crysl", "UTF-8")
 		pw.println(writeHeader())
 		pw.println(writeObjects())
+		pw.println(writeForbidden())
 		pw.println(writeEvents())
 		pw.println(writeOrder())
+		pw.println(writeConstraints())
 		pw.println(writeRequire())
 		pw.println(writeEnsures())
-		pw.println(writeConstraints())
-		pw.println(writeForbidden())
 		
 		
 		pw.close()

@@ -24,6 +24,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eclipse.xtext.parser.IParser
 import java.io.File
+import java.util.stream.Stream
+import java.nio.file.Path
+import java.io.IOException
 
 /**
  * Generates code from your model files on save.
@@ -84,12 +87,27 @@ class MetaCrySLGenerator extends AbstractGenerator {
 		this.outputDir = config.outputDir
 
 		for (m : config.modules) {
-			if (getExtensionByStringHandling(m.module).get() == 'mcsl') {
-				val parsedSpec = genericMetaCrySLParser(src + m.module, ModelType.SPEC) as MetaCrySL
-				specs.put(specName(parsedSpec.spec.classType), parsedSpec.spec)
-			} else if (getExtensionByStringHandling(m.module).get() == 'ref') {
-				val parsedRef = genericMetaCrySLParser(src + m.module, ModelType.REFINEMENT) as Refinement
-				refs.put(parsedRef.type, addOrMergeRefinement(parsedRef, refs))
+			val dir = new File(src + m.module)
+			if(dir.isDirectory()) {
+				val files = dir.list()
+				for(f: files) {
+					if (getExtensionByStringHandling(f).get() == 'mcsl') {
+						val parsedSpec = genericMetaCrySLParser(src + m.module + f, ModelType.SPEC) as MetaCrySL
+						specs.put(specName(parsedSpec.spec.classType), parsedSpec.spec)
+					} else if (getExtensionByStringHandling(f).get() == 'ref') {
+						val parsedRef = genericMetaCrySLParser(src + m.module + f, ModelType.REFINEMENT) as Refinement
+						refs.put(parsedRef.type, addOrMergeRefinement(parsedRef, refs))
+					}
+				}
+			}
+			else {
+				if (getExtensionByStringHandling(m.module).get() == 'mcsl') {
+					val parsedSpec = genericMetaCrySLParser(src + m.module, ModelType.SPEC) as MetaCrySL
+					specs.put(specName(parsedSpec.spec.classType), parsedSpec.spec)
+				} else if (getExtensionByStringHandling(m.module).get() == 'ref') {
+					val parsedRef = genericMetaCrySLParser(src + m.module, ModelType.REFINEMENT) as Refinement
+					refs.put(parsedRef.type, addOrMergeRefinement(parsedRef, refs))
+				}	
 			}
 		}
 		return applyMetaCrySLRefinements(specs, refs)

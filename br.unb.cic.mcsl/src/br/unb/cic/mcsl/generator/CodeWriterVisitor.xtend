@@ -65,6 +65,7 @@ import br.unb.cic.mcsl.metaCrySL.FormalArgs
 import br.unb.cic.mcsl.metaCrySL.Wildcard
 import br.unb.cic.mcsl.metaCrySL.Formal
 import br.unb.cic.mcsl.metaCrySL.AggregateList
+import br.unb.cic.mcsl.metaCrySL.impl.IntValueImpl
 
 class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	
@@ -204,8 +205,16 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 	def String prettyPrintFunctionCall(FunctionCallImpl exp) {
 		val params = new ArrayList<String>
 		for(obj: exp.params) {
-			val el = obj as VariableImpl
-			params.add(el.varName)
+			switch(obj) {
+				VariableImpl: {
+					val el = obj as VariableImpl
+					params.add(el.varName)
+				}
+				IntValueImpl:  {
+					val el = obj as IntValueImpl
+					params.add(el.value)
+				}
+			}
 		}
 		return exp.methodName + '(' + String.join(',', params) + ')'
 	}
@@ -231,6 +240,7 @@ class CodeWriterVisitor extends MetaCrySLSwitch<String> {
 					var el = ''
 					switch(obj) {
 						StringValueImpl: values.add('"' + obj.value + '"')
+						IntValueImpl: values.add(obj.value)
 						default: values.add('"' + (obj as VariableImpl).varName + '"')
 					}
 				}

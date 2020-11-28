@@ -1,4 +1,4 @@
-SPEC javax.crypto.spec.DHGenParameterSpec
+SPEC javax.crypto.Spec.DHGenParameterSpec
 OBJECTS 
 	int primeSize;
 	int exponentSize;

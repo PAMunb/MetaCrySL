@@ -1,10 +1,10 @@
-SPEC javax.crypto.Cipher
+ABSTRACT SPEC javax.crypto.Cipher
 OBJECTS
     java.lang.String transformation;
     int encmode;
     java.security.Key key;
-    java.security.cert.Certificate cert;
-    java.security.spec.AlgorithmParameterSpec params;
+    java.security.Cert.Certificate cert;
+    java.security.Cpec.AlgorithmParameterSpec params;
     java.security.AlgorithmParameters param;
     
     int pre_plain_off;
@@ -28,7 +28,7 @@ OBJECTS
 	java.security.SecureRandom ranGen;
 	
 	java.security.Key wrappedKey;
-
+	
 EVENTS
     g1: getInstance(transformation);
     g2:getInstance(transformation, _);
@@ -66,30 +66,25 @@ EVENTS
     w: wrap(wrappedKey);
     
     iv: getIV();
-    
+
 ORDER
-    Gets, Inits+, w+ | (FINWOU | (updates+, DOFINALS))+
+	Gets, Inits+, w+ | (FINWOU | (updates+, DOFINALS))+
 
 CONSTRAINTS
-	part(0, "/", transformation) in ${algorithm}; 	
-	part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode != 1 => noCallTo(IWOIV) ;
-    part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode == 1 => callTo(iv) ;     
-    
-    encmode in {1,2,3,4};
-    length(pre_plaintext) >= pre_plain_off + len;
-    length(pre_ciphertext) <= pre_ciphertext_off;
-    length(plainText) <= plain_off + len;
-    length(cipherText) <= ciphertext_off;
+	part(0, "/", transformation) in ${algorithm};
+	encmode in {1,2,3,4};
+	
 
 REQUIRES
-	generatedKey[key, part(0, "/", transformation)];
-    randomized[ranGen];
-    preparedAlg[param, part(0, "/", transformation)];
-    !macced[_, plainText];
-	part(1, "/", transformation) in {"CBC", "PCBC", "CTR", "CTS", "CFB", "OFB"} && encmode == 1 => preparedIV[params];
-	part(1, "/", transformation) in {"GCM"} => preparedGCM[params];
-	
+	generatedKeyParameter[foo];
+	generatedKeyParameter[foo,foo];
+	generatedKeyParameter[foo,_,this];
+	generatedKeyParameter[_];
+    preparedAlg[foo, _];	
+	generatedRSAKeyParameters[foo] || generatedRSAPrivateCrtKeyParameters[foo] || generatedECPublicKeyParameters[foo];
+	!macced[_, foo];
+    keyPairAlgorithm in {"RSA"} => preparedRSA[foo];
+
 ENSURES
-	encrypted[pre_ciphertext, pre_plaintext] after updates; 
-	encrypted[cipherText, plainText];
-	encrypted[cipherBuffer, plainBuffer];
+	a[this] after co;
+	macced[output];	

@@ -1,7 +1,7 @@
 SPEC java.security.AlgorithmParameters
 OBJECTS
     java.lang.String alg;
-    java.security.spec.AlgorithmParameterSpec params;
+    java.security.Spec.AlgorithmParameterSpec params;
 	byte[] parAr; 
 	java.lang.String format;
 	byte[] parsRes;

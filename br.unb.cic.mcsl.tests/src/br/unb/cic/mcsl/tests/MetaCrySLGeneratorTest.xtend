@@ -34,4 +34,12 @@ class MetaCrySLGeneratorTest {
 		val specs = generator.generateCode(config)
 		generator.compile(specs)
 	}
+
+	@Test
+	def void test0108() {
+		val config = URI.createURI("./test-resources/android-bsi/config/Android0108.config").path
+		val generator = new MetaCrySLGenerator
+		val specs = generator.generateCode(config)
+		generator.compile(specs)
+	}
 }

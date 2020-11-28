@@ -29,11 +29,14 @@ class CodeWriter {
 		constraints.add('\nCONSTRAINTS\n')
 		val visitor = new CodeWriterVisitor()
 		
-		for(c: spec.constraintSpec.constraints) {
-			constraints.add('\t' + visitor.prettyPrint(c.exp) + ';')
+		if(spec.constraintSpec !== null) {
+			for(c: spec.constraintSpec.constraints) {
+				constraints.add('\t' + visitor.prettyPrint(c.exp) + ';')
+			}
+			
+			return String.join('\n', constraints)	
 		}
-		
-		return String.join('\n', constraints)
+		return ''
 	}
 	
 	def String writeHeader()'''
@@ -60,11 +63,13 @@ class CodeWriter {
 		val forbidden = new ArrayList<String>
 		val visitor = new CodeWriterVisitor()
 		forbidden.add('\nFORBIDDEN\n')
-		for(f: spec.forbiddenSpec.forbidenMethods) {
-			forbidden.add('\t' + visitor.prettyPrintForbiddenMethod(f) + ';')
+		if(spec.forbiddenSpec !== null) {
+			for(f: spec.forbiddenSpec.forbidenMethods) {
+				forbidden.add('\t' + visitor.prettyPrintForbiddenMethod(f) + ';')
+			}
+			return String.join('\n', forbidden)	
 		}
-		
-		return String.join('\n', forbidden)
+		return ''
 	}
 	
 	def String writeOrder() {
@@ -80,11 +85,14 @@ class CodeWriter {
 		val requires = new ArrayList<String>
 		val visitor = new CodeWriterVisitor()
 		requires.add('\nREQUIRES\n')
-		for(require: spec.requireSpec.requires) {
-			requires.add('\t' + visitor.prettyPrintRequire(require) + ';')
+		if(spec.requireSpec !== null) {
+			for(require: spec.requireSpec.requires) {
+				requires.add('\t' + visitor.prettyPrintRequire(require) + ';')
+			}
+			
+			return String.join('\n', requires)	
 		}
-		
-		return String.join('\n', requires)
+		return ''
 	}
 	
 	def String writeObjects() {
@@ -104,16 +112,18 @@ class CodeWriter {
 		val visitor = new CodeWriterVisitor()
 		ensures.add('\nENSURES\n')
 		
-		for(e: spec.ensureSpec.ensures) {
-			ensures.add('\t' + visitor.prettyPrintEnsures(e) + ';')
+		if(spec.ensureSpec !== null) {
+			for(e: spec.ensureSpec.ensures) {
+				ensures.add('\t' + visitor.prettyPrintEnsures(e) + ';')
+			}
+			
+			return String.join('\n', ensures)	
 		}
-		
-		return String.join('\n', ensures)
+		return ''
 	}
 	
 	def void generate() {
-		// TODO: generate pw into outputDir if it exists
-		val pw = new PrintWriter(this.typeName + ".crysl", "UTF-8")
+		val pw = new PrintWriter(outputDir + this.typeName + ".crysl", "UTF-8")
 		pw.println(writeHeader())
 		pw.println(writeObjects())
 		pw.println(writeForbidden())

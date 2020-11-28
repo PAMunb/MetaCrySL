@@ -23,6 +23,7 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eclipse.xtext.parser.IParser
+import java.io.File
 
 /**
  * Generates code from your model files on save.

@@ -31,8 +31,8 @@ Spec
  ;
  
 BaseSpecType 
- : {SimpleType} typeName = QualifiedName
- | {ParameterizedType} typeName = QualifiedName '<' typeParameter = ID '>'	     
+ : {SimpleType} typeName = JavaQualifiedName
+ | {ParameterizedType} typeName = JavaQualifiedName '<' typeParameter = ID '>'	     
  ; 
     
 /* ObjectSpec rule
@@ -49,7 +49,7 @@ ObjectSpec: {ObjectSpec} 'OBJECTS' objects += Object+ ;
  * variable that can be used in the remaining 
  * sections of the specification. 
  */
-Object: {Object} ((ObjectType = QualifiedName) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
+Object: {Object} ((ObjectType = JavaQualifiedName) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
 
 /* ForbiddenSpec */
 ForbiddenSpec: {ForbiddenSpec} 'FORBIDDEN' forbidenMethods += ForbiddenMethod+;
@@ -276,15 +276,14 @@ NegateSpec : {NegateSpec} 'NEGATES' negates += EnsurePredicate+;
  * We can also specify refinements in MetaCrySL. 
  */	
 
-@Override 
-QualifiedName: ID ('.' ID)* ;
+JavaQualifiedName: ID ('.' ID)* ;
 
 Refinement
-  : "SPEC" name = ID "REFINES" type = QualifiedName "{" refinements += RefinementOpr+ "}"; 
+  : "SPEC" name = ID "REFINES" type = JavaQualifiedName "{" refinements += RefinementOpr+ "}"; 
  
  
  RefinementOpr 
-  : {Rename} "rename" "spec" type = QualifiedName ";"
+  : {Rename} "rename" "spec" type = JavaQualifiedName ";"
   | {AddEvent} "add" "event" event = Event ";"
   | {AddConstraint} "add" "constraint" constraint = ConstraintExp ";"
   | {AddRequire} "add" "require" require = RequirePredicate ";"

@@ -1,4 +1,4 @@
-SPEC javax.xml.Crypto.dsig.spec.HMACParameterSpec
+SPEC javax.xml.crypto.dsig.spec.HMACParameterSpec
 OBJECTS 
 	int outputLength;
 EVENTS

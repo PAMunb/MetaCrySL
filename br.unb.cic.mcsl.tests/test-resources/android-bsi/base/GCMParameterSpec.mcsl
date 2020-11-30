@@ -1,4 +1,4 @@
-SPEC javax.crypto.Spec.GCMParameterSpec
+SPEC javax.crypto.spec.GCMParameterSpec
 OBJECTS 
 	int tLen;
 	byte[] src;

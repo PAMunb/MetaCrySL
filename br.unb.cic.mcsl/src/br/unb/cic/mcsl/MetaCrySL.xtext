@@ -207,7 +207,7 @@ ArithmeticExp returns ConstraintExp
  : BasicExp ({ArithmeticExp.left = current} operator = ('+' | '-') right = BasicExp)*;
 
  BasicExp returns ConstraintExp
-  : {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = ID ']'
+  : {NeverTypeOf} 'neverTypeOf' '[' var = QualifiedFormalArg ',' varType = QualifiedFormalArg ']'
   | {NoCallTo} 'noCallTo' '[' method = ID ']'
   | {CallTo} 'callTo' '[' method = ID ']'
   | {NotHardCoded} 'notHardCoded' '[' var = ID "]"
@@ -284,7 +284,7 @@ NegateSpec : {NegateSpec} 'NEGATES' negates += EnsurePredicate+;
 /*
  * TODO: maybe find a better way to handle this case
 */
-JavaQualifiedName: ValidID ('.' ValidID)* | ValidID '[]' ;
+JavaQualifiedName: ValidID ('.' ValidID)* ('[]')? | ValidID '[]' ;
 
 @Override 
 ValidID: ID | "spec";

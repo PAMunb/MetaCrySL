@@ -106,8 +106,12 @@ FormalArgs: args += FormalArg (',' args += FormalArg)* ;
  * 
  * It should accept a wild card ('_') or something like 'int x'  
  */
-FormalArg: 
-	({Wildcard} '_' | {Formal} (argument = ID) | {QualifiedName} (qualifiedName = JavaQualifiedName) );
+FormalArg
+   : {Wildcard} '_' 
+   | {Formal} argument = QualifiedFormalArg
+;
+
+QualifiedFormalArg: ValidID ('.' ValidID)*;
  
 
 /* OrderSpec rule

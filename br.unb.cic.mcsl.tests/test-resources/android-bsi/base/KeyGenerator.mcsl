@@ -1,7 +1,7 @@
 SPEC javax.crypto.KeyGenerator
 OBJECTS
     int keySize;
-    java.security.Spec.AlgorithmParameterSpec params;
+    java.security.spec.AlgorithmParameterSpec params;
     javax.crypto.SecretKey key;
     java.lang.String alg;
     java.security.SecureRandom ranGen;

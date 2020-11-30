@@ -255,6 +255,7 @@ PredParameter
 : {PredValue} val = Value
 | {PredWildcard} '_' 
 | {PredThis} 'this'
+| {FunctionCall} methodName=ID '(' params += Value (',' params += Value)* ')' 
 ; 
 
 /* EnsureSpec rule
@@ -279,7 +280,10 @@ NegateSpec : {NegateSpec} 'NEGATES' negates += EnsurePredicate+;
 /*
  * TODO: maybe find a better way to handle this case
 */
-JavaQualifiedName: ID ('.' ID)* | ID '[]' ;
+JavaQualifiedName: ValidID ('.' ValidID)* | ValidID '[]' ;
+
+@Override 
+ValidID: ID | "spec";
 
 Refinement
   : "SPEC" name = ID "REFINES" type = JavaQualifiedName "{" refinements += RefinementOpr+ "}"; 

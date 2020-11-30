@@ -94,7 +94,7 @@ AggregateList : labels += ID ('|' labels+=ID)*;
  * this way to express lists, with a list 
  * separator in XText, is really weird. 
  */
-MethodDef: methodName = ID '(' (args = FormalArgs)? ')' ;
+MethodDef: methodName = ValidID '(' (args = FormalArgs)? ')' ;
 
 /* FormalArgs rule
  * 
@@ -287,7 +287,7 @@ NegateSpec : {NegateSpec} 'NEGATES' negates += EnsurePredicate+;
 JavaQualifiedName: ValidID ('.' ValidID)* ('[]')? | ValidID '[]' ;
 
 @Override 
-ValidID: ID | "spec";
+ValidID: ID | "spec" | "load";
 
 Refinement
   : "SPEC" name = ID "REFINES" type = JavaQualifiedName "{" refinements += RefinementOpr+ "}"; 

@@ -111,7 +111,7 @@ FormalArg
    | {Formal} argument = QualifiedFormalArg
 ;
 
-QualifiedFormalArg: ValidID ('.' ValidID)*;
+QualifiedFormalArg: ValidID ('.' ValidID)* ('[]')?;
  
 
 /* OrderSpec rule

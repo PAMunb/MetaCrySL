@@ -40,7 +40,7 @@ ORDER
 CONSTRAINTS
     macAlg in ${algorithm};
     offset < len;
-    length(output1) > outOffset; 
+    length[output1] > outOffset; 
     
 REQUIRES
     preparedHMAC[params];

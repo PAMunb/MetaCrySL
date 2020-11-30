@@ -297,7 +297,7 @@ Refinement
   : {Rename} "rename" "spec" type = JavaQualifiedName ";"
   | {AddEvent} "add" "event" event = Event ";"
   | {AddConstraint} "add" "constraint" constraint = ConstraintExp ";"
-  | {AddRequire} "add" "require" require = RequirePredicate ";"
+  | {AddRequire} "add" "require" require = RequirePredicate
   | {AddEnsure} "add" "ensure" ensure = EnsurePredicate ";"
   | {DefineLiteralSet} "define" var = ID "=" set = LiteralSet ";"  	
   ;  

@@ -36,7 +36,7 @@ class MetaCrySLGeneratorTest {
 	}
 
 	@Test
-	def void test0108() {
+	def void testAndroidBsi0108() {
 		val config = URI.createURI("./test-resources/android-bsi/config/Android0108.config").path
 		val generator = new MetaCrySLGenerator
 		val specs = generator.generateCode(config)
@@ -44,7 +44,7 @@ class MetaCrySLGeneratorTest {
 	}
 	
 	@Test
-	def void test0116() {
+	def void testAndroidBsi0116() {
 		val config = URI.createURI("./test-resources/android-bsi/config/Android0116.config").path
 		val generator = new MetaCrySLGenerator
 		val specs = generator.generateCode(config)
@@ -52,8 +52,32 @@ class MetaCrySLGeneratorTest {
 	}
 	
 	@Test
-	def void test25plus() {
+	def void testAndroidBsi25plus() {
 		val config = URI.createURI("./test-resources/android-bsi/config/Android25plus.config").path
+		val generator = new MetaCrySLGenerator
+		val specs = generator.generateCode(config)
+		generator.compile(specs)
+	}
+	
+	@Test
+	def void testAndroidCc0108() {
+		val config = URI.createURI("./test-resources/android-cc/config/Android0108.config").path
+		val generator = new MetaCrySLGenerator
+		val specs = generator.generateCode(config)
+		generator.compile(specs)
+	}
+	
+	@Test
+	def void testAndroidCc0116() {
+		val config = URI.createURI("./test-resources/android-cc/config/Android0116.config").path
+		val generator = new MetaCrySLGenerator
+		val specs = generator.generateCode(config)
+		generator.compile(specs)
+	}
+	
+	@Test
+	def void testAndroidCc25plus() {
+		val config = URI.createURI("./test-resources/android-cc/config/Android25plus.config").path
 		val generator = new MetaCrySLGenerator
 		val specs = generator.generateCode(config)
 		generator.compile(specs)

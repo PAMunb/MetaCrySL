@@ -31,8 +31,8 @@ Spec
  ;
  
 BaseSpecType 
- : {SimpleType} typeName = QualifiedName
- | {ParameterizedType} typeName = QualifiedName '<' typeParameter = ID '>'	     
+ : {SimpleType} typeName = JavaQualifiedName
+ | {ParameterizedType} typeName = JavaQualifiedName '<' typeParameter = ID '>'	     
  ; 
     
 /* ObjectSpec rule
@@ -49,7 +49,7 @@ ObjectSpec: {ObjectSpec} 'OBJECTS' objects += Object+ ;
  * variable that can be used in the remaining 
  * sections of the specification. 
  */
-Object: {Object} ((ObjectType = QualifiedName) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
+Object: {Object} ((ObjectType = JavaQualifiedName) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
 
 /* ForbiddenSpec */
 ForbiddenSpec: {ForbiddenSpec} 'FORBIDDEN' forbidenMethods += ForbiddenMethod+;
@@ -94,7 +94,7 @@ AggregateList : labels += ID ('|' labels+=ID)*;
  * this way to express lists, with a list 
  * separator in XText, is really weird. 
  */
-MethodDef: methodName = ID '(' (args = FormalArgs)? ')' ;
+MethodDef: methodName = ValidID '(' (args = FormalArgs)? ')' ;
 
 /* FormalArgs rule
  * 
@@ -106,8 +106,12 @@ FormalArgs: args += FormalArg (',' args += FormalArg)* ;
  * 
  * It should accept a wild card ('_') or something like 'int x'  
  */
-FormalArg: 
-	({Wildcard} '_' | {Formal} (argument = ID));
+FormalArg
+   : {Wildcard} '_' 
+   | {Formal} argument = QualifiedFormalArg
+;
+
+QualifiedFormalArg: ValidID ('.' ValidID)* ('[]')?;
  
 
 /* OrderSpec rule
@@ -203,7 +207,7 @@ ArithmeticExp returns ConstraintExp
  : BasicExp ({ArithmeticExp.left = current} operator = ('+' | '-') right = BasicExp)*;
 
  BasicExp returns ConstraintExp
-  : {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = ID ']'
+  : {NeverTypeOf} 'neverTypeOf' '[' var = QualifiedFormalArg ',' varType = QualifiedFormalArg ']'
   | {NoCallTo} 'noCallTo' '[' method = ID ']'
   | {CallTo} 'callTo' '[' method = ID ']'
   | {NotHardCoded} 'notHardCoded' '[' var = ID "]"
@@ -255,6 +259,7 @@ PredParameter
 : {PredValue} val = Value
 | {PredWildcard} '_' 
 | {PredThis} 'this'
+| {FunctionCall} methodName=ID '(' params += Value (',' params += Value)* ')' 
 ; 
 
 /* EnsureSpec rule
@@ -276,18 +281,23 @@ NegateSpec : {NegateSpec} 'NEGATES' negates += EnsurePredicate+;
  * We can also specify refinements in MetaCrySL. 
  */	
 
+/*
+ * TODO: maybe find a better way to handle this case
+*/
+JavaQualifiedName: ValidID ('.' ValidID)* ('[]')? | ValidID '[]' ;
+
 @Override 
-QualifiedName: ID ('.' ID)* ;
+ValidID: ID | "spec" | "load";
 
 Refinement
-  : "SPEC" name = ID "REFINES" type = QualifiedName "{" refinements += RefinementOpr+ "}"; 
+  : "SPEC" name = ID "REFINES" type = JavaQualifiedName "{" refinements += RefinementOpr+ "}"; 
  
  
  RefinementOpr 
-  : {Rename} "rename" "spec" type = QualifiedName ";"
+  : {Rename} "rename" "spec" type = JavaQualifiedName ";"
   | {AddEvent} "add" "event" event = Event ";"
   | {AddConstraint} "add" "constraint" constraint = ConstraintExp ";"
-  | {AddRequire} "add" "require" require = RequirePredicate ";"
+  | {AddRequire} "add" "require" require = RequirePredicate
   | {AddEnsure} "add" "ensure" ensure = EnsurePredicate ";"
   | {DefineLiteralSet} "define" var = ID "=" set = LiteralSet ";"  	
   ;  

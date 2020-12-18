@@ -50,8 +50,6 @@ This implementation of MetaCrySL is in development. This is the current status:
 - [x] Implementation of configuration language grammar
 - [x] Implementation of refinements language grammar 
 - [x] Test generation: we've developed a Maven plugin called [MCSLTestGeneration](https://github.com/PAMunb/MCSLTestGeneration) to automatically generate parser tests from actual Crysl files.
-
-Pending features:
-- [ ] Finish code for merging multiple refinements (deadline: september 02, 2020)
-- [ ] Finish code writer for applying merged refinements to spec files (deadline: september 16, 2020)
-- [ ] Finish code generator for writing Crysl files (deadline: september 30, 2020)
+- [x] Finish code for merging multiple refinements
+- [x] Finish code writer for applying merged refinements to spec files 
+- [x] Finish code generator for writing Crysl files (pretty-printer)

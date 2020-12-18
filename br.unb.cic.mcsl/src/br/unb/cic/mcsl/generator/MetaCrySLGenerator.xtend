@@ -3,10 +3,30 @@
  */
 package br.unb.cic.mcsl.generator
 
+import br.unb.cic.mcsl.MetaCrySLStandaloneSetup
+import br.unb.cic.mcsl.metaCrySL.BaseSpecType
+import br.unb.cic.mcsl.metaCrySL.Configuration
+import br.unb.cic.mcsl.metaCrySL.MetaCrySL
+import br.unb.cic.mcsl.metaCrySL.Model
+import br.unb.cic.mcsl.metaCrySL.Refinement
+import br.unb.cic.mcsl.metaCrySL.Spec
+import com.google.inject.Inject
+import java.io.FileReader
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.util.ArrayList
+import java.util.HashMap
+import java.util.List
+import java.util.Optional
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eclipse.xtext.parser.IParser
+import java.io.File
+import java.util.stream.Stream
+import java.nio.file.Path
+import java.io.IOException
 
 /**
  * Generates code from your model files on save.
@@ -14,12 +34,145 @@ import org.eclipse.xtext.generator.IGeneratorContext
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class MetaCrySLGenerator extends AbstractGenerator {
+	var String outputDir
+	@Inject
+	IParser parser;
+
+	enum ModelType {
+		CONFIGURATION,
+		SPEC,
+		REFINEMENT
+	}
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+//		for (e : resource.allContents.toIterable.filter(Spec)) {
+//        	fsa.generateFile(
+//            	"teste.crysl",
+//            	generateCode(URI.createURI("./test-resources/cryptsl-files/basicConfig.config").path))
+//    	}
+	}
+
+	protected def Refinement addOrMergeRefinement(Refinement parsedRef, HashMap<String, Refinement> refs) {
+		if (refs.containsKey(parsedRef.type)) {
+			val ref = refs.get(parsedRef.type)
+			return mergeRefinements(parsedRef.type, ref, parsedRef)
+		}
+		return parsedRef
+	}
+
+	def Refinement mergeRefinements(String name, Refinement ref1, Refinement ref2) {
+		val visitor = new MergeRefinementVisitor(name)
+		val refs = CollectionLiterals.newArrayList(ref1, ref2)
+
+		for (ref : refs) {
+			for (r : ref.refinements) {
+				visitor.doSwitch(r)
+			}
+		}
+		return visitor.refinement
+	}
+
+	def Optional<String> getExtensionByStringHandling(String filename) {
+		return Optional.ofNullable(filename).filter(f|f.contains(".")).
+			map(f|f.substring(filename.lastIndexOf(".") + 1));
+	}
+
+	def List<Spec> generateCode(String configuration) {
+		setupParser()
+
+		val specs = new HashMap<String, Spec>
+		val refs = new HashMap<String, Refinement>
+		val config = (genericMetaCrySLParser(configuration, ModelType.CONFIGURATION) as Configuration)
+		val src = config.inputDir
+		this.outputDir = config.outputDir
+
+		for (m : config.modules) {
+			val dir = new File(src + m.module)
+			if(dir.isDirectory()) {
+				val files = dir.list()
+				for(f: files) {
+					if (getExtensionByStringHandling(f).get() == 'mcsl') {
+						val parsedSpec = genericMetaCrySLParser(src + m.module + f, ModelType.SPEC) as MetaCrySL
+						specs.put(specName(parsedSpec.spec.classType), parsedSpec.spec)
+					} else if (getExtensionByStringHandling(f).get() == 'ref') {
+						val parsedRef = genericMetaCrySLParser(src + m.module + f, ModelType.REFINEMENT) as Refinement
+						refs.put(parsedRef.type, addOrMergeRefinement(parsedRef, refs))
+					}
+				}
+			}
+			else {
+				if (getExtensionByStringHandling(m.module).get() == 'mcsl') {
+					val parsedSpec = genericMetaCrySLParser(src + m.module, ModelType.SPEC) as MetaCrySL
+					specs.put(specName(parsedSpec.spec.classType), parsedSpec.spec)
+				} else if (getExtensionByStringHandling(m.module).get() == 'ref') {
+					val parsedRef = genericMetaCrySLParser(src + m.module, ModelType.REFINEMENT) as Refinement
+					refs.put(parsedRef.type, addOrMergeRefinement(parsedRef, refs))
+				}	
+			}
+		}
+		return applyMetaCrySLRefinements(specs, refs)
+	}
+
+	protected def List<Spec> applyMetaCrySLRefinements(HashMap<String, Spec> specs, HashMap<String, Refinement> refs) {
+		val compiledSpecs = new ArrayList<Spec>
+
+		for (k : specs.keySet()) {
+			val spec = specs.get(k)
+			if (refs.containsKey(k)) {
+				val ref = refs.get(k)
+				val applyVisitor = new ApplyRefinementVisitor(spec)
+				for (r : ref.refinements) {
+					applyVisitor.doSwitch(r)
+				}
+				compiledSpecs.add(applyVisitor.spec)
+			} else {
+				compiledSpecs.add(spec)
+			}
+		}
+		return compiledSpecs
+	}
+
+	// Write specs to the file system
+	def void compile(List<Spec> specs) {
+		for(spec: specs) {
+			val code_writer = new CodeWriter(spec, this.outputDir)
+			code_writer.generate()
+		}
+	}
+	
+
+	def String specName(BaseSpecType specType) {
+		val visitor = new CollectSpecTypeVisitor()
+		visitor.doSwitch(specType)
+	}
+
+	def Model genericMetaCrySLParser(String file, ModelType modelType) {
+		if(parser === null) {
+			setupParser()
+		}
+		
+		val path = Paths.get(file)
+
+		if (!Files.exists(path)) {
+			throw new RuntimeException("The configuration file does not exist " + path)
+		}
+
+		val result = parser.parse(new FileReader(file))
+
+		if (result.syntaxErrors.size > 0) {
+			throw new RuntimeException("Parser error: " + result.syntaxErrors)
+		}
+
+		switch (modelType) {
+			case CONFIGURATION: return (result.rootASTElement as Configuration).configuration
+			case SPEC: return (result.rootASTElement as MetaCrySL)
+			case REFINEMENT: return (result.rootASTElement as Refinement).refinement
+		}
+
+	}
+
+	def void setupParser() {
+		val injector = new MetaCrySLStandaloneSetup().createInjectorAndDoEMFRegistration()
+		injector.injectMembers(this)
 	}
 }

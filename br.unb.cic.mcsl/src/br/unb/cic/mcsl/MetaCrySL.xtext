@@ -19,7 +19,7 @@ Model
  * and so on. 
  */	
 Spec
- : 'ABSTRACT'? 'SPEC' className = JvmTypeReference
+ : 'ABSTRACT'? 'SPEC' classType = BaseSpecType
      objectSpec    = ObjectSpec
      (forbiddenSpec = ForbiddenSpec)?
      eventSpec     = EventSpec
@@ -29,6 +29,11 @@ Spec
      (ensureSpec = EnsureSpec)?
      (negateSpec = NegateSpec)?     
  ;
+ 
+BaseSpecType 
+ : {SimpleType} typeName = JavaQualifiedName
+ | {ParameterizedType} typeName = JavaQualifiedName '<' typeParameter = ID '>'	     
+ ; 
     
 /* ObjectSpec rule
  * 
@@ -44,12 +49,12 @@ ObjectSpec: {ObjectSpec} 'OBJECTS' objects += Object+ ;
  * variable that can be used in the remaining 
  * sections of the specification. 
  */
-Object: {Object} ((ObjectType = JvmTypeReference) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
+Object: {Object} ((ObjectType = JavaQualifiedName) | ("<"ObjectTypeParam = ValidID">")) ObjectName = ID ';' ;
 
 /* ForbiddenSpec */
 ForbiddenSpec: {ForbiddenSpec} 'FORBIDDEN' forbidenMethods += ForbiddenMethod+;
 
-ForbiddenMethod: {Forbidden} method = ID '(' (args ?= FormalArgs)? ')' ('=>' alternative ?= ID)? ';';
+ForbiddenMethod: {Forbidden} method = ID '(' (args = FormalArgs)? ')' ('=>' alternative = ID)? ';';
 
 /* EventSpec rule 
  * 
@@ -89,7 +94,7 @@ AggregateList : labels += ID ('|' labels+=ID)*;
  * this way to express lists, with a list 
  * separator in XText, is really weird. 
  */
-MethodDef: methodName = ID '(' (args ?= FormalArgs?) ')' ;
+MethodDef: methodName = ValidID '(' (args = FormalArgs)? ')' ;
 
 /* FormalArgs rule
  * 
@@ -101,8 +106,12 @@ FormalArgs: args += FormalArg (',' args += FormalArg)* ;
  * 
  * It should accept a wild card ('_') or something like 'int x'  
  */
-FormalArg: 
-	({Wildcard} '_' | {Formal} (argument = JvmArgumentTypeReference));
+FormalArg
+   : {Wildcard} '_' 
+   | {Formal} argument = QualifiedFormalArg
+;
+
+QualifiedFormalArg: ValidID ('.' ValidID)* ('[]')?;
  
 
 /* OrderSpec rule
@@ -132,19 +141,22 @@ OrderSpec: {OrderSpec} 'ORDER' order = EventExp ;
  * be quite expensive, so perhaps we should investigate an 
  * alternative to this design.  
  */
-EventExp
- : {Optional}   exp = ChoiceExp '?'
- | {ZeroOrMore} exp = ChoiceExp '*' 
- | {OneOrMore}  exp = ChoiceExp '+'	
- | {ChoiceExp}  exp = ChoiceExp 
- ;
+EventExp 
+ :  ChoiceExp ;
 
 ChoiceExp returns EventExp
- : SequenceExp => ({ChoiceExp.left = current}'|' right = SequenceExp)*;
+ : SequenceExp => ({ChoiceExp.left = current} '|' right = SequenceExp)*;
  
 SequenceExp returns EventExp
- : PrimaryExp => ({SequenceExp.left = current} ',' right = PrimaryExp)*;
-  
+ : BasicEventExp => ({SequenceExp.left = current} ',' right = BasicEventExp)*;
+
+BasicEventExp
+ : {Optional}    exp = PrimaryExp '?'
+ | {ZeroOrMore}  exp = PrimaryExp '*' 
+ | {OneOrMore}   exp = PrimaryExp '+'	
+ | {PrimaryExp}  exp = PrimaryExp 
+ ;  
+ 
 PrimaryExp returns EventExp
  : label = ID
  | '(' ChoiceExp ')' 	
@@ -160,7 +172,7 @@ ConstraintSpec : {ConstraintSpec} 'CONSTRAINTS' constraints += Constraint+;
 
 Constraint : exp = ConstraintExp ';';
 
-ConstraintExp : BooleanExp; 
+ConstraintExp : ImpliesExp; 
 
 /*
  * The set of boolean expressions. I think that the precedence should
@@ -173,7 +185,7 @@ ConstraintExp : BooleanExp;
  * (=>) 
  */
  
-BooleanExp : exp = ImpliesExp;
+BooleanExp : ImpliesExp;
   
 ImpliesExp returns ConstraintExp
  : DisjunctionExp ({ImpliesExp.left = current} '=>' right = DisjunctionExp)*;
@@ -191,24 +203,23 @@ RelationalExp returns ConstraintExp
  : ArithmeticExp ({RelationalExp.left = current} operator = ('<' | '>' | '<=' | '>=' | '==' | '!=') right = ArithmeticExp)*;
 
 /* The arithmetic expressions. They all have the same priority */
-ArithmeticExp 
+ArithmeticExp returns ConstraintExp
  : BasicExp ({ArithmeticExp.left = current} operator = ('+' | '-') right = BasicExp)*;
 
- BasicExp
-  : {NeverTypeOf} 'neverTypeOf' '[' var = ID ',' varType = JvmTypeReference ']'
+ BasicExp returns ConstraintExp
+  : {NeverTypeOf} 'neverTypeOf' '[' var = QualifiedFormalArg ',' varType = QualifiedFormalArg ']'
   | {NoCallTo} 'noCallTo' '[' method = ID ']'
   | {CallTo} 'callTo' '[' method = ID ']'
   | {NotHardCoded} 'notHardCoded' '[' var = ID "]"
   | {Length} 'length' '[' var = ID ']'
-  | {InstanceOf} 'instanceOf' '[' var = ID ',' varType = JvmTypeReference ']'
+  | {InstanceOf} 'instanceOf' '[' var = ID ',' varType = ID ']'
   |	{InSet} left = AtomicConstraintExp 'in' literalSet = LiteralSet
   | {AtomicConstraint} exp = AtomicConstraintExp
   ;
  
 AtomicConstraintExp 
- : {Value} val = Value
- | {Variable} var = ID
- | '(' ConstraintExp ')'
+ : {Value} exp = Value
+ | {Brackets} '(' exp = ConstraintExp ')'
  | {FunctionCall} methodName=ID '(' params += Value (',' params += Value)* ')' 
  ;  
   
@@ -221,8 +232,8 @@ AtomicConstraintExp
  
  Value 
   : {IntValue} value = NUMBER 
-  | {StringValue} value = STRING	
-  | {id} value = ID
+  | {StringValue} value = STRING
+  | {Variable} varName = ID	
   ;
 
 /* RequireSpec rule
@@ -232,20 +243,24 @@ RequireSpec : {RequireSpec} 'REQUIRES' requires += RequirePredicate+;
 
 RequirePredicate : exp = PredicateOr ';';
 
-PredicateOr returns PredicateExp 
+PredicateOr returns RequirePredicate 
 	: AtomicPredicate ({PredicateOr.leftExpression = current} '||' right = AtomicPredicate)*;
 
 AtomicPredicate: 
 	(cons = (ConstraintExp | Pred) "=>")? (not = '!')? pred = Pred;
 	
 Pred:
-	name = ID '[' (parans = PredParans) ']';
+	name = ID '[' (params = PredParams) ']';
 	
-PredParans:
-	(parameters += ParamType (',' parameters += ParamType)*);
+PredParams:
+	(parameters += PredParameter (',' parameters += PredParameter)*);
 
-ParamType:
-	{ParamType} (val = Value | '_' | 'this'); 
+PredParameter
+: {PredValue} val = Value
+| {PredWildcard} '_' 
+| {PredThis} 'this'
+| {FunctionCall} methodName=ID '(' params += Value (',' params += Value)* ')' 
+; 
 
 /* EnsureSpec rule
  * 
@@ -266,15 +281,23 @@ NegateSpec : {NegateSpec} 'NEGATES' negates += EnsurePredicate+;
  * We can also specify refinements in MetaCrySL. 
  */	
 
+/*
+ * TODO: maybe find a better way to handle this case
+*/
+JavaQualifiedName: ValidID ('.' ValidID)* ('[]')? | ValidID '[]' ;
+
+@Override 
+ValidID: ID | "spec" | "load";
+
 Refinement
-  : "SPEC" name = ID "REFINES" type = JvmTypeReference "{" refinements += RefinementOpr+ "}"; 
+  : "SPEC" name = ID "REFINES" type = JavaQualifiedName "{" refinements += RefinementOpr+ "}"; 
  
  
  RefinementOpr 
-  : {Rename} "rename" "spec" type = JvmTypeReference ";"
+  : {Rename} "rename" "spec" type = JavaQualifiedName ";"
   | {AddEvent} "add" "event" event = Event ";"
-  | {AddConstraint} "add" "constraint" contraint = ConstraintExp ";"
-  | {AddRequie} "add" "require" require = RequirePredicate ";"
+  | {AddConstraint} "add" "constraint" constraint = ConstraintExp ";"
+  | {AddRequire} "add" "require" require = RequirePredicate
   | {AddEnsure} "add" "ensure" ensure = EnsurePredicate ";"
   | {DefineLiteralSet} "define" var = ID "=" set = LiteralSet ";"  	
   ;  

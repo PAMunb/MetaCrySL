@@ -25,6 +25,5 @@ public class MetaCrySLAbstractTests extends AbstractXtextTests {
 	public void setUp() throws Exception {
 		super.setUp();
 		with(MetaCrySLStandaloneSetup.class);
-	}	
-
+	}
 }

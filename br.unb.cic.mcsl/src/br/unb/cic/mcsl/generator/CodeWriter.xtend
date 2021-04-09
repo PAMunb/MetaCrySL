@@ -2,16 +2,7 @@ package br.unb.cic.mcsl.generator
 
 import br.unb.cic.mcsl.metaCrySL.Spec
 import java.io.PrintWriter
-import br.unb.cic.mcsl.metaCrySL.impl.ConstraintImpl
-import java.util.List
-import br.unb.cic.mcsl.metaCrySL.impl.RelationalExpImpl
-import br.unb.cic.mcsl.metaCrySL.impl.ConjunctionExpImpl
-import br.unb.cic.mcsl.metaCrySL.impl.DisjunctionExpImpl
 import java.util.ArrayList
-import br.unb.cic.mcsl.metaCrySL.MethodDef
-import br.unb.cic.mcsl.metaCrySL.EventMethod
-import br.unb.cic.mcsl.metaCrySL.EventAggregate
-import br.unb.cic.mcsl.metaCrySL.AtomicPredicate
 
 class CodeWriter {
 	var Spec spec
